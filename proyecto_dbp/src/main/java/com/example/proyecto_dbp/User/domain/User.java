@@ -2,7 +2,7 @@ package com.example.proyecto_dbp.User.domain;
 
 import com.fasterxml.jackson.annotation.JsonTypeId;
 import jakarta.persistence.*;
-import org.springframework.scheduling.config.Task;
+import com.example.proyecto_dbp.Task.domain.Task;
 
 import java.util.ArrayList;
 import java.util.List;
