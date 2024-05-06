@@ -1,6 +1,8 @@
 package com.example.proyecto_dbp.User.dto;
 
 
+import jakarta.validation.constraints.*;
+
 public class UserDto {
     private Long id;
 
@@ -12,7 +14,6 @@ public class UserDto {
     @Email(message = "Email should be valid")
     private String email;
 
-
     public UserDto() {}
 
     public void setId(Long id) {this.id = id;}
@@ -22,7 +23,4 @@ public class UserDto {
     public String getName() {return name;}
     public Long getId() {return id;}
     public String getEmail() {return email;}
-
-
-
 }

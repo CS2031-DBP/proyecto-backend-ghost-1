@@ -1,6 +1,6 @@
 package com.example.proyecto_dbp.User.dto;
 
-import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.*;
 
 public class UserInputDto {
     @NotBlank(message = "Name is required")
