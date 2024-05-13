@@ -20,7 +20,7 @@ public class EventController {
         return ResponseEntity.ok(eventService.getEvent(id));
     }
     @PostMapping()
-    public ResponseEntity<Void> saveEvent(@RequestBody Event event {
+    public ResponseEntity<Void> saveEvent(@RequestBody Event event) {
         eventService.saveEvent(event);
         return ResponseEntity.ok().build();
     }
