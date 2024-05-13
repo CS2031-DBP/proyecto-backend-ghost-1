@@ -1,4 +1,10 @@
 package com.example.proyecto_dbp.VoiceCommand.infrastructure;
 
-public interface VoiceCommandRepository {
+import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommand;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface VoiceCommandRepository extends JpaRepository<VoiceCommand, Long> {
+    List<VoiceCommand> findByUserId(Long userId);
 }
