@@ -1,11 +1,9 @@
 package com.example.proyecto_dbp.VoiceCommand.domain;
 
 import com.example.proyecto_dbp.User.domain.User;
-import jakarta.persistence.Entity;
 import jakarta.persistence.*;
-import jakarta.persistence.Table;
 
-//import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "voice_commands")
@@ -17,9 +15,12 @@ public class VoiceCommand {
     @Column(nullable = false)
     private String command;
 
+    @Column(nullable = false)
+    private LocalDateTime timestamp = LocalDateTime.now();
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User usuario;
+    private User user;
 
     // Getters y setters
 }

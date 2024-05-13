@@ -1,6 +1,6 @@
 package com.example.proyecto_dbp.Task.dto;
 
-public class TaskResponseDto {
+public class TaskDto {
     private Long id;
     private String description;
 

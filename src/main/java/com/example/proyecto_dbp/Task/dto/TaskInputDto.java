@@ -1,7 +1,6 @@
 package com.example.proyecto_dbp.Task.dto;
 
-public class TaskResponseDto {
-    private Long id;
+public class TaskInputDto {
     private String description;
 
     // Getters and Setters

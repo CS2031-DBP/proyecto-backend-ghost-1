@@ -1,5 +1,8 @@
 package com.example.proyecto_dbp.Event.domain;
+import com.example.proyecto_dbp.Event.dto.EventDto;
+import com.example.proyecto_dbp.Event.dto.EventInputDto;
 import com.example.proyecto_dbp.Event.infrastructure.EventRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +42,15 @@ public class EventService {
         Event EventToUpdate = eventRepository.findById(id).orElseThrow(() -> new RuntimeException("Event not found"));
         EventToUpdate.setTitle(title);
         eventRepository.save(EventToUpdate);
+    }
+
+    @Transactional
+    public EventDto createEvent(EventInputDto inputDto) {
+        Event event = new Event();
+        event.setTitle(inputDto.getTitle());
+        event.setStartTime(inputDto.getStartTime());
+        event.setEndTime(inputDto.getEndTime());
+        event = eventRepository.save(event);
+        return new EventDto(event.getId(), event.getTitle(), event.getStartTime(), event.getEndTime());
     }
 }

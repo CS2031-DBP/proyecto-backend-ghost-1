@@ -1,6 +1,9 @@
 package com.example.proyecto_dbp.Event.application;
 import com.example.proyecto_dbp.Event.domain.EventService;
 import com.example.proyecto_dbp.Event.domain.Event;
+import com.example.proyecto_dbp.Event.dto.EventDto;
+import com.example.proyecto_dbp.Event.dto.EventInputDto;
+import com.example.proyecto_dbp.Event.dto.EventResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,6 +49,13 @@ public class EventController {
     public ResponseEntity<Void> updatetitle(@PathVariable Long id, @RequestParam("title") String title) {
         eventService.updateTitle(id,title);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping
+    public ResponseEntity<EventResponseDto> createEvent(@RequestBody EventInputDto eventInputDto) {
+        EventDto eventDto = eventService.createEvent(eventInputDto);
+        EventResponseDto responseDto = new EventResponseDto(eventDto.getId(), eventDto.getTitle(), eventDto.getStartTime(), eventDto.getEndTime());
+        return ResponseEntity.ok(responseDto);
     }
 
 }

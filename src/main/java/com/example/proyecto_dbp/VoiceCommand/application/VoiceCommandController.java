@@ -1,6 +1,10 @@
 package com.example.proyecto_dbp.VoiceCommand.application;
 
 import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommand;
+import com.example.proyecto_dbp.VoiceCommand.dto.VoiceCommandDto;
+import com.example.proyecto_dbp.VoiceCommand.dto.VoiceCommandInputDto;
+import com.example.proyecto_dbp.VoiceCommand.dto.VoiceCommandResponseDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommandService;
@@ -12,10 +16,10 @@ public class VoiceCommandController {
     @Autowired
     private VoiceCommandService voiceCommandService;
 
-    @GetMapping("/user/{userId}")
-    public List<VoiceCommand> getCommandsByUserId(@PathVariable Long userId) {
-        return voiceCommandService.getCommandsByUser(userId);
+    @PostMapping
+    public ResponseEntity<VoiceCommandResponseDto> createVoiceCommand(@RequestBody VoiceCommandInputDto voiceCommandInputDto) {
+        VoiceCommandDto commandDto = voiceCommandService.createVoiceCommand(voiceCommandInputDto);
+        VoiceCommandResponseDto responseDto = new VoiceCommandResponseDto(commandDto.getId(), commandDto.getCommand());
+        return ResponseEntity.ok(responseDto);
     }
-
-    // Más endpoints
 }

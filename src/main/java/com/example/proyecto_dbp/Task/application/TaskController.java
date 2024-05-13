@@ -2,6 +2,9 @@ package com.example.proyecto_dbp.Task.application;
 
 
 import com.example.proyecto_dbp.Task.domain.TaskService;
+import com.example.proyecto_dbp.Task.dto.TaskDto;
+import com.example.proyecto_dbp.Task.dto.TaskInputDto;
+import com.example.proyecto_dbp.Task.dto.TaskResponseDto;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,5 +28,12 @@ public class TaskController {
     public ResponseEntity<Task> addTask(@RequestBody Task task) {
         Task newTask = taskService.saveTask(task);
         return new ResponseEntity<>(newTask, HttpStatus.CREATED);
+    }
+
+    @PostMapping
+    public ResponseEntity<TaskResponseDto> createTask(@RequestBody TaskInputDto taskInputDto) {
+        TaskDto taskDto = taskService.createTask(taskInputDto);
+        TaskResponseDto responseDto = new TaskResponseDto(taskDto.getId(), taskDto.getDescription());
+        return ResponseEntity.ok(responseDto);
     }
 }
