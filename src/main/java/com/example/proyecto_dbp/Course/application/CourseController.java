@@ -15,6 +15,10 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+    //POST /courses: Crea un nuevo curso.
+    //PUT /courses/{id}: Actualiza un curso existente.
+    //DELETE /courses/{id}: Elimina un curso.
+
     @PostMapping
     public ResponseEntity<CourseResponseDto> createCourse(@RequestBody CourseInputDto courseInputDto) {
         CourseDto courseDto = courseService.createCourse(courseInputDto);
