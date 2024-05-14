@@ -1,6 +1,5 @@
 package com.example.proyecto_dbp.User.application;
 
-
 import com.example.proyecto_dbp.User.domain.UserService;
 import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

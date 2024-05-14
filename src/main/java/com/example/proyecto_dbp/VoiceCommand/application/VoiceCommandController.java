@@ -22,4 +22,11 @@ public class VoiceCommandController {
         VoiceCommandResponseDto responseDto = new VoiceCommandResponseDto(commandDto.getId(), commandDto.getCommand());
         return ResponseEntity.ok(responseDto);
     }
+
+    @GetMapping
+    public ResponseEntity<List<VoiceCommandResponseDto>> getVoiceCommands() {
+        List<VoiceCommandDto> commandDtos = voiceCommandService.getVoiceCommands();
+        List<VoiceCommandResponseDto> responseDtos = VoiceCommandResponseDto.from(commandDtos);
+        return ResponseEntity.ok(responseDtos);
+    }
 }

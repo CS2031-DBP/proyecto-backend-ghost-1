@@ -11,11 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.proyecto_dbp.Task.domain.Task;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -25,15 +24,33 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping
-    public ResponseEntity<Task> addTask(@RequestBody Task task) {
-        Task newTask = taskService.saveTask(task);
-        return new ResponseEntity<>(newTask, HttpStatus.CREATED);
-    }
-
-    @PostMapping
     public ResponseEntity<TaskResponseDto> createTask(@RequestBody TaskInputDto taskInputDto) {
         TaskDto taskDto = taskService.createTask(taskInputDto);
         TaskResponseDto responseDto = new TaskResponseDto(taskDto.getId(), taskDto.getDescription());
         return ResponseEntity.ok(responseDto);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<TaskResponseDto>> getTasks() {
+        List<TaskDto> taskDtos = taskService.getTasks();
+        List<TaskResponseDto> responseDtos = TaskResponseDto.from(taskDtos);
+        return ResponseEntity.ok(responseDtos);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Task> getTaskById(@PathVariable Long id){
+        return ResponseEntity.ok(taskService.getTaskById(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateTask(@PathVariable Long id, @RequestBody Task task) {
+        taskService.updateTask(id, task);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+        return ResponseEntity.noContent().build();
     }
 }

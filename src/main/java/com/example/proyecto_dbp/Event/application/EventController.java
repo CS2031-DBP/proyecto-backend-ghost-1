@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/event")
@@ -58,4 +59,10 @@ public class EventController {
         return ResponseEntity.ok(responseDto);
     }
 
+    @GetMapping
+    public ResponseEntity<List<EventResponseDto>> getEvents() {
+        List<EventDto> eventDtos = eventService.getEvents();
+        List<EventResponseDto> responseDtos = EventResponseDto.from(eventDtos);
+        return ResponseEntity.ok(responseDtos);
+    }
 }

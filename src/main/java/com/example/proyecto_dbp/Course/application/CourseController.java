@@ -15,10 +15,6 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    //POST /courses: Crea un nuevo curso.
-    //PUT /courses/{id}: Actualiza un curso existente.
-    //DELETE /courses/{id}: Elimina un curso.
-
     @PostMapping
     public ResponseEntity<CourseResponseDto> createCourse(@RequestBody CourseInputDto courseInputDto) {
         CourseDto courseDto = courseService.createCourse(courseInputDto);
@@ -32,4 +28,18 @@ public class CourseController {
         CourseResponseDto responseDto = new CourseResponseDto(courseDto.getId(), courseDto.getName());
         return ResponseEntity.ok(responseDto);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CourseResponseDto> updateCourse(@PathVariable Long id, @RequestBody CourseInputDto courseInputDto) {
+        CourseDto courseDto = courseService.updateCourse(id, courseInputDto);
+        CourseResponseDto responseDto = new CourseResponseDto(courseDto.getId(), courseDto.getName());
+        return ResponseEntity.ok(responseDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
+        courseService.deleteCourse(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
