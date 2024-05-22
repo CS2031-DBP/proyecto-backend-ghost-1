@@ -5,6 +5,7 @@ import com.example.proyecto_dbp.Course.domain.Course;
 
 import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.User.infrastructure.UserRepository;
+import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,9 @@ public class CourseService {
     }
 
     public Optional<CourseDTO> getCourseById(Long id) {
-        return courseRepository.findById(id).map(this::convertToDTO);
+        return Optional.ofNullable(courseRepository.findById(id)
+                .map(this::convertToDTO)
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id)));
     }
 
     public List<CourseDTO> getCoursesByUserId(Long userId) {
@@ -43,37 +46,37 @@ public class CourseService {
     }
 
     public CourseDTO updateCourse(Long id, CourseDTO courseDTO) {
-        Optional<Course> optionalCourse = courseRepository.findById(id);
-        if (optionalCourse.isPresent()) {
-            Course course = optionalCourse.get();
-            course.setCourse_name(courseDTO.getNombreCurso());
-            course.setCourse_description(courseDTO.getDescripcion());
-            course.setProfessor(courseDTO.getProfesor());
-            course = courseRepository.save(course);
-            return convertToDTO(course);
-        }
-        return null;
+        Course course = courseRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id));
+        course.setNombreCurso(courseDTO.getNombreCurso());
+        course.setDescripcion(courseDTO.getDescripcion());
+        course.setProfesor(courseDTO.getProfesor());
+        course = courseRepository.save(course);
+        return convertToDTO(course);
     }
 
     public void deleteCourse(Long id) {
+        if (!courseRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Course not found with id " + id);
+        }
         courseRepository.deleteById(id);
     }
 
     private CourseDTO convertToDTO(Course course) {
         CourseDTO courseDTO = new CourseDTO();
-        courseDTO.setId(course.getCourse_id());
-        courseDTO.setNombreCurso(course.getCourse_name());
-        courseDTO.setDescripcion(course.getCourse_description());
-        courseDTO.setProfesor(course.getProfessor());
+        courseDTO.setId(course.getId());
+        courseDTO.setNombreCurso(course.getNombreCurso());
+        courseDTO.setDescripcion(course.getDescripcion());
+        courseDTO.setProfesor(course.getProfesor());
         courseDTO.setUserId(course.getUser().getId());
         return courseDTO;
     }
 
     private Course convertToEntity(CourseDTO courseDTO) {
         Course course = new Course();
-        course.setCourse_name(courseDTO.getNombreCurso());
-        course.setCourse_description(courseDTO.getDescripcion());
-        course.setProfessor(courseDTO.getProfesor());
+        course.setNombreCurso(courseDTO.getNombreCurso());
+        course.setDescripcion(courseDTO.getDescripcion());
+        course.setProfesor(courseDTO.getProfesor());
         userRepository.findById(courseDTO.getUserId()).ifPresent(course::setUser);
         return course;
     }
