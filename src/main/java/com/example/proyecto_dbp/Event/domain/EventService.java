@@ -1,56 +1,55 @@
 package com.example.proyecto_dbp.Event.domain;
-import com.example.proyecto_dbp.Event.dto.EventDto;
-import com.example.proyecto_dbp.Event.dto.EventInputDto;
+
+import com.example.proyecto_dbp.Activity.infrastructure.ActivityRepository;
+import com.example.proyecto_dbp.Event.dto.EventDTO;
 import com.example.proyecto_dbp.Event.infrastructure.EventRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EventService {
+
     @Autowired
     private EventRepository eventRepository;
 
-    public Event getEvent(long id){
-        return eventRepository.findById(id).orElseThrow(() -> new RuntimeException("Event not found"));
-    }
-    public void saveEvent(Event event) {
-        eventRepository.save(event);
+    @Autowired
+    private ActivityRepository activityRepository;
+
+    public List<EventDTO> getAllEvents() {
+        return eventRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
-    public void deleteEvent(Long id) {
-        eventRepository.deleteById(id);
-    }
-
-    public void updateEvent(Long id, Event event) {
-        Event EventToUpdate = eventRepository
-                .findById(id)
-                .orElseThrow(() -> new RuntimeException("Event not found"));
-        EventToUpdate.setTitle(event.getTitle());
-        EventToUpdate.setEndTime(event.getEndTime());
-        EventToUpdate.setStartTime(event.getStartTime());
-        eventRepository.save(EventToUpdate);
-    }
-    public void updateEndTime(Long id, LocalDate endtime){
-        Event EventToUpdate = eventRepository.findById(id).orElseThrow(() -> new RuntimeException("Event not found"));
-        EventToUpdate.setEndTime(endtime);
-        eventRepository.save(EventToUpdate);
-    }
-    public void updateTitle(Long id, String title){
-        Event EventToUpdate = eventRepository.findById(id).orElseThrow(() -> new RuntimeException("Event not found"));
-        EventToUpdate.setTitle(title);
-        eventRepository.save(EventToUpdate);
-    }
-
-    @Transactional
-    public EventDto createEvent(EventInputDto inputDto) {
-        Event event = new Event();
-        event.setTitle(inputDto.getTitle());
-        event.setStartTime(inputDto.getStartTime());
-        event.setEndTime(inputDto.getEndTime());
+    public EventDTO createEvent(EventDTO eventDTO) {
+        Event event = convertToEntity(eventDTO);
         event = eventRepository.save(event);
-        return new EventDto(event.getId(), event.getTitle(), event.getStartTime(), event.getEndTime());
+        return convertToDTO(event);
+    }
+
+    // Other service methods
+
+    private EventDTO convertToDTO(Event event) {
+        EventDTO eventDTO = new EventDTO();
+        eventDTO.setId(event.getId());
+        eventDTO.setTitulo(event.getTitulo());
+        eventDTO.setDescripcion(event.getDescripcion());
+        eventDTO.setFechaInicio(event.getFechaInicio());
+        eventDTO.setFechaFin(event.getFechaFin());
+        eventDTO.setEstado(event.getEstado());
+        eventDTO.setCourseId(event.getCourse().getId());
+        return eventDTO;
+    }
+
+    private Event convertToEntity(EventDTO eventDTO) {
+        Event event = new Event();
+        event.setTitulo(eventDTO.getTitulo());
+        event.setDescripcion(eventDTO.getDescripcion());
+        event.setFechaInicio(eventDTO.getFechaInicio());
+        event.setFechaFin(eventDTO.getFechaFin());
+        event.setEstado(eventDTO.getEstado());
+        activityRepository.findById(eventDTO.getCourseId()).ifPresent(event::setCourse);
+        return event;
     }
 }

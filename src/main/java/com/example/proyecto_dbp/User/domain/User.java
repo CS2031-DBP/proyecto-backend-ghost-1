@@ -3,7 +3,6 @@ package com.example.proyecto_dbp.User.domain;
 import com.example.proyecto_dbp.Course.domain.Course;
 import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommand;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -22,8 +21,6 @@ public class User {
     @Column(nullable = false, unique = true)
     private String name;
 
-    //Relaciones
-
     @OneToMany(mappedBy = "user")
     private List<Course> courses;
 
@@ -31,7 +28,7 @@ public class User {
     private List<VoiceCommand> voiceCommands;
 
 
-    // Constructor, getters y setters
+// Constructor, getters y setters
 
     public User(Long id, String email, String password) {
         this.id = id;
@@ -50,4 +47,11 @@ public class User {
     public void setPassword(String password) {this.password = password;}
     public void setEmail(String email) {this.email = email;}
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

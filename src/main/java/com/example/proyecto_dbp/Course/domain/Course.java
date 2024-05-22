@@ -14,13 +14,13 @@ import java.util.List;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long course_id;
 
     @Column(nullable = false)
-    private String name;
+    private String course_name;
 
     @Column
-    private String description;
+    private String course_description;
 
     @Column
     private String professor;
@@ -36,4 +36,52 @@ public class Course {
 
     // Constructor, getters y setters
 
+
+    public Long getCourse_id() {
+        return course_id;
+    }
+
+    public void setCourse_id(Long course_id) {
+        this.course_id = course_id;
+    }
+
+    public String getCourse_name() {
+        return course_name;
+    }
+
+    public void setCourse_name(String course_name) {
+        this.course_name = course_name;
+    }
+
+    public String getCourse_description() {
+        return course_description;
+    }
+
+    public void setCourse_description(String course_description) {
+        this.course_description = course_description;
+    }
+
+    public String getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(String professor) {
+        this.professor = professor;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
+    }
 }

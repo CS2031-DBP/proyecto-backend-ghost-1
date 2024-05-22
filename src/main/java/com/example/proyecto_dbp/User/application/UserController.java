@@ -1,58 +1,32 @@
 package com.example.proyecto_dbp.User.application;
 
 import com.example.proyecto_dbp.User.domain.UserService;
-import com.example.proyecto_dbp.User.infrastructure.UserRepository;
+import com.example.proyecto_dbp.User.dto.UserDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.proyecto_dbp.User.domain.User;
 
-import java.util.*;
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserController {
-
 
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserRepository userRepository;
-
+    @GetMapping
+    public List<UserDTO> getAllUsers() {
+        return userService.getAllUsers();
+    }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User savedUser = userService.saveUser(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
+        UserDTO createdUser = userService.createUser(userDTO);
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id]")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUserById(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping
-    public ResponseEntity<List<User>> getUsers() {
-        List<User> users = userService.getUsers();
-        return ResponseEntity.ok(users);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        User user = userRepository.getUserById(id);
-        if (user != null) return ResponseEntity.ok(user);
-        else return ResponseEntity.notFound().build();
-    }
-
-    @PatchMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestParam String name, @RequestParam String email, @RequestParam String password) {
-        User updatedUser = userService.updateUser(id, name, email, password);
-        if (updatedUser != null) return ResponseEntity.ok(updatedUser);
-        else return ResponseEntity.notFound().build();
-    }
-
+    // Other CRUD operations
 }
