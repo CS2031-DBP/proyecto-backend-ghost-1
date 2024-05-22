@@ -2,7 +2,9 @@ package com.example.proyecto_dbp.User.dto;
 
 
 import jakarta.validation.constraints.*;
+import lombok.Data;
 
+@Data
 public class UserDto {
     private Long id;
 
