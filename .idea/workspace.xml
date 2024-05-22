@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="all endpoints (missin methods)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/domain/Activity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/domain/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/domain/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommand.java" afterDir="false" />
-    </list>
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="Entidades definitivas." />
     <list id="47db801c-22e9-4bcb-b013-2cb988d94089" name="Changes by Jose Aguilar" comment="Changes by Jose Aguilar" />
     <list id="16752643-b589-49b3-b213-d058318aaf46" name="Changes by LENOVO" comment="xd" />
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +128,7 @@
       <workItem from="1715739480643" duration="2203000" />
       <workItem from="1715780412803" duration="844000" />
       <workItem from="1716059612046" duration="50000" />
-      <workItem from="1716334872290" duration="3037000" />
+      <workItem from="1716334872290" duration="3266000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -187,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715713036446</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Entidades definitivas.">
+      <option name="closed" value="true" />
+      <created>1716338270998</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716338270998</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +198,7 @@
     <MESSAGE value="Modified w errors" />
     <MESSAGE value="UserController updated w endopoints&#10;(missin methods from userService)&#10;CourseController 2/5" />
     <MESSAGE value="all endpoints (missin methods)" />
-    <option name="LAST_COMMIT_MESSAGE" value="all endpoints (missin methods)" />
+    <MESSAGE value="Entidades definitivas." />
+    <option name="LAST_COMMIT_MESSAGE" value="Entidades definitivas." />
   </component>
 </project>
