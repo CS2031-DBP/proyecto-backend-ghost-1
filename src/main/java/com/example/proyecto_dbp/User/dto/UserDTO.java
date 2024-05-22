@@ -1,10 +1,24 @@
 package com.example.proyecto_dbp.User.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
+import lombok.*;
+
+@Data
 public class UserDTO {
+
+    @NonNull
     private Long id;
+
+    @NonNull
+    @Email
     private String email;
+
+    @NonNull
+    @Size(min = 1, max = 255)
     private String name;
 
+    /*
     public Long getId() {
         return id;
     }
@@ -28,4 +42,5 @@ public class UserDTO {
     public void setName(String name) {
         this.name = name;
     }
+     */
 }

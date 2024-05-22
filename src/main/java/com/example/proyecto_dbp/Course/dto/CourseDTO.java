@@ -1,15 +1,33 @@
 package com.example.proyecto_dbp.Course.dto;
 
+
+import jakarta.validation.constraints.*;
+import lombok.Data;
+import lombok.NonNull;
+
+@Data
 public class CourseDTO {
+    @NonNull
     private Long id;
+
+    @NonNull
+    @Size(min = 1, max = 30)
     private String nombreCurso;
+
+    @NotNull
+    @Size(min = 1, max = 255)
     private String descripcion;
+
+    @NotNull
+    @Size(min = 2, max = 50)
     private String profesor;
+
+    @NotNull
     private Long userId;
 
     // Getters and Setters
 
-
+    /*
     public Long getId() {return id;}
 
     public void setId(Long id) {this.id = id;}
@@ -29,4 +47,6 @@ public class CourseDTO {
     public Long getUserId() {return userId;}
 
     public void setUserId(Long userId) {this.userId = userId;}
+
+     */
 }
