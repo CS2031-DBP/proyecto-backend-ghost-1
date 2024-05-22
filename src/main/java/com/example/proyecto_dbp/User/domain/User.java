@@ -1,6 +1,9 @@
 package com.example.proyecto_dbp.User.domain;
 
+import com.example.proyecto_dbp.Course.domain.Course;
+import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommand;
 import jakarta.persistence.*;
+
 import java.util.List;
 
 @Entity
@@ -16,6 +19,18 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false, unique = true)
+    private String name;
+
+    //Relaciones
+
+    @OneToMany(mappedBy = "user")
+    private List<Course> courses;
+
+    @OneToMany(mappedBy = "user")
+    private List<VoiceCommand> voiceCommands;
+
+
     // Constructor, getters y setters
 
     public User(Long id, String email, String password) {
@@ -26,12 +41,13 @@ public class User {
 
     public User() {}
 
+
     public Long getId() {return id;}
     public String getPassword() {return password;}
     public String getEmail() {return email;}
 
     public void setId(Long id) {this.id = id;}
-    public void setPassword(String password) {this.password = password;
+    public void setPassword(String password) {this.password = password;}
     public void setEmail(String email) {this.email = email;}
-}
+
 }

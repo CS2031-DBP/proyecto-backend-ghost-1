@@ -5,30 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="all endpoints (missin methods)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/domain/Activity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/application/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/application/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/application/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/application/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/application/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/application/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/domain/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/domain/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommand.java" afterDir="false" />
     </list>
-    <list id="47db801c-22e9-4bcb-b013-2cb988d94089" name="Changes by Jose Aguilar" comment="Changes by Jose Aguilar">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/dto/EventDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/dto/EventDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/dto/EventInputDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/dto/EventInputDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/dto/EventResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/dto/EventResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskInputDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskInputDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/application/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/application/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/dto/UserInputDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/dto/UserInputDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/dto/UserResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/dto/UserResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/infrastructure/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/infrastructure/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/dto/VoiceCommandDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/dto/VoiceCommandDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/dto/VoiceCommandInputDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/dto/VoiceCommandInputDto.java" afterDir="false" />
-    </list>
+    <list id="47db801c-22e9-4bcb-b013-2cb988d94089" name="Changes by Jose Aguilar" comment="Changes by Jose Aguilar" />
     <list id="16752643-b589-49b3-b213-d058318aaf46" name="Changes by LENOVO" comment="xd" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,21 +41,13 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/CS2031-DBP/proyecto-backend-ghost-1.git&quot;,
-    &quot;accountId&quot;: &quot;767387b1-40f0-4784-bfdf-87fe6bcddab4&quot;
+    &quot;accountId&quot;: &quot;6e397333-685c-487f-a6db-685f1643947c&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/3.2.5/spring-data-commons-3.2.5.jar!/org/springframework/data/repository/CrudRepository.class" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/application/UserController.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/application/UserController.java">
-      <ranges>
-        <range start1="2" end1="3" start2="2" end2="2" changelist="1eabcb10-da91-4705-bb1a-5c27e7193d0f" />
-        <range start1="34" end1="37" start2="33" end2="35" changelist="47db801c-22e9-4bcb-b013-2cb988d94089" />
-      </ranges>
-    </file>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -96,7 +74,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-22&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jorge l/Desktop/dbp/proyecto-backend-ghost-1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jose Aguilar/IdeaProjects/pc1_practica&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -126,8 +104,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -156,6 +134,10 @@
       <workItem from="1715716340132" duration="234000" />
       <workItem from="1715716593337" duration="770000" />
       <workItem from="1715721076289" duration="2407000" />
+      <workItem from="1715739480643" duration="2203000" />
+      <workItem from="1715780412803" duration="844000" />
+      <workItem from="1716059612046" duration="50000" />
+      <workItem from="1716334872290" duration="3037000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
