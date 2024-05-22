@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,23 +23,53 @@ public class TaskService {
         return taskRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
+    public Optional<TaskDTO> getTaskById(Long id) {
+        return taskRepository.findById(id).map(this::convertToDTO);
+    }
+
+    public List<TaskDTO> getTasksByCourseId(Long courseId) {
+        return taskRepository.findAll().stream()
+                .filter(task -> task.getCourse().getCourse_id().equals(courseId))
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
     public TaskDTO createTask(TaskDTO taskDTO) {
         Task task = convertToEntity(taskDTO);
         task = taskRepository.save(task);
         return convertToDTO(task);
     }
 
-    // Other service methods
+    public TaskDTO updateTask(Long id, TaskDTO taskDTO) {
+        Optional<Task> optionalTask = taskRepository.findById(id);
+        if (optionalTask.isPresent()) {
+            Task task = optionalTask.get();
+            task.setTitle(taskDTO.getTitulo());
+            task.setDescription(taskDTO.getDescripcion());
+            task.setStartTime(taskDTO.getFechaInicio());
+            task.setEndTime(taskDTO.getFechaFin());
+            task.setStatus(taskDTO.getEstado());
+            task.setPriority(taskDTO.getPriority());
+            task.setCompleted(taskDTO.getCompleted());
+            task = taskRepository.save(task);
+            return convertToDTO(task);
+        }
+        return null;
+    }
+
+    public void deleteTask(Long id) {
+        taskRepository.deleteById(id);
+    }
 
     private TaskDTO convertToDTO(Task task) {
         TaskDTO taskDTO = new TaskDTO();
         taskDTO.setId(task.getId());
-        taskDTO.setTitulo(task.getTitulo());
-        taskDTO.setDescripcion(task.getDescripcion());
-        taskDTO.setFechaInicio(task.getFechaInicio());
-        taskDTO.setFechaFin(task.getFechaFin());
-        taskDTO.setEstado(task.getEstado());
-        taskDTO.setCourseId(task.getCourse().getId());
+        taskDTO.setTitulo(task.getTitle());
+        taskDTO.setDescripcion(task.getDescription());
+        taskDTO.setFechaInicio(task.getStartTime());
+        taskDTO.setFechaFin(task.getEndTime());
+        taskDTO.setEstado(task.getStatus());
+        taskDTO.setCourseId(task.getCourse().getCourse_id());
         taskDTO.setPriority(task.getPriority());
         taskDTO.setCompleted(task.getCompleted());
         return taskDTO;
@@ -46,11 +77,11 @@ public class TaskService {
 
     private Task convertToEntity(TaskDTO taskDTO) {
         Task task = new Task();
-        task.setTitulo(taskDTO.getTitulo());
-        task.setDescripcion(taskDTO.getDescripcion());
-        task.setFechaInicio(taskDTO.getFechaInicio());
-        task.setFechaFin(taskDTO.getFechaFin());
-        task.setEstado(taskDTO.getEstado());
+        task.setTitle(taskDTO.getTitulo());
+        task.setDescription(taskDTO.getDescripcion());
+        task.setStartTime(taskDTO.getFechaInicio());
+        task.setEndTime(taskDTO.getFechaFin());
+        task.setStatus(taskDTO.getEstado());
         task.setPriority(taskDTO.getPriority());
         task.setCompleted(taskDTO.getCompleted());
         courseRepository.findById(taskDTO.getCourseId()).ifPresent(task::setCourse);

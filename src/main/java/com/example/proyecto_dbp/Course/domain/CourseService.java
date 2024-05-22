@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,13 +25,39 @@ public class CourseService {
         return courseRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
+    public Optional<CourseDTO> getCourseById(Long id) {
+        return courseRepository.findById(id).map(this::convertToDTO);
+    }
+
+    public List<CourseDTO> getCoursesByUserId(Long userId) {
+        return courseRepository.findAll().stream()
+                .filter(course -> course.getUser().getId().equals(userId))
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
     public CourseDTO createCourse(CourseDTO courseDTO) {
         Course course = convertToEntity(courseDTO);
         course = courseRepository.save(course);
         return convertToDTO(course);
     }
 
-    // Other service methods
+    public CourseDTO updateCourse(Long id, CourseDTO courseDTO) {
+        Optional<Course> optionalCourse = courseRepository.findById(id);
+        if (optionalCourse.isPresent()) {
+            Course course = optionalCourse.get();
+            course.setCourse_name(courseDTO.getNombreCurso());
+            course.setCourse_description(courseDTO.getDescripcion());
+            course.setProfessor(courseDTO.getProfesor());
+            course = courseRepository.save(course);
+            return convertToDTO(course);
+        }
+        return null;
+    }
+
+    public void deleteCourse(Long id) {
+        courseRepository.deleteById(id);
+    }
 
     private CourseDTO convertToDTO(Course course) {
         CourseDTO courseDTO = new CourseDTO();

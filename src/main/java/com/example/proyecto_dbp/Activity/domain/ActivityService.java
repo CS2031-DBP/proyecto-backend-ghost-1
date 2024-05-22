@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,13 +25,41 @@ public class ActivityService {
         return activityRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
+    public Optional<ActivityDTO> getActivityById(Long id) {
+        return activityRepository.findById(id).map(this::convertToDTO);
+    }
+
+    public List<ActivityDTO> getActivitiesByCourseId(Long courseId) {
+        return activityRepository.findAll().stream()
+                .filter(activity -> activity.getCourse().getCourse_id().equals(courseId))
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
     public ActivityDTO createActivity(ActivityDTO activityDTO) {
         Activity activity = convertToEntity(activityDTO);
         activity = activityRepository.save(activity);
         return convertToDTO(activity);
     }
 
-    // Other service methods
+    public ActivityDTO updateActivity(Long id, ActivityDTO activityDTO) {
+        Optional<Activity> optionalActivity = activityRepository.findById(id);
+        if (optionalActivity.isPresent()) {
+            Activity activity = optionalActivity.get();
+            activity.setTitle(activityDTO.getTitulo());
+            activity.setDescription(activityDTO.getDescripcion());
+            activity.setStartTime(activityDTO.getFechaInicio());
+            activity.setEndTime(activityDTO.getFechaFin());
+            activity.setStatus(activityDTO.getEstado());
+            activity = activityRepository.save(activity);
+            return convertToDTO(activity);
+        }
+        return null;
+    }
+
+    public void deleteActivity(Long id) {
+        activityRepository.deleteById(id);
+    }
 
     private ActivityDTO convertToDTO(Activity activity) {
         ActivityDTO activityDTO = new ActivityDTO();

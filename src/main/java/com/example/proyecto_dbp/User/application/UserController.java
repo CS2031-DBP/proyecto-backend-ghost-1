@@ -17,16 +17,36 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    // Get all users
     @GetMapping
     public List<UserDTO> getAllUsers() {
         return userService.getAllUsers();
     }
 
+    // Get user by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+        return ResponseEntity.of(userService.getUserById(id));
+    }
+
+    // Create a new user
     @PostMapping
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
         UserDTO createdUser = userService.createUser(userDTO);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
-    // Other CRUD operations
+    // Update an existing user
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+        UserDTO updatedUser = userService.updateUser(id, userDTO);
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    // Delete a user
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
 }

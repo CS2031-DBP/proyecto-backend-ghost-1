@@ -21,4 +21,21 @@ public class CalendarIntegration {
     private Activity activity;
 
     // Getters and Setters
+
+
+    public Long getActivityId() {return activityId;}
+
+    public void setActivityId(Long activityId) {this.activityId = activityId;}
+
+    public String getGoogleCalendarEventId() {return googleCalendarEventId;}
+
+    public void setGoogleCalendarEventId(String googleCalendarEventId) {this.googleCalendarEventId = googleCalendarEventId;}
+
+    public String getSynchronizationStatus() {return synchronizationStatus;}
+
+    public void setSynchronizationStatus(String synchronizationStatus) {this.synchronizationStatus = synchronizationStatus;}
+
+    public Activity getActivity() {return activity;}
+
+    public void setActivity(Activity activity) {this.activity = activity;}
 }

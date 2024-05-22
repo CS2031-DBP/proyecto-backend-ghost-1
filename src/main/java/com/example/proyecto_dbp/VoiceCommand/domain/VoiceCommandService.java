@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,13 +29,38 @@ public class VoiceCommandService {
         return voiceCommandRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
+    public Optional<VoiceCommandDTO> getVoiceCommandById(Long id) {
+        return voiceCommandRepository.findById(id).map(this::convertToDTO);
+    }
+
+    public List<VoiceCommandDTO> getVoiceCommandsByUserId(Long userId) {
+        return voiceCommandRepository.findAll().stream()
+                .filter(voiceCommand -> voiceCommand.getUser().getId().equals(userId))
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
     public VoiceCommandDTO createVoiceCommand(VoiceCommandDTO voiceCommandDTO) {
         VoiceCommand voiceCommand = convertToEntity(voiceCommandDTO);
         voiceCommand = voiceCommandRepository.save(voiceCommand);
         return convertToDTO(voiceCommand);
     }
 
-    // Other service methods
+    public VoiceCommandDTO updateVoiceCommand(Long id, VoiceCommandDTO voiceCommandDTO) {
+        Optional<VoiceCommand> optionalVoiceCommand = voiceCommandRepository.findById(id);
+        if (optionalVoiceCommand.isPresent()) {
+            VoiceCommand voiceCommand = optionalVoiceCommand.get();
+            voiceCommand.setCommand(voiceCommandDTO.getComando());
+            voiceCommand.setDescriptionAction(voiceCommandDTO.getDescripcionAccion());
+            voiceCommand = voiceCommandRepository.save(voiceCommand);
+            return convertToDTO(voiceCommand);
+        }
+        return null;
+    }
+
+    public void deleteVoiceCommand(Long id) {
+        voiceCommandRepository.deleteById(id);
+    }
 
     private VoiceCommandDTO convertToDTO(VoiceCommand voiceCommand) {
         VoiceCommandDTO voiceCommandDTO = new VoiceCommandDTO();
