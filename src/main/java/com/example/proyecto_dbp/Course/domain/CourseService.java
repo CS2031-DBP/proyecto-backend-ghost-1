@@ -48,9 +48,9 @@ public class CourseService {
     public CourseDTO updateCourse(Long id, CourseDTO courseDTO) {
         Course course = courseRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id));
-        course.setNombreCurso(courseDTO.getNombreCurso());
-        course.setDescripcion(courseDTO.getDescripcion());
-        course.setProfesor(courseDTO.getProfesor());
+        course.setCourse_name(courseDTO.getNombreCurso());
+        course.setCourse_description(courseDTO.getDescripcion());
+        course.setProfessor(courseDTO.getProfesor());
         course = courseRepository.save(course);
         return convertToDTO(course);
     }
@@ -64,19 +64,19 @@ public class CourseService {
 
     private CourseDTO convertToDTO(Course course) {
         CourseDTO courseDTO = new CourseDTO();
-        courseDTO.setId(course.getId());
-        courseDTO.setNombreCurso(course.getNombreCurso());
-        courseDTO.setDescripcion(course.getDescripcion());
-        courseDTO.setProfesor(course.getProfesor());
+        courseDTO.setId(course.getCourse_id());
+        courseDTO.setNombreCurso(course.getCourse_name());
+        courseDTO.setDescripcion(course.getCourse_description());
+        courseDTO.setProfesor(course.getProfessor());
         courseDTO.setUserId(course.getUser().getId());
         return courseDTO;
     }
 
     private Course convertToEntity(CourseDTO courseDTO) {
         Course course = new Course();
-        course.setNombreCurso(courseDTO.getNombreCurso());
-        course.setDescripcion(courseDTO.getDescripcion());
-        course.setProfesor(courseDTO.getProfesor());
+        course.setCourse_name(courseDTO.getNombreCurso());
+        course.setCourse_description(courseDTO.getDescripcion());
+        course.setProfessor(courseDTO.getProfesor());
         userRepository.findById(courseDTO.getUserId()).ifPresent(course::setUser);
         return course;
     }
