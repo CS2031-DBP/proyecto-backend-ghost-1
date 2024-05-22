@@ -1,11 +1,12 @@
 package com.example.proyecto_dbp;
 
-import com.example.proyecto_dbp.exceptions.*;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import com.example.proyecto_dbp.exceptions.*;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -21,9 +22,9 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(UnauthorizedOperationException)
+    @ExceptionHandler(UnauthorizeOperationException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
-    public ResponseEntity<String> handleUnauthorizedOperationException(UnauthorizedOperationException e) {
+    public ResponseEntity<String> handleUnauthorizedOperationException(UnauthorizeOperationException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
     }
 
@@ -34,4 +35,8 @@ public class GlobalExceptionHandler {
     }
 
     // Other exception handlers can be added here
+
+
+    //MECI
+
 }
