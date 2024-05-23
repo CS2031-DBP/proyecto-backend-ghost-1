@@ -21,9 +21,7 @@ public class VoiceCommandController {
 
     @GetMapping("/{id}")
     public ResponseEntity<VoiceCommandDTO> getVoiceCommandById(@PathVariable Long id) {
-        VoiceCommandDTO voiceCommandDTO = voiceCommandService.getVoiceCommandById(id).orElse(null);
-        if (voiceCommandDTO == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        else return new ResponseEntity<>(voiceCommandDTO, HttpStatus.OK);
+        return ResponseEntity.of(voiceCommandService.getVoiceCommandById(id));
     }
 
     @GetMapping("/user/{userId}")

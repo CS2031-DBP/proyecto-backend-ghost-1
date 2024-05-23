@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="GlobalExceptionHandler arreglado&#10;se borro todos los setters y getters&#10;falta implementacion de dto para service">
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="todo esta con dto sin setter y getter y sin error">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/dto/UserResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/dto/VoiceCommandCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommandControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommandRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/dto/ActivityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/dto/ActivityDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegrationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/dto/CalendarIntegrationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/dto/CalendarIntegrationDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/CourseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/dto/CourseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/dto/CourseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommandService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/dto/VoiceCommandDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/dto/VoiceCommandDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +84,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -239,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716422983161</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="todo esta con dto sin setter y getter y sin error">
+      <option name="closed" value="true" />
+      <created>1716501691254</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716501691254</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +272,8 @@
     <MESSAGE value="verificar endpoints para coherencia del proyecto&#10;ningun error por ahora" />
     <MESSAGE value="GlobalExceptionHandler arreglado" />
     <MESSAGE value="GlobalExceptionHandler arreglado&#10;se borro todos los setters y getters&#10;falta implementacion de dto para service" />
-    <option name="LAST_COMMIT_MESSAGE" value="GlobalExceptionHandler arreglado&#10;se borro todos los setters y getters&#10;falta implementacion de dto para service" />
+    <MESSAGE value="todo esta con dto sin setter y getter y sin error" />
+    <option name="LAST_COMMIT_MESSAGE" value="todo esta con dto sin setter y getter y sin error" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

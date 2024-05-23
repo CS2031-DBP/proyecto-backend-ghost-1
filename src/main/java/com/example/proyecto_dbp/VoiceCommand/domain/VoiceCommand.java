@@ -5,13 +5,17 @@ import com.example.proyecto_dbp.User.domain.User;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "voice_commands")
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class VoiceCommand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
