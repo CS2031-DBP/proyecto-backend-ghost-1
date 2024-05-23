@@ -34,4 +34,15 @@ public class ActivityDTO {
 
     @NonNull
     private Long courseId;
+
+    @Builder
+    public ActivityDTO(@NonNull Long id, @NonNull @Size(min = 1, max = 255) String titulo, @NonNull Date fechaInicio, @NonNull Date fechaFin, @NonNull String estado, @NonNull Long courseId, @NonNull String descripcion) {
+        this.id = id;
+        this.titulo = titulo;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.estado = estado;
+        this.descripcion = descripcion;
+        this.courseId = courseId;
+    }
 }

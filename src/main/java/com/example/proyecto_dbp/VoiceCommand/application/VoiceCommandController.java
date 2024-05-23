@@ -16,37 +16,33 @@ public class VoiceCommandController {
     @Autowired
     private VoiceCommandService voiceCommandService;
 
-    // Get all voice commands
     @GetMapping
     public List<VoiceCommandDTO> getAllVoiceCommands() {return voiceCommandService.getAllVoiceCommands();}
 
-    // Get voice command by ID
     @GetMapping("/{id}")
     public ResponseEntity<VoiceCommandDTO> getVoiceCommandById(@PathVariable Long id) {
-        return ResponseEntity.of(voiceCommandService.getVoiceCommandById(id));
+        VoiceCommandDTO voiceCommandDTO = voiceCommandService.getVoiceCommandById(id).orElse(null);
+        if (voiceCommandDTO == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else return new ResponseEntity<>(voiceCommandDTO, HttpStatus.OK);
     }
 
-    // Get voice commands by user ID
     @GetMapping("/user/{userId}")
     public List<VoiceCommandDTO> getVoiceCommandsByUserId(@PathVariable Long userId) {
         return voiceCommandService.getVoiceCommandsByUserId(userId);
     }
 
-    // Create a new voice command
     @PostMapping
     public ResponseEntity<VoiceCommandDTO> createVoiceCommand(@RequestBody VoiceCommandDTO voiceCommandDTO) {
         VoiceCommandDTO createdVoiceCommand = voiceCommandService.createVoiceCommand(voiceCommandDTO);
         return new ResponseEntity<>(createdVoiceCommand, HttpStatus.CREATED);
     }
 
-    // Update an existing voice command
     @PutMapping("/{id}")
     public ResponseEntity<VoiceCommandDTO> updateVoiceCommand(@PathVariable Long id, @RequestBody VoiceCommandDTO voiceCommandDTO) {
         VoiceCommandDTO updatedVoiceCommand = voiceCommandService.updateVoiceCommand(id, voiceCommandDTO);
         return ResponseEntity.ok(updatedVoiceCommand);
     }
 
-    // Delete a voice command
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVoiceCommand(@PathVariable Long id) {
         voiceCommandService.deleteVoiceCommand(id);

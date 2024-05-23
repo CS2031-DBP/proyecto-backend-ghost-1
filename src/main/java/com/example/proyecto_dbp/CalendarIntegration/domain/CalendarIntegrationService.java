@@ -3,8 +3,8 @@ package com.example.proyecto_dbp.CalendarIntegration.domain;
 import com.example.proyecto_dbp.Activity.infrastructure.ActivityRepository;
 import com.example.proyecto_dbp.CalendarIntegration.dto.CalendarIntegrationDTO;
 import com.example.proyecto_dbp.CalendarIntegration.domain.CalendarIntegration;
-
 import com.example.proyecto_dbp.CalendarIntegration.infrastructure.CalendarIntegrationRepository;
+import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +25,10 @@ public class CalendarIntegrationService {
         return calendarIntegrationRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
-    public Optional<CalendarIntegrationDTO> getCalendarIntegrationByActivityId(Long activityId) {
-        return calendarIntegrationRepository.findById(activityId).map(this::convertToDTO);
+    public CalendarIntegrationDTO getCalendarIntegrationByActivityId(Long activityId) {
+        CalendarIntegration calendarIntegration = calendarIntegrationRepository.findById(activityId)
+                .orElseThrow(() -> new ResourceNotFoundException("CalendarIntegration not found with id " + activityId));
+        return convertToDTO(calendarIntegration);
     }
 
     public CalendarIntegrationDTO createCalendarIntegration(CalendarIntegrationDTO calendarIntegrationDTO) {
@@ -36,15 +38,12 @@ public class CalendarIntegrationService {
     }
 
     public CalendarIntegrationDTO updateCalendarIntegration(Long activityId, CalendarIntegrationDTO calendarIntegrationDTO) {
-        Optional<CalendarIntegration> optionalCalendarIntegration = calendarIntegrationRepository.findById(activityId);
-        if (optionalCalendarIntegration.isPresent()) {
-            CalendarIntegration calendarIntegration = optionalCalendarIntegration.get();
-            calendarIntegration.setGoogleCalendarEventId(calendarIntegrationDTO.getGoogleCalendarEventId());
-            calendarIntegration.setSynchronizationStatus(calendarIntegrationDTO.getEstadoSincronizacion());
-            calendarIntegration = calendarIntegrationRepository.save(calendarIntegration);
-            return convertToDTO(calendarIntegration);
-        }
-        return null;
+        CalendarIntegration calendarIntegration = calendarIntegrationRepository.findById(activityId)
+                .orElseThrow(() -> new ResourceNotFoundException("CalendarIntegration not found with id " + activityId));
+        calendarIntegration.setGoogleCalendarEventId(calendarIntegrationDTO.getGoogleCalendarEventId());
+        calendarIntegration.setSynchronizationStatus(calendarIntegrationDTO.getSynchronizationStatus());
+        calendarIntegration = calendarIntegrationRepository.save(calendarIntegration);
+        return convertToDTO(calendarIntegration);
     }
 
     public void deleteCalendarIntegration(Long activityId) {
@@ -52,18 +51,18 @@ public class CalendarIntegrationService {
     }
 
     private CalendarIntegrationDTO convertToDTO(CalendarIntegration calendarIntegration) {
-        CalendarIntegrationDTO calendarIntegrationDTO = new CalendarIntegrationDTO();
-        calendarIntegrationDTO.setActivityId(calendarIntegration.getActivityId());
-        calendarIntegrationDTO.setGoogleCalendarEventId(calendarIntegration.getGoogleCalendarEventId());
-        calendarIntegrationDTO.setEstadoSincronizacion(calendarIntegration.getSynchronizationStatus());
-        return calendarIntegrationDTO;
+        return CalendarIntegrationDTO.builder()
+                .activityId(calendarIntegration.getActivityId())
+                .googleCalendarEventId(calendarIntegration.getGoogleCalendarEventId())
+                .synchronizationStatus(calendarIntegration.getSynchronizationStatus())
+                .build();
     }
 
     private CalendarIntegration convertToEntity(CalendarIntegrationDTO calendarIntegrationDTO) {
         CalendarIntegration calendarIntegration = new CalendarIntegration();
         calendarIntegration.setActivityId(calendarIntegrationDTO.getActivityId());
         calendarIntegration.setGoogleCalendarEventId(calendarIntegrationDTO.getGoogleCalendarEventId());
-        calendarIntegration.setSynchronizationStatus(calendarIntegrationDTO.getEstadoSincronizacion());
+        calendarIntegration.setSynchronizationStatus(calendarIntegrationDTO.getSynchronizationStatus());
         activityRepository.findById(calendarIntegrationDTO.getActivityId()).ifPresent(calendarIntegration::setActivity);
         return calendarIntegration;
     }

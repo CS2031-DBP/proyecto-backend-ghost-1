@@ -2,15 +2,13 @@ package com.example.proyecto_dbp.Course.domain;
 
 import com.example.proyecto_dbp.Course.dto.CourseDTO;
 import com.example.proyecto_dbp.Course.domain.Course;
-
 import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,10 +24,10 @@ public class CourseService {
         return courseRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
-    public Optional<CourseDTO> getCourseById(Long id) {
-        return Optional.ofNullable(courseRepository.findById(id)
-                .map(this::convertToDTO)
-                .orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id)));
+    public CourseDTO getCourseById(Long id) {
+        Course course = courseRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id));
+        return convertToDTO(course);
     }
 
     public List<CourseDTO> getCoursesByUserId(Long userId) {
@@ -48,9 +46,9 @@ public class CourseService {
     public CourseDTO updateCourse(Long id, CourseDTO courseDTO) {
         Course course = courseRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id));
-        course.setCourse_name(courseDTO.getNombreCurso());
-        course.setCourse_description(courseDTO.getDescripcion());
-        course.setProfessor(courseDTO.getProfesor());
+        course.setNombreCurso(courseDTO.getNombreCurso());
+        course.setDescripcion(courseDTO.getDescripcion());
+        course.setProfesor(courseDTO.getProfesor());
         course = courseRepository.save(course);
         return convertToDTO(course);
     }
@@ -63,20 +61,20 @@ public class CourseService {
     }
 
     private CourseDTO convertToDTO(Course course) {
-        CourseDTO courseDTO = new CourseDTO();
-        courseDTO.setId(course.getCourse_id());
-        courseDTO.setNombreCurso(course.getCourse_name());
-        courseDTO.setDescripcion(course.getCourse_description());
-        courseDTO.setProfesor(course.getProfessor());
-        courseDTO.setUserId(course.getUser().getId());
-        return courseDTO;
+        return CourseDTO.builder()
+                .id(course.getId())
+                .nombreCurso(course.getNombreCurso())
+                .descripcion(course.getDescripcion())
+                .profesor(course.getProfesor())
+                .userId(course.getUser().getId())
+                .build();
     }
 
     private Course convertToEntity(CourseDTO courseDTO) {
         Course course = new Course();
-        course.setCourse_name(courseDTO.getNombreCurso());
-        course.setCourse_description(courseDTO.getDescripcion());
-        course.setProfessor(courseDTO.getProfesor());
+        course.setNombreCurso(courseDTO.getNombreCurso());
+        course.setDescripcion(courseDTO.getDescripcion());
+        course.setProfesor(courseDTO.getProfesor());
         userRepository.findById(courseDTO.getUserId()).ifPresent(course::setUser);
         return course;
     }

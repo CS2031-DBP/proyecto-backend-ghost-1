@@ -3,9 +3,8 @@ package com.example.proyecto_dbp.VoiceCommand.domain;
 import com.example.proyecto_dbp.Activity.infrastructure.ActivityRepository;
 import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.VoiceCommand.dto.VoiceCommandDTO;
-import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommand;
-
 import com.example.proyecto_dbp.VoiceCommand.infrastructure.VoiceCommandRepository;
+import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,31 +46,29 @@ public class VoiceCommandService {
     }
 
     public VoiceCommandDTO updateVoiceCommand(Long id, VoiceCommandDTO voiceCommandDTO) {
-        Optional<VoiceCommand> optionalVoiceCommand = voiceCommandRepository.findById(id);
-        if (optionalVoiceCommand.isPresent()) {
-            VoiceCommand voiceCommand = optionalVoiceCommand.get();
-            voiceCommand.setCommand(voiceCommandDTO.getComando());
-            voiceCommand.setDescriptionAction(voiceCommandDTO.getDescripcionAccion());
-            voiceCommand = voiceCommandRepository.save(voiceCommand);
-            return convertToDTO(voiceCommand);
-        }
-        return null;
+        VoiceCommand voiceCommand = voiceCommandRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("VoiceCommand not found with id " + id));
+        voiceCommand.setCommand(voiceCommandDTO.getComando());
+        voiceCommand.setDescriptionAction(voiceCommandDTO.getDescripcionAccion());
+        voiceCommand = voiceCommandRepository.save(voiceCommand);
+        return convertToDTO(voiceCommand);
     }
 
     public void deleteVoiceCommand(Long id) {
+        if (!voiceCommandRepository.existsById(id)) {
+            throw new ResourceNotFoundException("VoiceCommand not found with id " + id);
+        }
         voiceCommandRepository.deleteById(id);
     }
 
     private VoiceCommandDTO convertToDTO(VoiceCommand voiceCommand) {
-        VoiceCommandDTO voiceCommandDTO = new VoiceCommandDTO();
-        voiceCommandDTO.setId(voiceCommand.getId());
-        voiceCommandDTO.setComando(voiceCommand.getCommand());
-        voiceCommandDTO.setDescripcionAccion(voiceCommand.getDescriptionAction());
-        voiceCommandDTO.setUserId(voiceCommand.getUser().getId());
-        if (voiceCommand.getActivity() != null) {
-            voiceCommandDTO.setActivityId(voiceCommand.getActivity().getId());
-        }
-        return voiceCommandDTO;
+        return VoiceCommandDTO.builder()
+                .id(voiceCommand.getId())
+                .comando(voiceCommand.getCommand())
+                .descripcionAccion(voiceCommand.getDescriptionAction())
+                .userId(voiceCommand.getUser().getId())
+                .activityId(voiceCommand.getActivity() != null ? voiceCommand.getActivity().getId() : null)
+                .build();
     }
 
     private VoiceCommand convertToEntity(VoiceCommandDTO voiceCommandDTO) {

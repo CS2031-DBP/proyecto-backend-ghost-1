@@ -1,11 +1,13 @@
 package com.example.proyecto_dbp.Course.dto;
 
-
 import jakarta.validation.constraints.*;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 @Data
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class CourseDTO {
     @NonNull
     private Long id;
@@ -24,5 +26,4 @@ public class CourseDTO {
 
     @NotNull
     private Long userId;
-
 }
