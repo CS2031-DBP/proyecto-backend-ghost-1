@@ -13,5 +13,5 @@ public class EventDTO extends ActivityDTO {
     }
     // Additional fields specific to Event can go here
 
-    // Getters and Setters
+
 }
