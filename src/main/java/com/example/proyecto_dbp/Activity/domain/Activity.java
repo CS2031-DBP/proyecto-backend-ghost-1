@@ -2,8 +2,13 @@ package com.example.proyecto_dbp.Activity.domain;
 
 import com.example.proyecto_dbp.Course.domain.Course;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "activities")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -18,11 +23,9 @@ public class Activity {
     @Column(nullable = false)
     private String description;
 
-    @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Date startTime;
 
-    @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Date endTime;
 
@@ -32,5 +35,4 @@ public class Activity {
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
-
 }

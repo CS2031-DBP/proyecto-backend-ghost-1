@@ -1,35 +1,29 @@
 package com.example.proyecto_dbp.Course.domain;
 
-import com.example.proyecto_dbp.Activity.domain.Activity;
 import com.example.proyecto_dbp.User.domain.User;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.List;
-
-@Getter
-@Setter
 @Entity
 @Table(name = "courses")
+@Data
+@NoArgsConstructor
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long course_id;
+    private Long id;
 
     @Column(nullable = false)
-    private String course_name;
+    private String nombreCurso;
 
-    @Column
-    private String course_description;
+    @Column(nullable = false)
+    private String descripcion;
 
-    @Column
-    private String professor;
+    @Column(nullable = false)
+    private String profesor;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
-    @OneToMany(mappedBy = "course")
-    private List<Activity> activities;
-
 }

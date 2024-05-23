@@ -3,10 +3,13 @@ package com.example.proyecto_dbp.User.domain;
 import com.example.proyecto_dbp.Course.domain.Course;
 import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommand;
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.util.List;
 
 @Entity
 @Table(name = "users")
+@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,5 +29,4 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<VoiceCommand> voiceCommands;
-
 }

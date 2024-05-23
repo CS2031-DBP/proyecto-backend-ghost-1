@@ -1,14 +1,16 @@
 package com.example.proyecto_dbp.Activity.dto;
 
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ActivityDTO {
+
     @NonNull
     private Long id;
 
@@ -16,17 +18,20 @@ public class ActivityDTO {
     @Size(min = 1, max = 255)
     private String titulo;
 
-    @Size(min = 1, max = 255)
-    private String descripcion;
-
-    @NotNull
+    @NonNull
     private Date fechaInicio;
 
     @NonNull
     private Date fechaFin;
 
-    @NotNull
+    @NonNull
+    @Size(min = 1, max = 255)
     private String estado;
-    private Long courseId;
 
+    @NonNull
+    @Size(min = 1, max = 255)
+    private String descripcion;
+
+    @NonNull
+    private Long courseId;
 }

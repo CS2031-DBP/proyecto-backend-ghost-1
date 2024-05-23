@@ -5,6 +5,9 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDTO {
 
     @NonNull
@@ -17,5 +20,4 @@ public class UserDTO {
     @NonNull
     @Size(min = 1, max = 255)
     private String name;
-
 }
