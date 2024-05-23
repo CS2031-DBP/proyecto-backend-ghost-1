@@ -23,10 +23,10 @@ public class UserService {
         return userRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
-    public Optional<UserDTO> getUserById(Long id) {
-        return Optional.ofNullable(userRepository.findById(id)
-                .map(this::convertToDTO)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id)));
+    public UserDTO getUserById(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
+        return convertToDTO(user);
     }
 
     public UserDTO createUser(UserDTO userDTO) {
@@ -55,11 +55,11 @@ public class UserService {
     }
 
     private UserDTO convertToDTO(User user) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(user.getId());
-        userDTO.setEmail(user.getEmail());
-        userDTO.setName(user.getName());
-        return userDTO;
+        return UserDTO.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .name(user.getName())
+                .build();
     }
 
     private User convertToEntity(UserDTO userDTO) {

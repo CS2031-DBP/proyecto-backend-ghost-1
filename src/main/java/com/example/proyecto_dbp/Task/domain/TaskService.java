@@ -1,8 +1,10 @@
 package com.example.proyecto_dbp.Task.domain;
 
-import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.Task.dto.TaskDTO;
+import com.example.proyecto_dbp.Task.domain.Task;
 import com.example.proyecto_dbp.Task.infrastructure.TaskRepository;
+import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
+import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,13 +25,15 @@ public class TaskService {
         return taskRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
-    public Optional<TaskDTO> getTaskById(Long id) {
-        return taskRepository.findById(id).map(this::convertToDTO);
+    public TaskDTO getTaskById(Long id) {
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Task not found with id " + id));
+        return convertToDTO(task);
     }
 
     public List<TaskDTO> getTasksByCourseId(Long courseId) {
         return taskRepository.findAll().stream()
-                .filter(task -> task.getCourse().getCourse_id().equals(courseId))
+                .filter(task -> task.getCourse().getId().equals(courseId))
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
@@ -41,38 +45,38 @@ public class TaskService {
     }
 
     public TaskDTO updateTask(Long id, TaskDTO taskDTO) {
-        Optional<Task> optionalTask = taskRepository.findById(id);
-        if (optionalTask.isPresent()) {
-            Task task = optionalTask.get();
-            task.setTitle(taskDTO.getTitulo());
-            task.setDescription(taskDTO.getDescripcion());
-            task.setStartTime(taskDTO.getFechaInicio());
-            task.setEndTime(taskDTO.getFechaFin());
-            task.setStatus(taskDTO.getEstado());
-            task.setPriority(taskDTO.getPriority());
-            task.setCompleted(taskDTO.getCompleted());
-            task = taskRepository.save(task);
-            return convertToDTO(task);
-        }
-        return null;
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Task not found with id " + id));
+        task.setTitle(taskDTO.getTitulo());
+        task.setDescription(taskDTO.getDescripcion());
+        task.setStartTime(taskDTO.getFechaInicio());
+        task.setEndTime(taskDTO.getFechaFin());
+        task.setStatus(taskDTO.getEstado());
+        task.setPriority(taskDTO.getPriority());
+        task.setCompleted(taskDTO.getCompleted());
+        task = taskRepository.save(task);
+        return convertToDTO(task);
     }
 
     public void deleteTask(Long id) {
+        if (!taskRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Task not found with id " + id);
+        }
         taskRepository.deleteById(id);
     }
 
     private TaskDTO convertToDTO(Task task) {
-        TaskDTO taskDTO = new TaskDTO();
-        taskDTO.setId(task.getId());
-        taskDTO.setTitulo(task.getTitle());
-        taskDTO.setDescripcion(task.getDescription());
-        taskDTO.setFechaInicio(task.getStartTime());
-        taskDTO.setFechaFin(task.getEndTime());
-        taskDTO.setEstado(task.getStatus());
-        taskDTO.setCourseId(task.getCourse().getCourse_id());
-        taskDTO.setPriority(task.getPriority());
-        taskDTO.setCompleted(task.getCompleted());
-        return taskDTO;
+        return TaskDTO.builder()
+                .id(task.getId())
+                .titulo(task.getTitle())
+                .descripcion(task.getDescription())
+                .fechaInicio(task.getStartTime())
+                .fechaFin(task.getEndTime())
+                .estado(task.getStatus())
+                .courseId(task.getCourse().getId())
+                .priority(task.getPriority())
+                .completed(task.getCompleted())
+                .build();
     }
 
     private Task convertToEntity(TaskDTO taskDTO) {
