@@ -4,8 +4,10 @@ import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.Event.dto.EventDTO;
 import com.example.proyecto_dbp.Event.domain.Event;
 import com.example.proyecto_dbp.Event.infrastructure.EventRepository;
+import com.example.proyecto_dbp.events.EventCreatedEvent;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +22,18 @@ public class EventService {
 
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
+
+    public EventDTO createEvent(EventDTO eventDTO) {
+        Event event = new Event();
+        event = eventRepository.save(event);
+
+        eventPublisher.publishEvent(new EventCreatedEvent(this, eventDTO.getEmail()));
+
+        return convertToDTO(event);
+    }
 
     public List<EventDTO> getAllEvents() {
         return eventRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
@@ -36,12 +50,6 @@ public class EventService {
                 .filter(event -> event.getCourse().getId().equals(courseId))
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
-    }
-
-    public EventDTO createEvent(EventDTO eventDTO) {
-        Event event = convertToEntity(eventDTO);
-        event = eventRepository.save(event);
-        return convertToDTO(event);
     }
 
     public EventDTO updateEvent(Long id, EventDTO eventDTO) {

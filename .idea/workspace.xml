@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="todo esta con dto sin setter y getter y sin error">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/application/ActivityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/application/ActivityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/application/CalendarIntegrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/application/CalendarIntegrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/application/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/application/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" afterDir="false" />
-    </list>
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="events y asincronia !?" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -240,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716501691254</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="events y asincronia !?">
+      <option name="closed" value="true" />
+      <created>1716561763417</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716561763417</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,7 +273,8 @@
     <MESSAGE value="GlobalExceptionHandler arreglado&#10;se borro todos los setters y getters&#10;falta implementacion de dto para service" />
     <MESSAGE value="todo esta con dto sin setter y getter y sin error" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="events y asincronia !?" />
+    <option name="LAST_COMMIT_MESSAGE" value="events y asincronia !?" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

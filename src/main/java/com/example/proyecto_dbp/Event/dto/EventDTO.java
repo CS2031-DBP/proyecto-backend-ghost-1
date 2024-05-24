@@ -1,6 +1,7 @@
 package com.example.proyecto_dbp.Event.dto;
 
 import com.example.proyecto_dbp.Activity.dto.ActivityDTO;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -30,6 +31,9 @@ public class EventDTO extends ActivityDTO {
     @NonNull
     @Size(min = 1, max = 255)
     private String reminder;
+
+    @Email
+    private String email;
 
     @Builder(builderMethodName = "eventBuilder")
     public EventDTO(@NonNull Long id, @NonNull @Size(min = 1, max = 255) String titulo, @NonNull Date fechaInicio, @NonNull Date fechaFin, @NonNull String estado, @NonNull String courseId, @NonNull Long descripcion, @NonNull String location, boolean allDay, @NonNull String organizer, @NonNull String attendees, @NonNull String reminder) {
