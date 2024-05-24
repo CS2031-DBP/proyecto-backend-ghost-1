@@ -2,6 +2,8 @@ package com.example.proyecto_dbp.CalendarIntegration.application;
 
 import com.example.proyecto_dbp.CalendarIntegration.domain.CalendarIntegrationService;
 import com.example.proyecto_dbp.CalendarIntegration.dto.CalendarIntegrationDTO;
+import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,36 +18,40 @@ public class CalendarIntegrationController {
     @Autowired
     private CalendarIntegrationService calendarIntegrationService;
 
-    // Get all calendar integrations
     @GetMapping
-    public List<CalendarIntegrationDTO> getAllCalendarIntegrations() {
-        return calendarIntegrationService.getAllCalendarIntegrations();
+    public ResponseEntity<List<CalendarIntegrationDTO>> getAllCalendarIntegrations() {
+        List<CalendarIntegrationDTO> integrations = calendarIntegrationService.getAllCalendarIntegrations();
+        return ResponseEntity.ok(integrations);
     }
 
-    // Get calendar integration by activity ID
     @GetMapping("/{activityId}")
     public ResponseEntity<CalendarIntegrationDTO> getCalendarIntegrationByActivityId(@PathVariable Long activityId) {
-        return ResponseEntity.of(calendarIntegrationService.getCalendarIntegrationByActivityId(activityId));
+        CalendarIntegrationDTO integration = calendarIntegrationService.getCalendarIntegrationByActivityId(activityId);
+        if (integration != null) return ResponseEntity.ok(integration);
+        else return ResponseEntity.notFound().build();
     }
 
-    // Create a new calendar integration
     @PostMapping
-    public ResponseEntity<CalendarIntegrationDTO> createCalendarIntegration(@RequestBody CalendarIntegrationDTO calendarIntegrationDTO) {
-        CalendarIntegrationDTO createdCalendarIntegration = calendarIntegrationService.createCalendarIntegration(calendarIntegrationDTO);
-        return new ResponseEntity<>(createdCalendarIntegration, HttpStatus.CREATED);
+    public ResponseEntity<CalendarIntegrationDTO> createCalendarIntegration(@RequestBody @Valid CalendarIntegrationDTO calendarIntegrationDTO) {
+        CalendarIntegrationDTO createdIntegration = calendarIntegrationService.createCalendarIntegration(calendarIntegrationDTO);
+        return new ResponseEntity<>(createdIntegration, HttpStatus.CREATED);
     }
 
-    // Update an existing calendar integration
     @PutMapping("/{activityId}")
-    public ResponseEntity<CalendarIntegrationDTO> updateCalendarIntegration(@PathVariable Long activityId, @RequestBody CalendarIntegrationDTO calendarIntegrationDTO) {
-        CalendarIntegrationDTO updatedCalendarIntegration = calendarIntegrationService.updateCalendarIntegration(activityId, calendarIntegrationDTO);
-        return ResponseEntity.ok(updatedCalendarIntegration);
+    public ResponseEntity<CalendarIntegrationDTO> updateCalendarIntegration(@PathVariable Long activityId, @RequestBody @Valid CalendarIntegrationDTO calendarIntegrationDTO) {
+        CalendarIntegrationDTO updatedIntegration = calendarIntegrationService.updateCalendarIntegration(activityId, calendarIntegrationDTO);
+        if (updatedIntegration != null) return ResponseEntity.ok(updatedIntegration);
+        else return ResponseEntity.notFound().build();
+
     }
 
-    // Delete a calendar integration
     @DeleteMapping("/{activityId}")
     public ResponseEntity<Void> deleteCalendarIntegration(@PathVariable Long activityId) {
-        calendarIntegrationService.deleteCalendarIntegration(activityId);
-        return ResponseEntity.noContent().build();
+        try {
+            calendarIntegrationService.deleteCalendarIntegration(activityId);
+            return ResponseEntity.noContent().build();
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

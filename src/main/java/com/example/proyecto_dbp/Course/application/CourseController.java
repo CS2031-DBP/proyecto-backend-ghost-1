@@ -2,12 +2,12 @@ package com.example.proyecto_dbp.Course.application;
 
 import com.example.proyecto_dbp.Course.domain.CourseService;
 import com.example.proyecto_dbp.Course.dto.CourseDTO;
-
+import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -17,42 +17,45 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    // Get all courses
     @GetMapping
-    public List<CourseDTO> getAllCourses() {
-        return courseService.getAllCourses();
+    public ResponseEntity<List<CourseDTO>> getAllCourses() {
+        List<CourseDTO> courses = courseService.getAllCourses();
+        return ResponseEntity.ok(courses);
     }
 
-    // Get course by ID
     @GetMapping("/{id}")
     public ResponseEntity<CourseDTO> getCourseById(@PathVariable Long id) {
-        return ResponseEntity.of(courseService.getCourseById(id));
+        CourseDTO course = courseService.getCourseById(id);
+        if (course != null) return ResponseEntity.ok(course);
+        else return ResponseEntity.notFound().build();
     }
 
-    // Get courses by user ID
     @GetMapping("/user/{userId}")
-    public List<CourseDTO> getCoursesByUserId(@PathVariable Long userId) {
-        return courseService.getCoursesByUserId(userId);
+    public ResponseEntity<List<CourseDTO>> getCoursesByUserId(@PathVariable Long userId) {
+        List<CourseDTO> courses = courseService.getCoursesByUserId(userId);
+        return ResponseEntity.ok(courses);
     }
 
-    // Create a new course
     @PostMapping
-    public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO courseDTO) {
+    public ResponseEntity<CourseDTO> createCourse(@RequestBody @Valid CourseDTO courseDTO) {
         CourseDTO createdCourse = courseService.createCourse(courseDTO);
         return new ResponseEntity<>(createdCourse, HttpStatus.CREATED);
     }
 
-    // Update an existing course
     @PutMapping("/{id}")
-    public ResponseEntity<CourseDTO> updateCourse(@PathVariable Long id, @RequestBody CourseDTO courseDTO) {
+    public ResponseEntity<CourseDTO> updateCourse(@PathVariable Long id, @RequestBody @Valid CourseDTO courseDTO) {
         CourseDTO updatedCourse = courseService.updateCourse(id, courseDTO);
-        return ResponseEntity.ok(updatedCourse);
+        if (updatedCourse != null) return ResponseEntity.ok(updatedCourse);
+        else return ResponseEntity.notFound().build();
     }
 
-    // Delete a course
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
-        courseService.deleteCourse(id);
-        return ResponseEntity.noContent().build();
+        try {
+            courseService.deleteCourse(id);
+            return ResponseEntity.noContent().build();
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

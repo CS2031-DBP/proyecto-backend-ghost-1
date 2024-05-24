@@ -2,6 +2,8 @@ package com.example.proyecto_dbp.Event.application;
 
 import com.example.proyecto_dbp.Event.domain.EventService;
 import com.example.proyecto_dbp.Event.dto.EventDTO;
+import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,40 +18,45 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
-    // Get all events
     @GetMapping
-    public List<EventDTO> getAllEvents() {return eventService.getAllEvents();}
+    public ResponseEntity<List<EventDTO>> getAllEvents() {
+        List<EventDTO> events = eventService.getAllEvents();
+        return ResponseEntity.ok(events);
+    }
 
-    // Get event by ID
     @GetMapping("/{id}")
     public ResponseEntity<EventDTO> getEventById(@PathVariable Long id) {
-        return ResponseEntity.of(eventService.getEventById(id));
+        EventDTO event = eventService.getEventById(id);
+        if (event != null) return ResponseEntity.ok(event);
+        else return ResponseEntity.notFound().build();
     }
 
-    // Get events by course ID
     @GetMapping("/course/{courseId}")
-    public List<EventDTO> getEventsByCourseId(@PathVariable Long courseId) {
-        return eventService.getEventsByCourseId(courseId);
+    public ResponseEntity<List<EventDTO>> getEventsByCourseId(@PathVariable Long courseId) {
+        List<EventDTO> events = eventService.getEventsByCourseId(courseId);
+        return ResponseEntity.ok(events);
     }
 
-    // Create a new event
     @PostMapping
-    public ResponseEntity<EventDTO> createEvent(@RequestBody EventDTO eventDTO) {
+    public ResponseEntity<EventDTO> createEvent(@RequestBody @Valid EventDTO eventDTO) {
         EventDTO createdEvent = eventService.createEvent(eventDTO);
         return new ResponseEntity<>(createdEvent, HttpStatus.CREATED);
     }
 
-    // Update an existing event
     @PutMapping("/{id}")
-    public ResponseEntity<EventDTO> updateEvent(@PathVariable Long id, @RequestBody EventDTO eventDTO) {
+    public ResponseEntity<EventDTO> updateEvent(@PathVariable Long id, @RequestBody @Valid EventDTO eventDTO) {
         EventDTO updatedEvent = eventService.updateEvent(id, eventDTO);
-        return ResponseEntity.ok(updatedEvent);
+        if (updatedEvent != null) return ResponseEntity.ok(updatedEvent);
+        else return ResponseEntity.notFound().build();
     }
 
-    // Delete an event
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEvent(@PathVariable Long id) {
-        eventService.deleteEvent(id);
-        return ResponseEntity.noContent().build();
+        try {
+            eventService.deleteEvent(id);
+            return ResponseEntity.noContent().build();
+        } catch (ResourceNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
