@@ -1,4 +1,4 @@
-package com.example.proyecto_dbp.events;
+package com.example.proyecto_dbp.Event.events;
 
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;

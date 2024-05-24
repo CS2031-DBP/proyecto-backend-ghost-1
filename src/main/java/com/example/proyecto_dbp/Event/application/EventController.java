@@ -2,7 +2,7 @@ package com.example.proyecto_dbp.Event.application;
 
 import com.example.proyecto_dbp.Event.domain.EventService;
 import com.example.proyecto_dbp.Event.dto.EventDTO;
-import com.example.proyecto_dbp.events.EmailService;
+import com.example.proyecto_dbp.Event.events.EmailService;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;

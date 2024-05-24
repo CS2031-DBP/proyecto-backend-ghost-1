@@ -1,4 +1,4 @@
-package com.example.proyecto_dbp.events;
+package com.example.proyecto_dbp.Event.events;
 
 import org.springframework.context.ApplicationEvent;
 

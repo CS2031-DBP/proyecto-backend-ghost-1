@@ -2,16 +2,14 @@ package com.example.proyecto_dbp.Event.domain;
 
 import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.Event.dto.EventDTO;
-import com.example.proyecto_dbp.Event.domain.Event;
 import com.example.proyecto_dbp.Event.infrastructure.EventRepository;
-import com.example.proyecto_dbp.events.EventCreatedEvent;
+import com.example.proyecto_dbp.Event.events.EventCreatedEvent;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
