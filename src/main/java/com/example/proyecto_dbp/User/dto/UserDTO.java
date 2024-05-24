@@ -1,6 +1,7 @@
 package com.example.proyecto_dbp.User.dto;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -10,14 +11,18 @@ import lombok.*;
 @AllArgsConstructor
 public class UserDTO {
 
-    @NonNull
+    @NotNull
     private Long id;
 
-    @NonNull
+    @NotNull
     @Email
     private String email;
 
-    @NonNull
+    @NotNull
     @Size(min = 1, max = 255)
     private String name;
+
+    @NotNull
+    @Size(min = 8, max = 64)
+    private String password;
 }
