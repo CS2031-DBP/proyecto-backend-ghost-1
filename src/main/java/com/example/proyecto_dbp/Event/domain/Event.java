@@ -1,31 +1,29 @@
 package com.example.proyecto_dbp.Event.domain;
 
 import com.example.proyecto_dbp.Activity.domain.Activity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
-@Entity
-@Table(name = "events")
+import java.util.List;
+
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@SuperBuilder(toBuilder = true)
+@Entity
 public class Event extends Activity {
-
     @Column(nullable = false)
     private String location;
 
     @Column(nullable = false)
-    private boolean allDay;
+    private Boolean allDay;
 
     @Column(nullable = false)
     private String organizer;
 
-    @Column(nullable = false)
-    private String attendees;
+    @ElementCollection
+    private List<String> attendees;
 
     @Column(nullable = false)
     private String reminder;

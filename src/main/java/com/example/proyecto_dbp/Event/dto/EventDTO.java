@@ -1,54 +1,45 @@
 package com.example.proyecto_dbp.Event.dto;
 
 import com.example.proyecto_dbp.Activity.dto.ActivityDTO;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-import java.util.Date;
+import lombok.experimental.SuperBuilder;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@SuperBuilder
 public class EventDTO extends ActivityDTO {
 
-    @NonNull
-    @Size(min = 1, max = 255)
+    @NotNull
     private String location;
 
-    @NonNull
-    private boolean allDay;
+    @NotNull
+    private Boolean allDay;
 
-    @NonNull
-    @Size(min = 1, max = 255)
+    @NotNull
     private String organizer;
 
-    @NonNull
-    @Size(min = 1, max = 255)
+    @NotNull
     private String attendees;
 
-    @NonNull
-    @Size(min = 1, max = 255)
+    @NotNull
     private String reminder;
 
-    @Email
-    private String email;
+    public static EventDTOBuilder builder() {return new EventDTOBuilder();}
 
-    @Builder(builderMethodName = "eventBuilder")
-    public EventDTO(@NonNull Long id, @NonNull @Size(min = 1, max = 255) String titulo, @NonNull Date fechaInicio, @NonNull Date fechaFin, @NonNull String estado, @NonNull String courseId, @NonNull Long descripcion, @NonNull String location, boolean allDay, @NonNull String organizer, @NonNull String attendees, @NonNull String reminder) {
-        super(id, titulo, fechaInicio, fechaFin, estado, courseId, descripcion);
-        this.location = location;
-        this.allDay = allDay;
-        this.organizer = organizer;
-        this.attendees = attendees;
-        this.reminder = reminder;
-    }
+    public static class EventDTOBuilder extends ActivityDTO.ActivityDTOBuilder<EventDTO, EventDTOBuilder> {
+        public EventDTOBuilder() {super();}
 
-    public static class EventDTOBuilder {
-        public EventDTOBuilder id(Long id) {
-            this.id = id;
-            return this;
+        @Override
+        protected EventDTOBuilder self() {
+            return null;
+        }
+
+        @Override
+        public EventDTO build() {
+            return null;
         }
     }
 }

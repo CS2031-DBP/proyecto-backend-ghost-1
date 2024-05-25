@@ -4,11 +4,13 @@ import com.example.proyecto_dbp.Course.domain.Course;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
+@SuperBuilder(toBuilder = true)
 @Entity
 @Table(name = "activities")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -18,19 +20,19 @@ public class Activity {
     private Long id;
 
     @Column(nullable = false)
-    private String title;
+    private String titulo;
 
     @Column(nullable = false)
-    private String description;
+    private String descripcion;
 
     @Column(nullable = false)
-    private Date startTime;
+    private Date fechaInicio;
 
     @Column(nullable = false)
-    private Date endTime;
+    private Date fechaFin;
 
     @Column(nullable = false)
-    private String status;
+    private String estado;
 
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)

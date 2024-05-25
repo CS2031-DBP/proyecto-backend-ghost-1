@@ -33,7 +33,7 @@ public class TaskService {
 
     public List<TaskDTO> getTasksByCourseId(Long courseId) {
         return taskRepository.findAll().stream()
-                .filter(task -> task.getCourse().getId().equals(courseId))
+                .filter(task -> task.getCourse().getCourseid().equals(courseId))
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
@@ -47,11 +47,11 @@ public class TaskService {
     public TaskDTO updateTask(Long id, TaskDTO taskDTO) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Task not found with id " + id));
-        task.setTitle(taskDTO.getTitulo());
-        task.setDescription(taskDTO.getDescripcion());
-        task.setStartTime(taskDTO.getFechaInicio());
-        task.setEndTime(taskDTO.getFechaFin());
-        task.setStatus(taskDTO.getEstado());
+        task.setTitulo(taskDTO.getTitulo());
+        task.setDescripcion(taskDTO.getDescripcion());
+        task.setFechaInicio(taskDTO.getFechaInicio());
+        task.setFechaFin(taskDTO.getFechaFin());
+        task.setEstado(taskDTO.getEstado());
         task.setPriority(taskDTO.getPriority());
         task.setCompleted(taskDTO.getCompleted());
         task = taskRepository.save(task);
@@ -68,12 +68,12 @@ public class TaskService {
     private TaskDTO convertToDTO(Task task) {
         return TaskDTO.builder()
                 .id(task.getId())
-                .titulo(task.getTitle())
-                .descripcion(task.getDescription())
-                .fechaInicio(task.getStartTime())
-                .fechaFin(task.getEndTime())
-                .estado(task.getStatus())
-                .courseId(task.getCourse().getId())
+                .titulo(task.getTitulo())
+                .descripcion(task.getDescripcion())
+                .fechaInicio(task.getFechaInicio())
+                .fechaFin(task.getFechaFin())
+                .estado(task.getEstado())
+                .courseId(task.getCourse().getCourseid())
                 .priority(task.getPriority())
                 .completed(task.getCompleted())
                 .build();
@@ -81,11 +81,11 @@ public class TaskService {
 
     private Task convertToEntity(TaskDTO taskDTO) {
         Task task = new Task();
-        task.setTitle(taskDTO.getTitulo());
-        task.setDescription(taskDTO.getDescripcion());
-        task.setStartTime(taskDTO.getFechaInicio());
-        task.setEndTime(taskDTO.getFechaFin());
-        task.setStatus(taskDTO.getEstado());
+        task.setTitulo(taskDTO.getTitulo());
+        task.setDescripcion(taskDTO.getDescripcion());
+        task.setFechaInicio(taskDTO.getFechaInicio());
+        task.setFechaFin(taskDTO.getFechaFin());
+        task.setEstado(taskDTO.getEstado());
         task.setPriority(taskDTO.getPriority());
         task.setCompleted(taskDTO.getCompleted());
         courseRepository.findById(taskDTO.getCourseId()).ifPresent(task::setCourse);

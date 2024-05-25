@@ -46,11 +46,11 @@ public class ActivityService {
         Optional<Activity> optionalActivity = activityRepository.findById(id);
         if (optionalActivity.isPresent()) {
             Activity activity = optionalActivity.get();
-            activity.setTitle(activityDTO.getTitulo());
-            activity.setDescription(activityDTO.getDescripcion());
-            activity.setStartTime(activityDTO.getFechaInicio());
-            activity.setEndTime(activityDTO.getFechaFin());
-            activity.setStatus(activityDTO.getEstado());
+            activity.setTitulo(activityDTO.getTitulo());
+            activity.setDescripcion(activityDTO.getDescripcion());
+            activity.setFechaInicio(activityDTO.getFechaInicio());
+            activity.setFechaFin(activityDTO.getFechaFin());
+            activity.setEstado(activityDTO.getEstado());
             activity = activityRepository.save(activity);
             return convertToDTO(activity);
         }
@@ -64,22 +64,22 @@ public class ActivityService {
     private ActivityDTO convertToDTO(Activity activity) {
         ActivityDTO activityDTO = new ActivityDTO();
         activityDTO.setId(activity.getId());
-        activityDTO.setTitulo(activity.getTitle());
-        activityDTO.setDescripcion(activity.getDescription());
-        activityDTO.setFechaInicio(activity.getStartTime());
-        activityDTO.setFechaFin(activity.getEndTime());
-        activityDTO.setEstado(activity.getStatus());
+        activityDTO.setTitulo(activity.getTitulo());
+        activityDTO.setDescripcion(activity.getDescripcion());
+        activityDTO.setFechaInicio(activity.getFechaInicio());
+        activityDTO.setFechaFin(activity.getFechaFin());
+        activityDTO.setEstado(activity.getEstado());
         activityDTO.setCourseId(activity.getCourse().getCourseid());
         return activityDTO;
     }
 
     private Activity convertToEntity(ActivityDTO activityDTO) {
         Activity activity = new Activity();
-        activity.setTitle(activityDTO.getTitulo());
-        activity.setDescription(activityDTO.getDescripcion());
-        activity.setStartTime(activityDTO.getFechaInicio());
-        activity.setEndTime(activityDTO.getFechaFin());
-        activity.setStatus(activityDTO.getEstado());
+        activity.setTitulo(activityDTO.getTitulo());
+        activity.setDescripcion(activityDTO.getDescripcion());
+        activity.setFechaInicio(activityDTO.getFechaInicio());
+        activity.setFechaFin(activityDTO.getFechaFin());
+        activity.setEstado(activityDTO.getEstado());
         courseRepository.findById(activityDTO.getCourseId()).ifPresent(activity::setCourse);
         return activity;
     }

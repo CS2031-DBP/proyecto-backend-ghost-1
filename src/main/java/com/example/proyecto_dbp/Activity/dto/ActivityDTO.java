@@ -1,48 +1,37 @@
 package com.example.proyecto_dbp.Activity.dto;
 
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Date;
 
 @Data
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class ActivityDTO {
 
-    @NonNull
+    @NotNull
     private Long id;
 
-    @NonNull
+    @NotNull
     @Size(min = 1, max = 255)
     private String titulo;
 
-    @NonNull
+    @NotNull
     private Date fechaInicio;
 
-    @NonNull
+    @NotNull
     private Date fechaFin;
 
-    @NonNull
-    @Size(min = 1, max = 255)
+    @NotNull
     private String estado;
 
-    @NonNull
-    @Size(min = 1, max = 255)
-    private String descripcion;
-
-    @NonNull
+    @NotNull
     private Long courseId;
 
-    @Builder
-    public ActivityDTO(@NonNull Long id, @NonNull @Size(min = 1, max = 255) String titulo, @NonNull Date fechaInicio, @NonNull Date fechaFin, @NonNull String estado, @NonNull Long courseId, @NonNull String descripcion) {
-        this.id = id;
-        this.titulo = titulo;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.estado = estado;
-        this.descripcion = descripcion;
-        this.courseId = courseId;
-    }
+    @NotNull
+    private String descripcion;
 }
