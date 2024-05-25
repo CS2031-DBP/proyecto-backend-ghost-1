@@ -25,4 +25,7 @@ public class UserDTO {
     @NotNull
     @Size(min = 8, max = 64)
     private String password;
+
+    @NotNull
+    private String role;
 }

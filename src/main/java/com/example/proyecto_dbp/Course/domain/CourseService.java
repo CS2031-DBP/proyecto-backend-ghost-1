@@ -62,7 +62,7 @@ public class CourseService {
 
     private CourseDTO convertToDTO(Course course) {
         return CourseDTO.builder()
-                .id(course.getId())
+                .Courseid(course.getCourseid())
                 .nombreCurso(course.getNombreCurso())
                 .descripcion(course.getDescripcion())
                 .profesor(course.getProfesor())

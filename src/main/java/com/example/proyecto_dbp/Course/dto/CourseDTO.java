@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 public class CourseDTO {
     @NonNull
-    private Long id;
+    private Long Courseid;
 
     @NonNull
     @Size(min = 1, max = 30)

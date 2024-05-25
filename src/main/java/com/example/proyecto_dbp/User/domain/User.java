@@ -24,6 +24,9 @@ public class User {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @Column
+    private String role;
+
     @OneToMany(mappedBy = "user")
     private List<Course> courses;
 

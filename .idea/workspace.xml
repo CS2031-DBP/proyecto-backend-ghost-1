@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="events y asincronia !?">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/domain/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/domain/EventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/events/EmailEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/events/EmailEventListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/events/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/events/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/events/EventCreatedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/events/EventCreatedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/events/HelloEmailEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/events/HelloEmailEvent.java" afterDir="false" />
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="falta testear y verificar todo &#10;verificar envio de emails">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +68,7 @@
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "openjdk-22",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/j_lea/OneDrive/Escritorio/dbp - uber - test/proyecto-backend-ghost-1",
+    "last_opened_file_path": "C:/Users/j_lea/OneDrive/Escritorio/dbp - uber - test/proyecto-backend-grupo_aaaj-main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -144,6 +139,7 @@
       <workItem from="1716401308318" duration="1935000" />
       <workItem from="1716409959133" duration="1985000" />
       <workItem from="1716420154259" duration="4847000" />
+      <workItem from="1716593049245" duration="862000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -249,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716561763417</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="falta testear y verificar todo &#10;verificar envio de emails">
+      <option name="closed" value="true" />
+      <created>1716573019738</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716573019738</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,7 +285,8 @@
     <MESSAGE value="todo esta con dto sin setter y getter y sin error" />
     <MESSAGE value="." />
     <MESSAGE value="events y asincronia !?" />
-    <option name="LAST_COMMIT_MESSAGE" value="events y asincronia !?" />
+    <MESSAGE value="falta testear y verificar todo &#10;verificar envio de emails" />
+    <option name="LAST_COMMIT_MESSAGE" value="falta testear y verificar todo &#10;verificar envio de emails" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

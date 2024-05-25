@@ -31,7 +31,7 @@ public class ActivityService {
 
     public List<ActivityDTO> getActivitiesByCourseId(Long courseId) {
         return activityRepository.findAll().stream()
-                .filter(activity -> activity.getCourse().getCourse_id().equals(courseId))
+                .filter(activity -> activity.getCourse().getCourseid().equals(courseId))
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
@@ -69,7 +69,7 @@ public class ActivityService {
         activityDTO.setFechaInicio(activity.getStartTime());
         activityDTO.setFechaFin(activity.getEndTime());
         activityDTO.setEstado(activity.getStatus());
-        activityDTO.setCourseId(activity.getCourse().getCourse_id());
+        activityDTO.setCourseId(activity.getCourse().getCourseid());
         return activityDTO;
     }
 
