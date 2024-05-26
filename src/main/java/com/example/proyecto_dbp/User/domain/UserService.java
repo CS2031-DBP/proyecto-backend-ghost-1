@@ -44,8 +44,9 @@ public class UserService {
     }
 
     public void deleteUser(Long id) {
-        if (!userRepository.existsById(id)) throw new ResourceNotFoundException("User not found with id " + id);
-        userRepository.deleteById(id);
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
+        userRepository.delete(user);
     }
 
     private UserDTO convertToDTO(User user) {

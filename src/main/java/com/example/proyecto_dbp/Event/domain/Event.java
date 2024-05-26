@@ -1,6 +1,7 @@
 package com.example.proyecto_dbp.Event.domain;
 
 import com.example.proyecto_dbp.Activity.domain.Activity;
+import com.example.proyecto_dbp.Course.domain.Course;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,6 +12,10 @@ import java.util.List;
 @Setter
 @Getter
 public class Event extends Activity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Eventid;
 
     @Column(nullable = false)
     private String location;
@@ -26,4 +31,8 @@ public class Event extends Activity {
 
     @Column(nullable = false)
     private String reminder;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private Course course;
 }

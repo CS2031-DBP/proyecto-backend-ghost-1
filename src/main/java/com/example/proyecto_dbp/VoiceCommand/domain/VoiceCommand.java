@@ -10,6 +10,9 @@ import java.time.LocalDateTime;
 @Entity
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "voice_commands")
 public class VoiceCommand {
     @Id
@@ -26,10 +29,10 @@ public class VoiceCommand {
     private LocalDateTime timestamp = LocalDateTime.now();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "activity_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "activity_id", nullable = false)
     private Activity activity;
 }

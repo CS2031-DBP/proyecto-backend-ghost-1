@@ -1,18 +1,20 @@
-package com.example.proyecto_dbp;
+package com.example.proyecto_dbp.VoiceCommand.application;
 
 import com.example.proyecto_dbp.Activity.domain.Activity;
 import com.example.proyecto_dbp.User.domain.User;
-import com.example.proyecto_dbp.VoiceCommand.application.VoiceCommandController;
 import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommandService;
 import com.example.proyecto_dbp.VoiceCommand.dto.VoiceCommandDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Optional;
@@ -22,7 +24,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(VoiceCommandController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+@Transactional
 public class VoiceCommandControllerTest {
 
     private MockMvc mockMvc;

@@ -6,6 +6,7 @@ import com.example.proyecto_dbp.VoiceCommand.infrastructure.VoiceCommandReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,11 +18,14 @@ public class VoiceCommandService {
     private VoiceCommandRepository voiceCommandRepository;
 
     public List<VoiceCommandDTO> getAllVoiceCommands() {
-        return voiceCommandRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
+        return voiceCommandRepository.findAll().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     public Optional<VoiceCommandDTO> getVoiceCommandById(Long id) {
-        return voiceCommandRepository.findById(id).map(this::convertToDTO);
+        return voiceCommandRepository.findById(id)
+                .map(this::convertToDTO);
     }
 
     public List<VoiceCommandDTO> getVoiceCommandsByUserId(Long userId) {
@@ -33,6 +37,7 @@ public class VoiceCommandService {
 
     public VoiceCommandDTO createVoiceCommand(VoiceCommandDTO voiceCommandDTO) {
         VoiceCommand voiceCommand = convertToEntity(voiceCommandDTO);
+        voiceCommand.setTimestamp(LocalDateTime.now()); // Ensure timestamp is set to now
         voiceCommand = voiceCommandRepository.save(voiceCommand);
         return convertToDTO(voiceCommand);
     }
@@ -73,7 +78,8 @@ public class VoiceCommandService {
         voiceCommand.setId(voiceCommandDTO.getId());
         voiceCommand.setCommand(voiceCommandDTO.getCommand());
         voiceCommand.setDescriptionAction(voiceCommandDTO.getDescriptionAction());
-        voiceCommand.setTimestamp(voiceCommandDTO.getTimestamp());
+        voiceCommand.setTimestamp(voiceCommandDTO.getTimestamp() != null ?
+                voiceCommandDTO.getTimestamp() : LocalDateTime.now());
         voiceCommand.setUser(voiceCommandDTO.getUser());
         voiceCommand.setActivity(voiceCommandDTO.getActivity());
         return voiceCommand;
