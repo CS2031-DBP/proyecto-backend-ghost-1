@@ -72,7 +72,8 @@ public class CourseService {
         course.setNombreCurso(courseDTO.getNombreCurso());
         course.setDescripcion(courseDTO.getDescripcion());
         course.setProfesor(courseDTO.getProfesor());
-        userRepository.findById(courseDTO.getUserId()).ifPresent(course::setUser);
+        userRepository.findById(courseDTO.getUserId())
+                .ifPresent(course::setUser);  // Asegúrate de que la entidad Course tiene un método setUser que acepte un User
         return course;
     }
 }

@@ -5,22 +5,25 @@ import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import com.example.proyecto_dbp.exceptions.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import java.util.*;
+
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class UserService {
 
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public List<UserDTO> getAllUsers() {
-        return userRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
+        return userRepository.findAll().stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     public UserDTO getUserById(Long id) {
@@ -34,7 +37,7 @@ public class UserService {
             throw new UserAlreadyExistException("User already exists with email " + userDTO.getEmail());
         }
         User user = convertToEntity(userDTO);
-        user = userRepository.save(user);
+        userRepository.save(user);
         return convertToDTO(user);
     }
 
@@ -43,14 +46,14 @@ public class UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
         user.setEmail(userDTO.getEmail());
         user.setName(userDTO.getName());
-        user = userRepository.save(user);
+        userRepository.save(user);
         return convertToDTO(user);
     }
 
     public void deleteUser(Long id) {
-        User user = userRepository.findById(id)
+        userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
-        userRepository.delete(user);
+        userRepository.deleteById(id);
     }
 
     private UserDTO convertToDTO(User user) {
@@ -65,21 +68,11 @@ public class UserService {
 
     private User convertToEntity(UserDTO userDTO) {
         User user = new User();
+        user.setId(userDTO.getId());
         user.setEmail(userDTO.getEmail());
         user.setName(userDTO.getName());
         user.setPassword(userDTO.getPassword());
         user.setRole(userDTO.getRole());
-        user.setId(userDTO.getId());
         return user;
-    }
-
-    @Bean(name = "UserDetailsService")
-    public UserDetailsService userDetailsService() {
-        return username -> {
-            User user = userRepository
-                    .findByEmail(username)
-                    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-            return (UserDetails) user;
-        };
     }
 }
