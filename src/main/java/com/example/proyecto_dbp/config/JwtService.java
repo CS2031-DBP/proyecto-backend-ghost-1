@@ -1,56 +1,59 @@
 package com.example.proyecto_dbp.config;
 
-import com.example.proyecto_dbp.User.dto.UserDTO;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import lombok.RequiredArgsConstructor;
+import com.example.proyecto_dbp.User.domain.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
 
 @Service
+@RequiredArgsConstructor
 public class JwtService {
 
-    private final String SECRET_KEY = "your_secret_key";
+    @Value("${jwt.secret}")
+    private String secret;
+
+    @Autowired
+    private UserService userService;
 
     public String extractUsername(String token) {
-        return extractClaim(token, Claims::getSubject);
+        return JWT.decode(token).getSubject();
     }
 
-    public Date extractExpiration(String token) {
-        return extractClaim(token, Claims::getExpiration);
+    public String generateToken(UserDetails data){
+        Date now = new Date();
+        Date expiration = new Date(now.getTime() + 1000 * 60 * 60 * 10);
+
+        Algorithm algorithm = Algorithm.HMAC256(secret);
+
+        return JWT.create()
+                .withSubject(data.getUsername())
+                .withClaim("role", data.getAuthorities().toArray()[0].toString())
+                .withIssuedAt(now)
+                .withExpiresAt(expiration)
+                .sign(algorithm);
     }
 
-    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = extractAllClaims(token);
-        return claimsResolver.apply(claims);
-    }
+    public void validateToken(String token, String userEmail) throws AuthenticationException {
 
-    private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
-    }
+        JWT.require(Algorithm.HMAC256(secret)).build().verify(token);
 
-    private Boolean isTokenExpired(String token) {
-        return extractExpiration(token).before(new Date());
-    }
+        UserDetails userDetails = userService.userDetailsService().loadUserByUsername(userEmail);
 
-    public String generateToken(UserDTO userDTO) {
-        Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userDTO.getEmail());
-    }
-
-    private String createToken(Map<String, Object> claims, String subject) {
-        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
-    }
-
-    public Boolean validateToken(String token, UserDetails userDetails) {
-        final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+        SecurityContext context = SecurityContextHolder.createEmptyContext();
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                userDetails, token, userDetails.getAuthorities());
+        context.setAuthentication(authToken);
+        SecurityContextHolder.setContext(context);
     }
 }

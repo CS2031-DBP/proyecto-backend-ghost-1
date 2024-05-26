@@ -9,36 +9,37 @@ import com.example.proyecto_dbp.auth.dto.RegisterReq;
 import com.example.proyecto_dbp.auth.exceptions.UserAlreadyExistException;
 import com.example.proyecto_dbp.config.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AuthService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final JwtService jwtService;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public AuthService(UserRepository userRepository, JwtService jwtService, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.jwtService = jwtService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
-    @Autowired
-    private JwtService jwtService;
+    public JwtAuthResponse login(LoginReq req) {
+        Optional<User> user = userRepository.findByEmail(req.getEmail());
 
-    public JwtAuthResponse login(LoginReq loginReq) {
-        User user = userRepository.findByEmail(loginReq.getEmail())
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + loginReq.getEmail()));
+        if (user.isEmpty()) throw new UsernameNotFoundException("Email no registrado");
 
-        if (passwordEncoder.matches(loginReq.getPassword(), user.getPassword())) {
-            UserDTO userDTO = new UserDTO();
-            userDTO.setId(user.getId());
-            userDTO.setEmail(user.getEmail());
-            userDTO.setPassword(user.getPassword());
+        if (!passwordEncoder.matches(req.getPassword(), user.get().getPassword()))
+            throw new IllegalArgumentException("Contraseña incorrecta");
 
-            String token = jwtService.generateToken(userDTO);
-            return new JwtAuthResponse(token);
-        } else throw new BadCredentialsException("Invalid password");
+        JwtAuthResponse response = new JwtAuthResponse();
+        response.setToken(jwtService.generateToken(user.get()));
+        return response;
     }
 
     public JwtAuthResponse register(RegisterReq registerReq) {
@@ -49,15 +50,13 @@ public class AuthService {
         User user = new User();
         user.setEmail(registerReq.getEmail());
         user.setPassword(passwordEncoder.encode(registerReq.getPassword()));
+        user.setId(user.getId());
+        user.setEmail(user.getEmail());
+        user.setPassword(user.getPassword());
 
         userRepository.save(user);
 
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(user.getId());
-        userDTO.setEmail(user.getEmail());
-        userDTO.setPassword(user.getPassword());
-
-        String token = jwtService.generateToken(userDTO);
+        String token = jwtService.generateToken(user);
         return new JwtAuthResponse(token);
     }
 }
