@@ -1,7 +1,6 @@
 package com.example.proyecto_dbp.Course.domain;
 
 import com.example.proyecto_dbp.Course.dto.CourseDTO;
-import com.example.proyecto_dbp.Course.domain.Course;
 import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
@@ -54,9 +53,7 @@ public class CourseService {
     }
 
     public void deleteCourse(Long id) {
-        if (!courseRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Course not found with id " + id);
-        }
+        if (!courseRepository.existsById(id)) throw new ResourceNotFoundException("Course not found with id " + id);
         courseRepository.deleteById(id);
     }
 

@@ -2,15 +2,12 @@ package com.example.proyecto_dbp.CalendarIntegration.domain;
 
 import com.example.proyecto_dbp.Activity.domain.Activity;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "calendar_integrations")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Setter
+@Getter
 public class CalendarIntegration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

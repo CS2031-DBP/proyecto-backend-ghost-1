@@ -1,15 +1,12 @@
 package com.example.proyecto_dbp.Activity.domain;
 
 import com.example.proyecto_dbp.Activity.dto.ActivityDTO;
-import com.example.proyecto_dbp.Activity.domain.Activity;
-
 import com.example.proyecto_dbp.Activity.infrastructure.ActivityRepository;
 import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service

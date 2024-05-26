@@ -50,8 +50,7 @@ public class CalendarIntegrationController {
         try {
             calendarIntegrationService.deleteCalendarIntegration(activityId);
             return ResponseEntity.noContent().build();
-        } catch (ResourceNotFoundException e) {
-            return ResponseEntity.notFound().build();
         }
+        catch (ResourceNotFoundException e) {return ResponseEntity.notFound().build();}
     }
 }

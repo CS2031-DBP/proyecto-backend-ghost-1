@@ -1,16 +1,12 @@
 package com.example.proyecto_dbp.User.domain;
 
 import com.example.proyecto_dbp.User.dto.UserDTO;
-import com.example.proyecto_dbp.User.domain.User;
-
 import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import com.example.proyecto_dbp.exceptions.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,24 +44,27 @@ public class UserService {
     }
 
     public void deleteUser(Long id) {
-        if (!userRepository.existsById(id)) {
-            throw new ResourceNotFoundException("User not found with id " + id);
-        }
+        if (!userRepository.existsById(id)) throw new ResourceNotFoundException("User not found with id " + id);
         userRepository.deleteById(id);
     }
 
     private UserDTO convertToDTO(User user) {
-        return UserDTO.builder()
-                .id(user.getId())
-                .email(user.getEmail())
-                .name(user.getName())
-                .build();
+        UserDTO dto = new UserDTO();
+        dto.setId(user.getId());
+        dto.setEmail(user.getEmail());
+        dto.setName(user.getName());
+        dto.setPassword(user.getPassword());
+        dto.setRole(user.getRole());
+        return dto;
     }
 
     private User convertToEntity(UserDTO userDTO) {
         User user = new User();
         user.setEmail(userDTO.getEmail());
         user.setName(userDTO.getName());
+        user.setPassword(userDTO.getPassword());
+        user.setRole(userDTO.getRole());
+        user.setId(userDTO.getId());
         return user;
     }
 }

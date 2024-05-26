@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,24 +58,21 @@ public class TaskService {
     }
 
     public void deleteTask(Long id) {
-        if (!taskRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Task not found with id " + id);
-        }
+        if (!taskRepository.existsById(id)) throw new ResourceNotFoundException("Task not found with id " + id);
         taskRepository.deleteById(id);
     }
 
     private TaskDTO convertToDTO(Task task) {
-        return TaskDTO.builder()
-                .id(task.getId())
-                .titulo(task.getTitulo())
-                .descripcion(task.getDescripcion())
-                .fechaInicio(task.getFechaInicio())
-                .fechaFin(task.getFechaFin())
-                .estado(task.getEstado())
-                .courseId(task.getCourse().getCourseid())
-                .priority(task.getPriority())
-                .completed(task.getCompleted())
-                .build();
+        TaskDTO taskDTO = new TaskDTO();
+        taskDTO.setId(task.getId());
+        taskDTO.setTitulo(task.getTitulo());
+        taskDTO.setDescripcion(task.getDescripcion());
+        taskDTO.setFechaInicio(task.getFechaInicio());
+        taskDTO.setFechaFin(task.getFechaFin());
+        taskDTO.setEstado(task.getEstado());
+        taskDTO.setPriority(task.getPriority());
+        taskDTO.setCompleted(task.getCompleted());
+        return taskDTO;
     }
 
     private Task convertToEntity(TaskDTO taskDTO) {

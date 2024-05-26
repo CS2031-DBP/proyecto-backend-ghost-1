@@ -8,7 +8,6 @@ import lombok.experimental.SuperBuilder;
 import java.util.Date;
 
 @Data
-@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ActivityDTO {

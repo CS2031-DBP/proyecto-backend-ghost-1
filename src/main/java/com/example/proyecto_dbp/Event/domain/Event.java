@@ -2,17 +2,16 @@ package com.example.proyecto_dbp.Event.domain;
 
 import com.example.proyecto_dbp.Activity.domain.Activity;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.*;
 
 import java.util.List;
 
-@Data
 @NoArgsConstructor
-@SuperBuilder(toBuilder = true)
 @Entity
+@Setter
+@Getter
 public class Event extends Activity {
+
     @Column(nullable = false)
     private String location;
 

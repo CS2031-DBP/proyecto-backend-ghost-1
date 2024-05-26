@@ -2,14 +2,12 @@ package com.example.proyecto_dbp.CalendarIntegration.domain;
 
 import com.example.proyecto_dbp.Activity.infrastructure.ActivityRepository;
 import com.example.proyecto_dbp.CalendarIntegration.dto.CalendarIntegrationDTO;
-import com.example.proyecto_dbp.CalendarIntegration.domain.CalendarIntegration;
 import com.example.proyecto_dbp.CalendarIntegration.infrastructure.CalendarIntegrationRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service

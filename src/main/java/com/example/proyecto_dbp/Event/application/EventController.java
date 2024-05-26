@@ -66,8 +66,7 @@ public class EventController {
         try {
             eventService.deleteEvent(id);
             return ResponseEntity.noContent().build();
-        } catch (ResourceNotFoundException e) {
-            return ResponseEntity.notFound().build();
         }
+        catch (ResourceNotFoundException e) {return ResponseEntity.notFound().build();}
     }
 }

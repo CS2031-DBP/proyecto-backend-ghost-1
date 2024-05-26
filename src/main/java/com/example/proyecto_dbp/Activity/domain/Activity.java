@@ -3,17 +3,18 @@ package com.example.proyecto_dbp.Activity.domain;
 import com.example.proyecto_dbp.Course.domain.Course;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.Setter;
 
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
-@SuperBuilder(toBuilder = true)
 @Entity
 @Table(name = "activities")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Getter
+@Setter
 public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

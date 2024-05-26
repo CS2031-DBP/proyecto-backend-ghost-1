@@ -54,8 +54,7 @@ public class CourseController {
         try {
             courseService.deleteCourse(id);
             return ResponseEntity.noContent().build();
-        } catch (ResourceNotFoundException e) {
-            return ResponseEntity.notFound().build();
         }
+        catch (ResourceNotFoundException e) {return ResponseEntity.notFound().build();}
     }
 }

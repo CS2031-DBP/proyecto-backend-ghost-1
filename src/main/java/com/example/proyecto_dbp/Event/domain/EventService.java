@@ -2,12 +2,10 @@ package com.example.proyecto_dbp.Event.domain;
 
 import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.Event.dto.EventDTO;
-
 import com.example.proyecto_dbp.Event.infrastructure.EventRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -56,48 +54,43 @@ public class EventService {
         event.setLocation(eventDTO.getLocation());
         event.setAllDay(eventDTO.getAllDay());
         event.setOrganizer(eventDTO.getOrganizer());
-        event.setAttendees(eventDTO.getAttendees());
+        event.setAttendees(Collections.singletonList(eventDTO.getAttendees()));
         event.setReminder(eventDTO.getReminder());
 
         event = eventRepository.save(event);
         return convertToDTO(event);
     }
 
-    public void deleteEvent(Long id) {
-        eventRepository.deleteById(id);
-    }
+    public void deleteEvent(Long id) {eventRepository.deleteById(id);}
 
     private EventDTO convertToDTO(Event event) {
-        return EventDTO.builder()
-                .id(event.getId())
-                .titulo(event.getTitulo())
-                .descripcion(event.getDescripcion())
-                .fechaInicio(event.getFechaInicio())
-                .fechaFin(event.getFechaFin())
-                .estado(event.getEstado())
-                .courseId(event.getCourse().getCourseid())
-                .location(event.getLocation())
-                .allDay(event.getAllDay())
-                .organizer(event.getOrganizer())
-                .attendees(event.getAttendees())
-                .reminder(event.getReminder())
-                .build();
+        EventDTO eventDTO = new EventDTO();
+        eventDTO.setId(event.getId());
+        eventDTO.setTitulo(event.getTitulo());
+        eventDTO.setDescripcion(event.getDescripcion());
+        eventDTO.setFechaInicio(event.getFechaInicio());
+        eventDTO.setFechaFin(event.getFechaFin());
+        eventDTO.setEstado(event.getEstado());
+        eventDTO.setLocation(event.getLocation());
+        eventDTO.setAllDay(event.getAllDay());
+        eventDTO.setOrganizer(event.getOrganizer());
+        eventDTO.setReminder(event.getReminder());
+        return eventDTO;
     }
 
     private Event convertToEntity(EventDTO eventDTO) {
-        return Event.builder()
-                .id(eventDTO.getId())
-                .titulo(eventDTO.getTitulo())
-                .descripcion(eventDTO.getDescripcion())
-                .fechaInicio(eventDTO.getFechaInicio())
-                .fechaFin(eventDTO.getFechaFin())
-                .estado(eventDTO.getEstado())
-                .location(eventDTO.getLocation())
-                .allDay(eventDTO.getAllDay())
-                .organizer(eventDTO.getOrganizer())
-                .attendees(eventDTO.getAttendees())
-                .reminder(eventDTO.getReminder())
-                .course(courseRepository.findById(eventDTO.getCourseId()).orElse(null))
-                .build();
+        Event event = new Event();
+        event.setId(eventDTO.getId());
+        event.setTitulo(eventDTO.getTitulo());
+        event.setDescripcion(eventDTO.getDescripcion());
+        event.setFechaInicio(eventDTO.getFechaInicio());
+        event.setFechaFin(eventDTO.getFechaFin());
+        event.setEstado(eventDTO.getEstado());
+        event.setLocation(eventDTO.getLocation());
+        event.setAllDay(eventDTO.getAllDay());
+        event.setOrganizer(eventDTO.getOrganizer());
+        event.setAttendees(Collections.singletonList(eventDTO.getAttendees()));
+        event.setReminder(eventDTO.getReminder());
+        return event;
     }
 }

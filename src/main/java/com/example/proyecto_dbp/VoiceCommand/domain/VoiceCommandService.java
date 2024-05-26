@@ -1,9 +1,5 @@
 package com.example.proyecto_dbp.VoiceCommand.domain;
 
-import com.example.proyecto_dbp.Activity.domain.Activity;
-import com.example.proyecto_dbp.Activity.infrastructure.ActivityRepository;
-import com.example.proyecto_dbp.User.domain.User;
-import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.VoiceCommand.dto.VoiceCommandDTO;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import com.example.proyecto_dbp.VoiceCommand.infrastructure.VoiceCommandRepository;
@@ -19,12 +15,6 @@ public class VoiceCommandService {
 
     @Autowired
     private VoiceCommandRepository voiceCommandRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private ActivityRepository activityRepository;
 
     public List<VoiceCommandDTO> getAllVoiceCommands() {
         return voiceCommandRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
@@ -51,18 +41,10 @@ public class VoiceCommandService {
         VoiceCommand voiceCommand = voiceCommandRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Voice command not found with id " + id));
 
-        voiceCommand.setCommand(voiceCommandDTO.getComando());
-        voiceCommand.setDescriptionAction(voiceCommandDTO.getDescripcionAccion());
-
-        User user = userRepository.findById(voiceCommandDTO.getUserId())
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + voiceCommandDTO.getUserId()));
-        voiceCommand.setUser(user);
-
-        if (voiceCommandDTO.getActivityId() != null) {
-            Activity activity = activityRepository.findById(voiceCommandDTO.getActivityId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Activity not found with id " + voiceCommandDTO.getActivityId()));
-            voiceCommand.setActivity(activity);
-        }
+        voiceCommand.setCommand(voiceCommandDTO.getCommand());
+        voiceCommand.setDescriptionAction(voiceCommandDTO.getDescriptionAction());
+        voiceCommand.setUser(voiceCommandDTO.getUser());
+        voiceCommand.setActivity(voiceCommandDTO.getActivity());
 
         voiceCommand = voiceCommandRepository.save(voiceCommand);
         return convertToDTO(voiceCommand);
@@ -76,30 +58,24 @@ public class VoiceCommandService {
     }
 
     private VoiceCommandDTO convertToDTO(VoiceCommand voiceCommand) {
-        return VoiceCommandDTO.builder()
-                .id(voiceCommand.getId())
-                .comando(voiceCommand.getCommand())
-                .descripcionAccion(voiceCommand.getDescriptionAction())
-                .userId(voiceCommand.getUser().getId())
-                .activityId(voiceCommand.getActivity() != null ? voiceCommand.getActivity().getId() : null)
-                .build();
+        VoiceCommandDTO dto = new VoiceCommandDTO();
+        dto.setId(voiceCommand.getId());
+        dto.setCommand(voiceCommand.getCommand());
+        dto.setDescriptionAction(voiceCommand.getDescriptionAction());
+        dto.setTimestamp(voiceCommand.getTimestamp());
+        dto.setUser(voiceCommand.getUser());
+        dto.setActivity(voiceCommand.getActivity());
+        return dto;
     }
 
     private VoiceCommand convertToEntity(VoiceCommandDTO voiceCommandDTO) {
-        User user = userRepository.findById(voiceCommandDTO.getUserId())
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + voiceCommandDTO.getUserId()));
-
-        Activity activity = null;
-        if (voiceCommandDTO.getActivityId() != null) {
-            activity = activityRepository.findById(voiceCommandDTO.getActivityId())
-                    .orElseThrow(() -> new ResourceNotFoundException("Activity not found with id " + voiceCommandDTO.getActivityId()));
-        }
-
-        return VoiceCommand.builder()
-                .command(voiceCommandDTO.getComando())
-                .descriptionAction(voiceCommandDTO.getDescripcionAccion())
-                .user(user)
-                .activity(activity)
-                .build();
+        VoiceCommand voiceCommand = new VoiceCommand();
+        voiceCommand.setId(voiceCommandDTO.getId());
+        voiceCommand.setCommand(voiceCommandDTO.getCommand());
+        voiceCommand.setDescriptionAction(voiceCommandDTO.getDescriptionAction());
+        voiceCommand.setTimestamp(voiceCommandDTO.getTimestamp());
+        voiceCommand.setUser(voiceCommandDTO.getUser());
+        voiceCommand.setActivity(voiceCommandDTO.getActivity());
+        return voiceCommand;
     }
 }

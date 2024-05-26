@@ -3,11 +3,14 @@ package com.example.proyecto_dbp.Course.domain;
 import com.example.proyecto_dbp.User.domain.User;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "courses")
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 public class Course {
     @Id

@@ -3,19 +3,14 @@ package com.example.proyecto_dbp.VoiceCommand.domain;
 import com.example.proyecto_dbp.Activity.domain.Activity;
 import com.example.proyecto_dbp.User.domain.User;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Setter
+@Getter
 @Table(name = "voice_commands")
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class VoiceCommand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
