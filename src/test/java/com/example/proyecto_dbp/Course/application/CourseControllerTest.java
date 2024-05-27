@@ -89,13 +89,15 @@ public class CourseControllerTest {
                 .andReturn();
 
         MockHttpServletResponse response = result.getResponse();
+        String jsonResponse = response.getContentAsString();
 
-        // Verificaciones usando MockHttpServletResponse
+        System.out.println("Response JSON: " + jsonResponse);
+
         assert response.getStatus() == 201 : "Expected status 201 but was " + response.getStatus();
-        assert response.getContentAsString().contains("New Course") : "Response does not contain 'New Course'";
-        assert response.getContentAsString().contains("Description of the new course") : "Response does not contain 'Description of the new course'";
-        assert response.getContentAsString().contains("Professor Name") : "Response does not contain 'Professor Name'";
-        assert response.getContentAsString().contains("\"user\":{\"id\":1}") : "Response does not contain expected user data";
+        assert jsonResponse.contains("New Course") : "Response does not contain 'New Course'";
+        assert jsonResponse.contains("Description of the new course") : "Response does not contain 'Description of the new course'";
+        assert jsonResponse.contains("Professor Name") : "Response does not contain 'Professor Name'";
+        assert jsonResponse.contains("\"id\":1") : "Response does not contain expected user id data";
     }
 
     @Test

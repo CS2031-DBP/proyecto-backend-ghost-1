@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -76,9 +75,9 @@ public class TaskControllerTest {
 
         mockMvc.perform(post("/tasks")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"title\":\"New Task\"}"))
+                        .content("{\"titulo\":\"New Task\"}"))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.title").value("New Task"));
+                .andExpect(jsonPath("$.titulo").value("New Task"));
     }
 
     @Test
@@ -90,9 +89,9 @@ public class TaskControllerTest {
 
         mockMvc.perform(put("/tasks/1")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"title\":\"Updated Task\"}"))
+                        .content("{\"titulo\":\"Updated Task\"}"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value("Updated Task"));
+                .andExpect(jsonPath("$.titulo").value("Updated Task"));
     }
 
     @Test
