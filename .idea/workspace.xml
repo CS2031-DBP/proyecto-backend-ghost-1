@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="VOLVIO LA FE">
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="UserControllerTest terminado">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/User/application/UserControllerSecurityTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/User/application/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/User/application/UserControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,59 +62,60 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.ActivityControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CalendarIntegrationControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseControllerTest.testCreateCourse.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseControllerTest.testGetAllCourses.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskRepositoryTest.testGetAllTasks.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserControllerTest.testGetAllUsers.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.testDeleteUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.testUpdateUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VoiceCommandControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VoiceCommandRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VoiceCommandRepositoryTest.testGetVoiceCommandById.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VoiceCommandServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ProyectoDbpApplication.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-22&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jorge l/Desktop/dbp/proyecto-backend-ghost-1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.ActivityControllerTest.executor": "Run",
+    "JUnit.CalendarIntegrationControllerTest.executor": "Run",
+    "JUnit.CourseControllerTest.executor": "Run",
+    "JUnit.CourseControllerTest.testCreateCourse.executor": "Run",
+    "JUnit.CourseControllerTest.testGetAllCourses.executor": "Run",
+    "JUnit.EventControllerTest.executor": "Run",
+    "JUnit.TaskControllerTest.executor": "Run",
+    "JUnit.TaskRepositoryTest.executor": "Run",
+    "JUnit.TaskRepositoryTest.testGetAllTasks.executor": "Run",
+    "JUnit.UserControllerSecurityTest.executor": "Run",
+    "JUnit.UserControllerTest.executor": "Run",
+    "JUnit.UserControllerTest.testGetAllUsers.executor": "Run",
+    "JUnit.UserRepositoryTest.executor": "Run",
+    "JUnit.UserRepositoryTest.testDeleteUser.executor": "Run",
+    "JUnit.UserRepositoryTest.testUpdateUser.executor": "Run",
+    "JUnit.VoiceCommandControllerTest.executor": "Run",
+    "JUnit.VoiceCommandRepositoryTest.executor": "Run",
+    "JUnit.VoiceCommandRepositoryTest.testGetVoiceCommandById.executor": "Run",
+    "JUnit.VoiceCommandServiceTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ProyectoDbpApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "openjdk-22",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/jorge l/Desktop/dbp/proyecto-backend-ghost-1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\j_lea\OneDrive\Escritorio\dbp - uber - test\proyecto-backend-ghost-1\src\test" />
@@ -130,7 +130,7 @@
       <recent name="com.example.proyecto_dbp.VoiceCommand" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerTest">
+  <component name="RunManager" selected="JUnit.UserRepositoryTest">
     <configuration name="CourseControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <extension name="coverage">
@@ -146,32 +146,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CourseControllerTest.testCreateCourse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserControllerSecurityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.proyecto_dbp.Course.application.*" />
+          <option name="PATTERN" value="com.example.proyecto_dbp.User.application.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Course.application" />
-      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Course.application.CourseControllerTest" />
-      <option name="METHOD_NAME" value="testCreateCourse" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TaskControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto_dbp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.proyecto_dbp.Task.application.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Task.application" />
-      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Task.application.TaskControllerTest" />
+      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.User.application" />
+      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.User.application.UserControllerSecurityTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -208,6 +192,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto_dbp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.proyecto_dbp.User.infrastructure.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.User.infrastructure" />
+      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.User.infrastructure.UserRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProyectoDbpApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.proyecto_dbp.ProyectoDbpApplication" />
@@ -217,11 +216,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserRepositoryTest" />
+        <item itemvalue="JUnit.UserControllerSecurityTest" />
         <item itemvalue="JUnit.UserControllerTest" />
         <item itemvalue="JUnit.UserControllerTest.testGetAllUsers" />
         <item itemvalue="JUnit.CourseControllerTest" />
-        <item itemvalue="JUnit.CourseControllerTest.testCreateCourse" />
-        <item itemvalue="JUnit.TaskControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -277,7 +276,7 @@
       <workItem from="1716774262943" duration="6946000" />
       <workItem from="1716782421561" duration="3743000" />
       <workItem from="1716819658536" duration="1114000" />
-      <workItem from="1716831262263" duration="818000" />
+      <workItem from="1716831262263" duration="1886000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -447,7 +446,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716812196206</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="UserControllerTest terminado">
+      <option name="closed" value="true" />
+      <created>1716832153747</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1716832153747</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,7 +491,8 @@
     <MESSAGE value="completo" />
     <MESSAGE value="UserService y CourseService chekar" />
     <MESSAGE value="VOLVIO LA FE" />
-    <option name="LAST_COMMIT_MESSAGE" value="VOLVIO LA FE" />
+    <MESSAGE value="UserControllerTest terminado" />
+    <option name="LAST_COMMIT_MESSAGE" value="UserControllerTest terminado" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
