@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="UserControllerTest terminado">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/User/application/UserControllerSecurityTest.java" afterDir="false" />
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="User Repo + revisar Security">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/utils/AuthorizationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/utils/AuthorizationUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +77,7 @@
     "JUnit.TaskRepositoryTest.executor": "Run",
     "JUnit.TaskRepositoryTest.testGetAllTasks.executor": "Run",
     "JUnit.UserControllerSecurityTest.executor": "Run",
+    "JUnit.UserControllerSecurityTest.testAdminAccessToCreateUser.executor": "Run",
     "JUnit.UserControllerTest.executor": "Run",
     "JUnit.UserControllerTest.testGetAllUsers.executor": "Run",
     "JUnit.UserRepositoryTest.executor": "Run",
@@ -130,22 +132,7 @@
       <recent name="com.example.proyecto_dbp.VoiceCommand" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserRepositoryTest">
-    <configuration name="CourseControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto_dbp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.proyecto_dbp.Course.application.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Course.application" />
-      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Course.application.CourseControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.UserControllerSecurityTest">
     <configuration name="UserControllerSecurityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <extension name="coverage">
@@ -157,6 +144,22 @@
       <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.User.application" />
       <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.User.application.UserControllerSecurityTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserControllerSecurityTest.testAdminAccessToCreateUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto_dbp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.proyecto_dbp.User.application.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.User.application" />
+      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.User.application.UserControllerSecurityTest" />
+      <option name="METHOD_NAME" value="testAdminAccessToCreateUser" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -216,11 +219,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserRepositoryTest" />
         <item itemvalue="JUnit.UserControllerSecurityTest" />
+        <item itemvalue="JUnit.UserControllerSecurityTest.testAdminAccessToCreateUser" />
+        <item itemvalue="JUnit.UserRepositoryTest" />
         <item itemvalue="JUnit.UserControllerTest" />
         <item itemvalue="JUnit.UserControllerTest.testGetAllUsers" />
-        <item itemvalue="JUnit.CourseControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -276,7 +279,7 @@
       <workItem from="1716774262943" duration="6946000" />
       <workItem from="1716782421561" duration="3743000" />
       <workItem from="1716819658536" duration="1114000" />
-      <workItem from="1716831262263" duration="1886000" />
+      <workItem from="1716831262263" duration="2892000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -454,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716832153747</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="User Repo + revisar Security">
+      <option name="closed" value="true" />
+      <created>1716833717652</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1716833717652</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -492,7 +503,8 @@
     <MESSAGE value="UserService y CourseService chekar" />
     <MESSAGE value="VOLVIO LA FE" />
     <MESSAGE value="UserControllerTest terminado" />
-    <option name="LAST_COMMIT_MESSAGE" value="UserControllerTest terminado" />
+    <MESSAGE value="User Repo + revisar Security" />
+    <option name="LAST_COMMIT_MESSAGE" value="User Repo + revisar Security" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

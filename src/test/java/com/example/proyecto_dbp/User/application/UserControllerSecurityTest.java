@@ -1,18 +1,18 @@
 package com.example.proyecto_dbp.User.application;
 
 import com.example.proyecto_dbp.User.domain.User;
+import com.example.proyecto_dbp.User.domain.UserService;
 import com.example.proyecto_dbp.User.infrastructure.UserRepository;
+import com.example.proyecto_dbp.config.JwtService;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.TestExecutionEvent;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Objects;
@@ -31,6 +31,12 @@ public class UserControllerSecurityTest {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private JwtService jwtService;
+
     private String adminToken;
     private String userToken;
 
@@ -39,25 +45,19 @@ public class UserControllerSecurityTest {
         userRepository.deleteAll();
 
         // Crea un usuario administrador y un usuario regular para las pruebas
-        adminToken = createUser("admin@example.com", "password", "ADMIN");
-        userToken = createUser("user@example.com", "password", "STUDENT");
+        adminToken = createJwtToken("admin@example.com", "ADMIN");
+        userToken = createJwtToken("user@example.com", "STUDENT");
     }
 
-    private String createUser(String email, String password, String role) throws Exception {
+    private String createJwtToken(String email, String role) {
         User user = new User();
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword("password");
         user.setRole(role);
         userRepository.save(user);
 
-        // Aquí asume que hay un endpoint para obtener un token de autenticación, ajústalo según tu implementación
-        var res = mockMvc.perform(post("/auth/login")
-                        .contentType(APPLICATION_JSON)
-                        .content("{\"email\":\"" + email + "\", \"password\":\"" + password + "\"}"))
-                .andReturn();
-
-        JSONObject jsonObject = new JSONObject(Objects.requireNonNull(res.getResponse().getContentAsString()));
-        return jsonObject.getString("token");
+        UserDetails userDetails = userService.userDetailsService().loadUserByUsername(email);
+        return jwtService.generateToken(userDetails);
     }
 
     @Test
