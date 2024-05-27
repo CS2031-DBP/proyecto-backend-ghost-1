@@ -1,13 +1,11 @@
 package com.example.proyecto_dbp.Event.domain;
 
 import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
-import com.example.proyecto_dbp.Event.dto.EventDTO;
 import com.example.proyecto_dbp.Event.infrastructure.EventRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class EventService {
@@ -18,79 +16,42 @@ public class EventService {
     @Autowired
     private CourseRepository courseRepository;
 
-    public List<EventDTO> getAllEvents() {
-        return eventRepository.findAll().stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
-    }
+    public List<Event> getAllEvents() {return eventRepository.findAll();}
 
-    public EventDTO getEventById(Long id) {
+    public Event getEventById(Long id) {
         return eventRepository.findById(id)
-                .map(this::convertToDTO)
                 .orElseThrow(() -> new ResourceNotFoundException("Event not found with id " + id));
     }
 
-    public List<EventDTO> getEventsByCourseId(Long courseId) {
-        return eventRepository.findByCourseId(courseId).stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
+    public List<Event> getEventsByCourseId(Long courseId) {
+        List<Event> events = eventRepository.findByCourseId(courseId);
+        if (events.isEmpty()) throw new ResourceNotFoundException("No events found for course with id " + courseId);
+        return events;
     }
 
-    public EventDTO createEvent(EventDTO eventDTO) {
-        Event event = convertToEntity(eventDTO);
-        event = eventRepository.save(event);
-        return convertToDTO(event);
-    }
 
-    public EventDTO updateEvent(Long id, EventDTO eventDTO) {
+    public Event createEvent(Event event) {return eventRepository.save(event);}
+
+    public Event updateEvent(Long id, Event updatedEvent) {
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Event not found with id " + id));
 
-        event.setTitulo(eventDTO.getTitulo());
-        event.setDescripcion(eventDTO.getDescripcion());
-        event.setFechaInicio(eventDTO.getFechaInicio());
-        event.setFechaFin(eventDTO.getFechaFin());
-        event.setEstado(eventDTO.getEstado());
-        event.setLocation(eventDTO.getLocation());
-        event.setAllDay(eventDTO.getAllDay());
-        event.setOrganizer(eventDTO.getOrganizer());
-        event.setAttendees(Collections.singletonList(eventDTO.getAttendees()));
-        event.setReminder(eventDTO.getReminder());
+        event.setTitulo(updatedEvent.getTitulo());
+        event.setDescripcion(updatedEvent.getDescripcion());
+        event.setFechaInicio(updatedEvent.getFechaInicio());
+        event.setFechaFin(updatedEvent.getFechaFin());
+        event.setEstado(updatedEvent.getEstado());
+        event.setLocation(updatedEvent.getLocation());
+        event.setAllDay(updatedEvent.getAllDay());
+        event.setOrganizer(updatedEvent.getOrganizer());
+        event.setAttendees(updatedEvent.getAttendees());
+        event.setReminder(updatedEvent.getReminder());
 
-        event = eventRepository.save(event);
-        return convertToDTO(event);
+        return eventRepository.save(event);
     }
 
-    public void deleteEvent(Long id) {eventRepository.deleteById(id);}
-
-    private EventDTO convertToDTO(Event event) {
-        EventDTO eventDTO = new EventDTO();
-        eventDTO.setId(event.getId());
-        eventDTO.setTitulo(event.getTitulo());
-        eventDTO.setDescripcion(event.getDescripcion());
-        eventDTO.setFechaInicio(event.getFechaInicio());
-        eventDTO.setFechaFin(event.getFechaFin());
-        eventDTO.setEstado(event.getEstado());
-        eventDTO.setLocation(event.getLocation());
-        eventDTO.setAllDay(event.getAllDay());
-        eventDTO.setOrganizer(event.getOrganizer());
-        eventDTO.setReminder(event.getReminder());
-        return eventDTO;
-    }
-
-    private Event convertToEntity(EventDTO eventDTO) {
-        Event event = new Event();
-        event.setId(eventDTO.getId());
-        event.setTitulo(eventDTO.getTitulo());
-        event.setDescripcion(eventDTO.getDescripcion());
-        event.setFechaInicio(eventDTO.getFechaInicio());
-        event.setFechaFin(eventDTO.getFechaFin());
-        event.setEstado(eventDTO.getEstado());
-        event.setLocation(eventDTO.getLocation());
-        event.setAllDay(eventDTO.getAllDay());
-        event.setOrganizer(eventDTO.getOrganizer());
-        event.setAttendees(Collections.singletonList(eventDTO.getAttendees()));
-        event.setReminder(eventDTO.getReminder());
-        return event;
+    public void deleteEvent(Long id) {
+        if (!eventRepository.existsById(id)) throw new ResourceNotFoundException("Event not found with id " + id);
+        eventRepository.deleteById(id);
     }
 }

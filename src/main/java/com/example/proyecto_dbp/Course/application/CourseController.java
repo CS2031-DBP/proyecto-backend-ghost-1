@@ -1,5 +1,6 @@
 package com.example.proyecto_dbp.Course.application;
 
+import com.example.proyecto_dbp.Course.domain.Course;
 import com.example.proyecto_dbp.Course.domain.CourseService;
 import com.example.proyecto_dbp.Course.dto.CourseDTO;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
@@ -18,33 +19,33 @@ public class CourseController {
     private CourseService courseService;
 
     @GetMapping
-    public ResponseEntity<List<CourseDTO>> getAllCourses() {
-        List<CourseDTO> courses = courseService.getAllCourses();
+    public ResponseEntity<List<Course>> getAllCourses() {
+        List<Course> courses = courseService.getAllCourses();
         return ResponseEntity.ok(courses);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CourseDTO> getCourseById(@PathVariable Long id) {
-        CourseDTO course = courseService.getCourseById(id);
+    public ResponseEntity<Course> getCourseById(@PathVariable Long id) {
+        Course course = courseService.getCourseById(id);
         if (course != null) return ResponseEntity.ok(course);
         else return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<CourseDTO>> getCoursesByUserId(@PathVariable Long userId) {
-        List<CourseDTO> courses = courseService.getCoursesByUserId(userId);
+    public ResponseEntity<List<Course>> getCoursesByUserId(@PathVariable Long userId) {
+        List<Course> courses = courseService.getCoursesByUserId(userId);
         return ResponseEntity.ok(courses);
     }
 
     @PostMapping
-    public ResponseEntity<CourseDTO> createCourse(@RequestBody @Valid CourseDTO courseDTO) {
-        CourseDTO createdCourse = courseService.createCourse(courseDTO);
+    public ResponseEntity<Course> createCourse(@RequestBody @Valid Course course) {
+        Course createdCourse = courseService.createCourse(course);
         return new ResponseEntity<>(createdCourse, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CourseDTO> updateCourse(@PathVariable Long id, @RequestBody @Valid CourseDTO courseDTO) {
-        CourseDTO updatedCourse = courseService.updateCourse(id, courseDTO);
+    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody @Valid Course course) {
+        Course updatedCourse = courseService.updateCourse(id, course);
         if (updatedCourse != null) return ResponseEntity.ok(updatedCourse);
         else return ResponseEntity.notFound().build();
     }

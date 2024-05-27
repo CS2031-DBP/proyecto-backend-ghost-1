@@ -1,7 +1,5 @@
 package com.example.proyecto_dbp.Task.domain;
 
-import com.example.proyecto_dbp.Task.dto.TaskDTO;
-import com.example.proyecto_dbp.Task.domain.Task;
 import com.example.proyecto_dbp.Task.infrastructure.TaskRepository;
 import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
@@ -20,71 +18,38 @@ public class TaskService {
     @Autowired
     private CourseRepository courseRepository;
 
-    public List<TaskDTO> getAllTasks() {
-        return taskRepository.findAll().stream().map(this::convertToDTO).collect(Collectors.toList());
+    public List<Task> getAllTasks() {return taskRepository.findAll();}
+
+    public Task getTaskById(Long id) {
+        return taskRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Task not found with id " + id));
     }
 
-    public TaskDTO getTaskById(Long id) {
+    public List<Task> getTasksByCourseId(Long courseId) {
+        List<Task> tasks = taskRepository.findByCourseId(courseId);
+        if (tasks.isEmpty()) throw new ResourceNotFoundException("No tasks found for course with id " + courseId);
+        return tasks;
+    }
+
+
+    public Task createTask(Task task) {return taskRepository.save(task);}
+
+    public Task updateTask(Long id, Task updatedTask) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Task not found with id " + id));
-        return convertToDTO(task);
-    }
 
-    public List<TaskDTO> getTasksByCourseId(Long courseId) {
-        return taskRepository.findAll().stream()
-                .filter(task -> task.getCourse().getCourseid().equals(courseId))
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
-    }
-
-    public TaskDTO createTask(TaskDTO taskDTO) {
-        Task task = convertToEntity(taskDTO);
-        task = taskRepository.save(task);
-        return convertToDTO(task);
-    }
-
-    public TaskDTO updateTask(Long id, TaskDTO taskDTO) {
-        Task task = taskRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Task not found with id " + id));
-        task.setTitulo(taskDTO.getTitulo());
-        task.setDescripcion(taskDTO.getDescripcion());
-        task.setFechaInicio(taskDTO.getFechaInicio());
-        task.setFechaFin(taskDTO.getFechaFin());
-        task.setEstado(taskDTO.getEstado());
-        task.setPriority(taskDTO.getPriority());
-        task.setCompleted(taskDTO.getCompleted());
-        task = taskRepository.save(task);
-        return convertToDTO(task);
+        task.setTitulo(updatedTask.getTitulo());
+        task.setDescripcion(updatedTask.getDescripcion());
+        task.setFechaInicio(updatedTask.getFechaInicio());
+        task.setFechaFin(updatedTask.getFechaFin());
+        task.setEstado(updatedTask.getEstado());
+        task.setPriority(updatedTask.getPriority());
+        task.setCompleted(updatedTask.getCompleted());
+        return taskRepository.save(task);
     }
 
     public void deleteTask(Long id) {
         if (!taskRepository.existsById(id)) throw new ResourceNotFoundException("Task not found with id " + id);
         taskRepository.deleteById(id);
-    }
-
-    private TaskDTO convertToDTO(Task task) {
-        TaskDTO taskDTO = new TaskDTO();
-        taskDTO.setId(task.getId());
-        taskDTO.setTitulo(task.getTitulo());
-        taskDTO.setDescripcion(task.getDescripcion());
-        taskDTO.setFechaInicio(task.getFechaInicio());
-        taskDTO.setFechaFin(task.getFechaFin());
-        taskDTO.setEstado(task.getEstado());
-        taskDTO.setPriority(task.getPriority());
-        taskDTO.setCompleted(task.getCompleted());
-        return taskDTO;
-    }
-
-    private Task convertToEntity(TaskDTO taskDTO) {
-        Task task = new Task();
-        task.setTitulo(taskDTO.getTitulo());
-        task.setDescripcion(taskDTO.getDescripcion());
-        task.setFechaInicio(taskDTO.getFechaInicio());
-        task.setFechaFin(taskDTO.getFechaFin());
-        task.setEstado(taskDTO.getEstado());
-        task.setPriority(taskDTO.getPriority());
-        task.setCompleted(taskDTO.getCompleted());
-        courseRepository.findById(taskDTO.getCourseId()).ifPresent(task::setCourse);
-        return task;
     }
 }

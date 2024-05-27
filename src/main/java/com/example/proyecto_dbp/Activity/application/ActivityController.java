@@ -1,5 +1,6 @@
 package com.example.proyecto_dbp.Activity.application;
 
+import com.example.proyecto_dbp.Activity.domain.Activity;
 import com.example.proyecto_dbp.Activity.domain.ActivityService;
 import com.example.proyecto_dbp.Activity.dto.ActivityDTO;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
@@ -19,33 +20,32 @@ public class ActivityController {
     private ActivityService activityService;
 
     @GetMapping
-    public ResponseEntity<List<ActivityDTO>> getAllActivities() {
-        List<ActivityDTO> activities = activityService.getAllActivities();
+    public ResponseEntity<List<Activity>> getAllActivities() {
+        List<Activity> activities = activityService.getAllActivities();
         return ResponseEntity.ok(activities);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ActivityDTO> getActivityById(@PathVariable Long id) {
-        return activityService.getActivityById(id)
-                .map(ResponseEntity::ok)
-                .orElseThrow(() -> new ResourceNotFoundException("Activity not found with id " + id));
+    public ResponseEntity<Activity> getActivityById(@PathVariable Long id) {
+        Activity activity = activityService.getActivityById(id);
+        return ResponseEntity.ok(activity);
     }
 
     @GetMapping("/course/{courseId}")
-    public ResponseEntity<List<ActivityDTO>> getActivitiesByCourseId(@PathVariable Long courseId) {
-        List<ActivityDTO> activities = activityService.getActivitiesByCourseId(courseId);
+    public ResponseEntity<List<Activity>> getActivitiesByCourseId(@PathVariable Long courseId) {
+        List<Activity> activities = activityService.getActivitiesByCourseId(courseId);
         return ResponseEntity.ok(activities);
     }
 
     @PostMapping
-    public ResponseEntity<ActivityDTO> createActivity(@RequestBody @Valid ActivityDTO activityDTO) {
-        ActivityDTO createdActivity = activityService.createActivity(activityDTO);
+    public ResponseEntity<Activity> createActivity(@RequestBody @Valid Activity activity) {
+        Activity createdActivity = activityService.createActivity(activity);
         return new ResponseEntity<>(createdActivity, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ActivityDTO> updateActivity(@PathVariable Long id, @RequestBody @Valid ActivityDTO activityDTO) {
-        ActivityDTO updatedActivity = activityService.updateActivity(id, activityDTO);
+    public ResponseEntity<Activity> updateActivity(@PathVariable Long id, @RequestBody @Valid Activity activity) {
+        Activity updatedActivity = activityService.updateActivity(id, activity);
         return ResponseEntity.ok(updatedActivity);
     }
 

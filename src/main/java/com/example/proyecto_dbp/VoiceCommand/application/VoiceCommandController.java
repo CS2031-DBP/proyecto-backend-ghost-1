@@ -1,5 +1,6 @@
 package com.example.proyecto_dbp.VoiceCommand.application;
 
+import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommand;
 import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommandService;
 import com.example.proyecto_dbp.VoiceCommand.dto.VoiceCommandDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,27 +18,29 @@ public class VoiceCommandController {
     private VoiceCommandService voiceCommandService;
 
     @GetMapping
-    public List<VoiceCommandDTO> getAllVoiceCommands() {return voiceCommandService.getAllVoiceCommands();}
+    public List<VoiceCommand> getAllVoiceCommands() {
+        return voiceCommandService.getAllVoiceCommands();
+    }
 
     @GetMapping("/{id}")
-    public ResponseEntity<VoiceCommandDTO> getVoiceCommandById(@PathVariable Long id) {
+    public ResponseEntity<VoiceCommand> getVoiceCommandById(@PathVariable Long id) {
         return ResponseEntity.of(voiceCommandService.getVoiceCommandById(id));
     }
 
     @GetMapping("/user/{userId}")
-    public List<VoiceCommandDTO> getVoiceCommandsByUserId(@PathVariable Long userId) {
+    public List<VoiceCommand> getVoiceCommandsByUserId(@PathVariable Long userId) {
         return voiceCommandService.getVoiceCommandsByUserId(userId);
     }
 
     @PostMapping
-    public ResponseEntity<VoiceCommandDTO> createVoiceCommand(@RequestBody VoiceCommandDTO voiceCommandDTO) {
-        VoiceCommandDTO createdVoiceCommand = voiceCommandService.createVoiceCommand(voiceCommandDTO);
+    public ResponseEntity<VoiceCommand> createVoiceCommand(@RequestBody VoiceCommand voiceCommand) {
+        VoiceCommand createdVoiceCommand = voiceCommandService.createVoiceCommand(voiceCommand);
         return new ResponseEntity<>(createdVoiceCommand, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<VoiceCommandDTO> updateVoiceCommand(@PathVariable Long id, @RequestBody VoiceCommandDTO voiceCommandDTO) {
-        VoiceCommandDTO updatedVoiceCommand = voiceCommandService.updateVoiceCommand(id, voiceCommandDTO);
+    public ResponseEntity<VoiceCommand> updateVoiceCommand(@PathVariable Long id, @RequestBody VoiceCommand voiceCommand) {
+        VoiceCommand updatedVoiceCommand = voiceCommandService.updateVoiceCommand(id, voiceCommand);
         return ResponseEntity.ok(updatedVoiceCommand);
     }
 

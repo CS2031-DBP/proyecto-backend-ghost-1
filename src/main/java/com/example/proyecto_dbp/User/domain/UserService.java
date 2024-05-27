@@ -1,14 +1,14 @@
 package com.example.proyecto_dbp.User.domain;
 
-import com.example.proyecto_dbp.User.dto.UserDTO;
 import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import com.example.proyecto_dbp.exceptions.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -16,63 +16,39 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserService(UserRepository userRepository) {this.userRepository = userRepository;}
+
+    public UserDetailsService userDetailsService() {
+        return email -> userRepository.findByEmail(email)
+                .map(user -> (org.springframework.security.core.userdetails.UserDetails) user)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
     }
 
-    public List<UserDTO> getAllUsers() {
-        return userRepository.findAll().stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
-    }
+    public List<User> getAllUsers() {return userRepository.findAll();}
 
-    public UserDTO getUserById(Long id) {
-        User user = userRepository.findById(id)
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
-        return convertToDTO(user);
     }
 
-    public UserDTO createUser(UserDTO userDTO) {
-        if (userRepository.existsByEmail(userDTO.getEmail())) {
-            throw new UserAlreadyExistException("User already exists with email " + userDTO.getEmail());
+    public User createUser(User user) {
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new UserAlreadyExistException("User already exists with email " + user.getEmail());
         }
-        User user = convertToEntity(userDTO);
-        userRepository.save(user);
-        return convertToDTO(user);
+        return userRepository.save(user);
     }
 
-    public UserDTO updateUser(Long id, UserDTO userDTO) {
+    public User updateUser(Long id, User updatedUser) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
-        user.setEmail(userDTO.getEmail());
-        user.setName(userDTO.getName());
-        userRepository.save(user);
-        return convertToDTO(user);
+        user.setEmail(updatedUser.getEmail());
+        user.setName(updatedUser.getName());
+        return userRepository.save(user);
     }
 
     public void deleteUser(Long id) {
-        userRepository.findById(id)
+        User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
         userRepository.deleteById(id);
-    }
-
-    private UserDTO convertToDTO(User user) {
-        UserDTO dto = new UserDTO();
-        dto.setId(user.getId());
-        dto.setEmail(user.getEmail());
-        dto.setName(user.getName());
-        dto.setPassword(user.getPassword());
-        dto.setRole(user.getRole());
-        return dto;
-    }
-
-    private User convertToEntity(UserDTO userDTO) {
-        User user = new User();
-        user.setId(userDTO.getId());
-        user.setEmail(userDTO.getEmail());
-        user.setName(userDTO.getName());
-        user.setPassword(userDTO.getPassword());
-        user.setRole(userDTO.getRole());
-        return user;
     }
 }

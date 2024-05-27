@@ -1,5 +1,6 @@
 package com.example.proyecto_dbp.Event.application;
 
+import com.example.proyecto_dbp.Event.domain.Event;
 import com.example.proyecto_dbp.Event.domain.EventService;
 import com.example.proyecto_dbp.Event.dto.EventDTO;
 import com.example.proyecto_dbp.Event.events.EmailService;
@@ -30,33 +31,33 @@ public class EventController {
     }
 
     @GetMapping
-    public ResponseEntity<List<EventDTO>> getAllEvents() {
-        List<EventDTO> events = eventService.getAllEvents();
+    public ResponseEntity<List<Event>> getAllEvents() {
+        List<Event> events = eventService.getAllEvents();
         return ResponseEntity.ok(events);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EventDTO> getEventById(@PathVariable Long id) {
-        EventDTO event = eventService.getEventById(id);
+    public ResponseEntity<Event> getEventById(@PathVariable Long id) {
+        Event event = eventService.getEventById(id);
         if (event != null) return ResponseEntity.ok(event);
         else return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/course/{courseId}")
-    public ResponseEntity<List<EventDTO>> getEventsByCourseId(@PathVariable Long courseId) {
-        List<EventDTO> events = eventService.getEventsByCourseId(courseId);
+    public ResponseEntity<List<Event>> getEventsByCourseId(@PathVariable Long courseId) {
+        List<Event> events = eventService.getEventsByCourseId(courseId);
         return ResponseEntity.ok(events);
     }
 
     @PostMapping
-    public ResponseEntity<EventDTO> createEvent(@RequestBody @Valid EventDTO eventDTO) {
-        EventDTO createdEvent = eventService.createEvent(eventDTO);
+    public ResponseEntity<Event> createEvent(@RequestBody @Valid Event event) {
+        Event createdEvent = eventService.createEvent(event);
         return new ResponseEntity<>(createdEvent, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EventDTO> updateEvent(@PathVariable Long id, @RequestBody @Valid EventDTO eventDTO) {
-        EventDTO updatedEvent = eventService.updateEvent(id, eventDTO);
+    public ResponseEntity<Event> updateEvent(@PathVariable Long id, @RequestBody @Valid Event event) {
+        Event updatedEvent = eventService.updateEvent(id, event);
         if (updatedEvent != null) return ResponseEntity.ok(updatedEvent);
         else return ResponseEntity.notFound().build();
     }
