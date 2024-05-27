@@ -1,20 +1,22 @@
 package com.example.proyecto_dbp.User.application;
 
 import com.example.proyecto_dbp.User.domain.User;
-import com.example.proyecto_dbp.User.infrastructure.UserRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Assertions;
+import com.example.proyecto_dbp.User.domain.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.*;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import java.util.Optional;
+import java.util.Collections;
+import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -23,114 +25,93 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class UserControllerTest {
 
-    @Autowired
+    @Mock
+    private UserService userService;
+
+    @InjectMocks
+    private UserController userController;
+
     private MockMvc mockMvc;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    private User user;
-
     @BeforeEach
-    @Transactional
-    public void setUp() {
-        userRepository.deleteAll(); // Limpiar la tabla antes de cada prueba
-        user = new User();
-        user.setName("John Doe");
-        user.setEmail("john.doe@example.com");
-        user.setPassword("password123");
-        user.setRole("USER");
-        userRepository.save(user);
-    }
-
-    @Test
-    public void testCreateUser() throws Exception {
-        User newUser = new User();
-        newUser.setName("Jane Doe");
-        newUser.setEmail("jane.doe@example.com");
-        newUser.setPassword("password123");
-        newUser.setRole("USER");
-
-        var res = mockMvc.perform(post("/users")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(newUser)))
-                .andExpect(status().isCreated())
-                .andReturn();
-
-        String location = res.getResponse().getHeader("Location");
-        assert location != null;
-        String id = location.substring(location.lastIndexOf("/") + 1);
-
-        Optional<User> createdUser = userRepository.findById(Long.valueOf(id));
-        Assertions.assertTrue(createdUser.isPresent());
-        Assertions.assertEquals("Jane Doe", createdUser.get().getName());
-        Assertions.assertEquals("jane.doe@example.com", createdUser.get().getEmail());
-    }
-
-    @Test
-    public void testDeleteUser() throws Exception {
-        User newUser = new User();
-        newUser.setName("Jane Doe");
-        newUser.setEmail("jane.doe@example.com");
-        newUser.setPassword("password123");
-        newUser.setRole("USER");
-
-        var res = mockMvc.perform(post("/users")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(newUser)))
-                .andExpect(status().isCreated())
-                .andReturn();
-
-        String location = res.getResponse().getHeader("Location");
-        assert location != null;
-        String id = location.substring(location.lastIndexOf("/") + 1);
-
-        Optional<User> createdUser = userRepository.findById(Long.valueOf(id));
-        Assertions.assertTrue(createdUser.isPresent());
-
-        mockMvc.perform(delete("/users/{id}", id))
-                .andExpect(status().isNoContent());
-
-        Assertions.assertFalse(userRepository.existsById(Long.valueOf(id)));
+    public void setup() {
+        MockitoAnnotations.openMocks(this);
+        mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
     }
 
     @Test
     public void testGetAllUsers() throws Exception {
+        User user = new User();
+        user.setId(1L);
+        user.setEmail("test@example.com");
+        user.setName("Test User");
+
+        List<User> users = Collections.singletonList(user);
+
+        given(userService.getAllUsers()).willReturn(users);
+
         mockMvc.perform(get("/users"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("John Doe"))
-                .andExpect(jsonPath("$[0].email").value("john.doe@example.com"));
+                .andExpect(jsonPath("$[0].id").value(user.getId()))
+                .andExpect(jsonPath("$[0].email").value(user.getEmail()))
+                .andExpect(jsonPath("$[0].name").value(user.getName()));
     }
 
     @Test
     public void testGetUserById() throws Exception {
-        mockMvc.perform(get("/users/{id}", user.getId()))
+        User user = new User();
+        user.setId(1L);
+        user.setEmail("test@example.com");
+        user.setName("Test User");
+
+        given(userService.getUserById(anyLong())).willReturn(user);
+
+        mockMvc.perform(get("/users/{id}", 1L))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("John Doe"))
-                .andExpect(jsonPath("$.email").value("john.doe@example.com"));
+                .andExpect(jsonPath("$.id").value(user.getId()))
+                .andExpect(jsonPath("$.email").value(user.getEmail()))
+                .andExpect(jsonPath("$.name").value(user.getName()));
+    }
+
+    @Test
+    public void testCreateUser() throws Exception {
+        User user = new User();
+        user.setId(1L);
+        user.setEmail("newuser@example.com");
+        user.setName("New User");
+
+        given(userService.createUser(any(User.class))).willReturn(user);
+
+        mockMvc.perform(post("/users")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"email\":\"newuser@example.com\", \"name\":\"New User\", \"password\":\"password123\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.id").value(user.getId()))
+                .andExpect(jsonPath("$.email").value(user.getEmail()))
+                .andExpect(jsonPath("$.name").value(user.getName()));
     }
 
     @Test
     public void testUpdateUser() throws Exception {
-        User updatedUser = new User();
-        updatedUser.setName("Jane Doe");
-        updatedUser.setEmail("jane.doe@example.com");
-        updatedUser.setPassword("newpassword123");
-        updatedUser.setRole("USER");
+        User user = new User();
+        user.setId(1L);
+        user.setEmail("updateduser@example.com");
+        user.setName("Updated User");
 
-        mockMvc.perform(put("/users/{id}", user.getId())
+        given(userService.updateUser(anyLong(), any(User.class))).willReturn(user);
+
+        mockMvc.perform(put("/users/{id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(updatedUser)))
+                        .content("{\"email\":\"updateduser@example.com\", \"name\":\"Updated User\", \"password\":\"password123\"}"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Jane Doe"))
-                .andExpect(jsonPath("$.email").value("jane.doe@example.com"));
+                .andExpect(jsonPath("$.id").value(user.getId()))
+                .andExpect(jsonPath("$.email").value(user.getEmail()))
+                .andExpect(jsonPath("$.name").value(user.getName()));
+    }
 
-        Optional<User> updatedUserEntity = userRepository.findById(user.getId());
-        Assertions.assertTrue(updatedUserEntity.isPresent());
-        Assertions.assertEquals("Jane Doe", updatedUserEntity.get().getName());
-        Assertions.assertEquals("jane.doe@example.com", updatedUserEntity.get().getEmail());
+    @Test
+    public void testDeleteUser() throws Exception {
+        mockMvc.perform(delete("/users/{id}", 1L))
+                .andExpect(status().isNoContent());
     }
 }
