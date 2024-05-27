@@ -134,7 +134,7 @@
       <recent name="com.example.proyecto_dbp.VoiceCommand" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ProyectoDbpApplication">
+  <component name="RunManager" selected="JUnit.UserControllerSecurityTest">
     <configuration name="UserControllerSecurityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <extension name="coverage">

@@ -43,8 +43,6 @@ public class UserControllerSecurityTest {
     @BeforeEach
     public void setUp() throws Exception {
         userRepository.deleteAll();
-
-        // Crea un usuario administrador y un usuario regular para las pruebas
         adminToken = createJwtToken("admin@example.com", "ADMIN");
         userToken = createJwtToken("user@example.com", "STUDENT");
     }
@@ -53,7 +51,7 @@ public class UserControllerSecurityTest {
         User user = new User();
         user.setEmail(email);
         user.setPassword("password");
-        user.setRole(role);
+        user.setRoles(role);
         userRepository.save(user);
 
         UserDetails userDetails = userService.userDetailsService().loadUserByUsername(email);

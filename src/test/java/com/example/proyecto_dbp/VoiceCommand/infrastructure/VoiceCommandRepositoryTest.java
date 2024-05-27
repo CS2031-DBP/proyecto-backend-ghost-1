@@ -39,7 +39,7 @@ public class VoiceCommandRepositoryTest {
         testUser.setEmail("testuser@example.com");
         testUser.setPassword("password");
         testUser.setName("Test User");
-        testUser.setRole("USER");
+        testUser.setRoles("USER");
         userRepository.save(testUser);
 
         testActivity = new Activity();

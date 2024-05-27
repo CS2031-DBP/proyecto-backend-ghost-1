@@ -1,7 +1,6 @@
 package com.example.proyecto_dbp.User.infrastructure;
 
 import com.example.proyecto_dbp.User.domain.User;
-import com.example.proyecto_dbp.User.domain.Role;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,7 @@ public class UserRepositoryTest {
         user.setEmail(email);
         user.setName(name);
         user.setPassword(password);
-        user.setRole(role);
+        user.setRoles(role);
         return entityManager.persist(user);
     }
 
@@ -43,7 +42,7 @@ public class UserRepositoryTest {
         newUser.setEmail("newuser@example.com");
         newUser.setName("New User");
         newUser.setPassword("newpassword");
-        newUser.setRole("STUDENT");
+        newUser.setRoles("STUDENT");
 
         User savedUser = userRepository.save(newUser);
         User retrievedUser = entityManager.find(User.class, savedUser.getId());
@@ -51,7 +50,7 @@ public class UserRepositoryTest {
         assertEquals(newUser.getEmail(), retrievedUser.getEmail());
         assertEquals(newUser.getName(), retrievedUser.getName());
         assertEquals(newUser.getPassword(), retrievedUser.getPassword());
-        assertEquals(newUser.getRole(), retrievedUser.getRole());
+        assertEquals(newUser.getRoles(), retrievedUser.getRoles());
     }
 
     @Test
