@@ -1,14 +1,15 @@
 package com.example.proyecto_dbp.VoiceCommand.infrastructure;
 
+import com.example.proyecto_dbp.Activity.infrastructure.ActivityRepository;
+import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommand;
-import com.example.proyecto_dbp.VoiceCommand.dto.VoiceCommandDTO;
 import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommandService;
 import com.example.proyecto_dbp.User.domain.User;
 import com.example.proyecto_dbp.Activity.domain.Activity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -16,19 +17,22 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DataJpaTest
+@SpringBootTest
 @Transactional
 public class VoiceCommandRepositoryTest {
 
     @Autowired
-    private VoiceCommandRepository voiceCommandRepository;
+    private VoiceCommandService voiceCommandService;
 
     @Autowired
-    private VoiceCommandService voiceCommandService;
+    private UserRepository userRepository;
+
+    @Autowired
+    private ActivityRepository activityRepository;
 
     private User testUser;
     private Activity testActivity;
-    private VoiceCommandDTO testVoiceCommandDTO;
+    private VoiceCommand testVoiceCommand;
 
     @BeforeEach
     void setUp() {
@@ -37,59 +41,59 @@ public class VoiceCommandRepositoryTest {
         testUser.setPassword("password");
         testUser.setName("Test User");
         testUser.setRole("USER");
+        userRepository.save(testUser);
 
         testActivity = new Activity();
         testActivity.setTitulo("Test Activity");
+        activityRepository.save(testActivity);
 
-        testVoiceCommandDTO = new VoiceCommandDTO();
-        testVoiceCommandDTO.setCommand("Test Command");
-        testVoiceCommandDTO.setDescriptionAction("Test Action");
-        testVoiceCommandDTO.setTimestamp(LocalDateTime.now());
-        testVoiceCommandDTO.setUser(testUser);
-        testVoiceCommandDTO.setActivity(testActivity);
+        testVoiceCommand = new VoiceCommand();
+        testVoiceCommand.setCommand("Test Command");
+        testVoiceCommand.setDescriptionAction("Test Action");
+        testVoiceCommand.setTimestamp(LocalDateTime.now());
+        testVoiceCommand.setUser(testUser);
+        testVoiceCommand.setActivity(testActivity);
     }
 
     @Test
     void testSaveVoiceCommand() {
-        VoiceCommandDTO savedVoiceCommandDTO = voiceCommandService.createVoiceCommand(testVoiceCommandDTO);
+        VoiceCommand savedVoiceCommand = voiceCommandService.createVoiceCommand(testVoiceCommand);
 
-        assertNotNull(savedVoiceCommandDTO.getId());
-        Optional<VoiceCommand> savedVoiceCommand = voiceCommandRepository.findById(savedVoiceCommandDTO.getId());
-        assertTrue(savedVoiceCommand.isPresent());
-        assertEquals(testVoiceCommandDTO.getCommand(), savedVoiceCommand.get().getCommand());
+        assertNotNull(savedVoiceCommand.getId());
+        Optional<VoiceCommand> foundVoiceCommand = voiceCommandService.getVoiceCommandById(savedVoiceCommand.getId());
+        assertTrue(foundVoiceCommand.isPresent());
+        assertEquals(testVoiceCommand.getCommand(), foundVoiceCommand.get().getCommand());
     }
 
     @Test
     void testGetVoiceCommandById() {
-        VoiceCommandDTO savedVoiceCommandDTO = voiceCommandService.createVoiceCommand(testVoiceCommandDTO);
-        Optional<VoiceCommandDTO> foundVoiceCommandDTO = voiceCommandService.getVoiceCommandById(savedVoiceCommandDTO.getId());
+        VoiceCommand savedVoiceCommand = voiceCommandService.createVoiceCommand(testVoiceCommand);
+        Optional<VoiceCommand> foundVoiceCommand = voiceCommandService.getVoiceCommandById(savedVoiceCommand.getId());
 
-        assertTrue(foundVoiceCommandDTO.isPresent());
-        assertEquals(savedVoiceCommandDTO.getCommand(), foundVoiceCommandDTO.get().getCommand());
+        assertTrue(foundVoiceCommand.isPresent());
+        assertEquals(savedVoiceCommand.getCommand(), foundVoiceCommand.get().getCommand());
     }
 
     @Test
     void testUpdateVoiceCommand() {
-        VoiceCommandDTO savedVoiceCommandDTO = voiceCommandService.createVoiceCommand(testVoiceCommandDTO);
+        VoiceCommand savedVoiceCommand = voiceCommandService.createVoiceCommand(testVoiceCommand);
+        savedVoiceCommand.setCommand("Updated Command");
+        VoiceCommand updatedVoiceCommand = voiceCommandService.updateVoiceCommand(savedVoiceCommand.getId(), savedVoiceCommand);
 
-        savedVoiceCommandDTO.setCommand("Updated Command");
-        VoiceCommandDTO updatedVoiceCommandDTO = voiceCommandService.updateVoiceCommand(savedVoiceCommandDTO.getId(), savedVoiceCommandDTO);
+        assertNotNull(updatedVoiceCommand);
+        assertEquals("Updated Command", updatedVoiceCommand.getCommand());
 
-        assertNotNull(updatedVoiceCommandDTO);
-        assertEquals("Updated Command", updatedVoiceCommandDTO.getCommand());
-
-        Optional<VoiceCommand> updatedVoiceCommand = voiceCommandRepository.findById(updatedVoiceCommandDTO.getId());
-        assertTrue(updatedVoiceCommand.isPresent());
-        assertEquals("Updated Command", updatedVoiceCommand.get().getCommand());
+        Optional<VoiceCommand> foundVoiceCommand = voiceCommandService.getVoiceCommandById(updatedVoiceCommand.getId());
+        assertTrue(foundVoiceCommand.isPresent());
+        assertEquals("Updated Command", foundVoiceCommand.get().getCommand());
     }
 
     @Test
     void testDeleteVoiceCommand() {
-        VoiceCommandDTO savedVoiceCommandDTO = voiceCommandService.createVoiceCommand(testVoiceCommandDTO);
+        VoiceCommand savedVoiceCommand = voiceCommandService.createVoiceCommand(testVoiceCommand);
+        voiceCommandService.deleteVoiceCommand(savedVoiceCommand.getId());
 
-        voiceCommandService.deleteVoiceCommand(savedVoiceCommandDTO.getId());
-
-        Optional<VoiceCommand> deletedVoiceCommand = voiceCommandRepository.findById(savedVoiceCommandDTO.getId());
+        Optional<VoiceCommand> deletedVoiceCommand = voiceCommandService.getVoiceCommandById(savedVoiceCommand.getId());
         assertFalse(deletedVoiceCommand.isPresent());
     }
 }

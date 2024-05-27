@@ -1,6 +1,7 @@
 package com.example.proyecto_dbp.Task.infrastructure;
 
 import com.example.proyecto_dbp.Task.application.TaskController;
+import com.example.proyecto_dbp.Task.domain.Task;
 import com.example.proyecto_dbp.Task.domain.TaskService;
 import com.example.proyecto_dbp.Task.dto.TaskDTO;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
@@ -36,25 +37,24 @@ public class TaskRepositoryTest {
     @InjectMocks
     private TaskController taskController;
 
-    private TaskDTO taskDTO;
+    private Task task;
 
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(taskController).build();
 
-        // Crear TaskDTO
-        taskDTO = new TaskDTO();
-        taskDTO.setId(1L);
-        taskDTO.setTitulo("Test Task");
-        taskDTO.setDescripcion("Test Description");
-        taskDTO.setPriority("High");
-        taskDTO.setCompleted(false);
-        taskDTO.setCourseId(1L);
+        task = new Task();
+        task.setId(1L);
+        task.setTitulo("Test Task");
+        task.setDescripcion("Test Description");
+        task.setPriority("High");
+        task.setCompleted(false);
+        task.setId(1L);
 
-        when(taskService.getTaskById(anyLong())).thenReturn(taskDTO);
-        when(taskService.createTask(any(TaskDTO.class))).thenReturn(taskDTO);
-        when(taskService.updateTask(anyLong(), any(TaskDTO.class))).thenReturn(taskDTO);
+        when(taskService.getTaskById(anyLong())).thenReturn(task);
+        when(taskService.createTask(any(Task.class))).thenReturn(task);
+        when(taskService.updateTask(anyLong(), any(Task.class))).thenReturn(task);
     }
 
     @Test
@@ -97,7 +97,7 @@ public class TaskRepositoryTest {
 
     @Test
     public void testUpdateTaskNotFound() throws Exception {
-        when(taskService.updateTask(anyLong(), any(TaskDTO.class))).thenThrow(new ResourceNotFoundException("Task not found"));
+        when(taskService.updateTask(anyLong(), any(Task.class))).thenThrow(new ResourceNotFoundException("Task not found"));
         mockMvc.perform(put("/tasks/{id}", 999L)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"titulo\":\"Updated Task\",\"descripcion\":\"Updated Description\",\"priority\":\"Low\",\"completed\":true,\"courseId\":1}"))

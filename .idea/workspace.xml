@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="UserService y CourseService chekar">
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="VOLVIO LA FE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/domain/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/domain/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/application/AuthController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/domain/AuthService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/dto/JwtAuthResponse.java" beforeDir="false" />
@@ -20,6 +17,15 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/config/JwtService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/config/SecurityConfig.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Activity/application/ActivityControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Activity/application/ActivityControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/CalendarIntegration/application/CalendarIntegrationControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/CalendarIntegration/application/CalendarIntegrationControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Course/application/CourseControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Course/application/CourseControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Event/application/EventControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Event/application/EventControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Task/application/TaskControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Task/application/TaskControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Task/infrastructure/TaskRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Task/infrastructure/TaskRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/User/application/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/User/application/UserControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/infrastructure/VoiceCommandRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/infrastructure/VoiceCommandRepositoryTest.java" afterDir="false" />
     </list>
     <list id="61212159-768c-44e4-b1fa-c5ee4fb9bb58" name="Changes by jorge l" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +84,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.ActivityControllerTest.executor": "Run",
+    "JUnit.CalendarIntegrationControllerTest.executor": "Run",
+    "JUnit.CourseControllerTest.executor": "Run",
+    "JUnit.CourseControllerTest.testCreateCourse.executor": "Run",
+    "JUnit.CourseControllerTest.testGetAllCourses.executor": "Run",
+    "JUnit.EventControllerTest.executor": "Run",
+    "JUnit.TaskControllerTest.executor": "Run",
     "JUnit.TaskRepositoryTest.executor": "Run",
     "JUnit.TaskRepositoryTest.testGetAllTasks.executor": "Run",
     "JUnit.UserControllerTest.executor": "Run",
@@ -88,6 +102,7 @@
     "JUnit.UserRepositoryTest.testUpdateUser.executor": "Run",
     "JUnit.VoiceCommandControllerTest.executor": "Run",
     "JUnit.VoiceCommandRepositoryTest.executor": "Run",
+    "JUnit.VoiceCommandRepositoryTest.testGetVoiceCommandById.executor": "Run",
     "JUnit.VoiceCommandServiceTest.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -98,10 +113,11 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.ProyectoDbpApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "openjdk-22",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/j_lea/OneDrive/Escritorio/dbp - uber - test/solu-pc1-20241-sec2",
+    "last_opened_file_path": "C:/Users/j_lea/OneDrive/Escritorio/dbp - uber - test/gg",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -133,17 +149,47 @@
       <recent name="com.example.proyecto_dbp.VoiceCommand" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="TaskRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TaskControllerTest">
+    <configuration name="CalendarIntegrationControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.proyecto_dbp.Task.infrastructure.*" />
+          <option name="PATTERN" value="com.example.proyecto_dbp.CalendarIntegration.application.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Task.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Task.infrastructure.TaskRepositoryTest" />
+      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.CalendarIntegration.application" />
+      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.CalendarIntegration.application.CalendarIntegrationControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto_dbp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.proyecto_dbp.Event.application.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Event.application" />
+      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Event.application.EventControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto_dbp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.proyecto_dbp.Task.application.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Task.application" />
+      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Task.application.TaskControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -164,21 +210,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto_dbp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.proyecto_dbp.User.infrastructure.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.User.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.User.infrastructure.UserRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="VoiceCommandControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <extension name="coverage">
@@ -194,21 +225,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VoiceCommandRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto_dbp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.proyecto_dbp.VoiceCommand.infrastructure.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.VoiceCommand.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.VoiceCommand.infrastructure.VoiceCommandRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ProyectoDbpApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.proyecto_dbp.ProyectoDbpApplication" />
@@ -218,11 +234,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.VoiceCommandRepositoryTest" />
-        <item itemvalue="JUnit.VoiceCommandControllerTest" />
-        <item itemvalue="JUnit.TaskRepositoryTest" />
+        <item itemvalue="JUnit.TaskControllerTest" />
         <item itemvalue="JUnit.UserControllerTest" />
-        <item itemvalue="JUnit.UserRepositoryTest" />
+        <item itemvalue="JUnit.VoiceCommandControllerTest" />
+        <item itemvalue="JUnit.CalendarIntegrationControllerTest" />
+        <item itemvalue="JUnit.EventControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -275,7 +291,8 @@
       <workItem from="1716705854380" duration="16236000" />
       <workItem from="1716744541768" duration="9007000" />
       <workItem from="1716759785531" duration="7369000" />
-      <workItem from="1716774262943" duration="2935000" />
+      <workItem from="1716774262943" duration="6946000" />
+      <workItem from="1716782421561" duration="3743000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -429,7 +446,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716762520427</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="VOLVIO LA FE">
+      <option name="closed" value="true" />
+      <created>1716777577410</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716777577410</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,6 +472,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Changes by Jose Aguilar" />
     <MESSAGE value="xd" />
     <MESSAGE value="Modified w errors" />
@@ -464,7 +490,8 @@
     <MESSAGE value="falta testear y verificar todo &#10;verificar envio de emails" />
     <MESSAGE value="completo" />
     <MESSAGE value="UserService y CourseService chekar" />
-    <option name="LAST_COMMIT_MESSAGE" value="UserService y CourseService chekar" />
+    <MESSAGE value="VOLVIO LA FE" />
+    <option name="LAST_COMMIT_MESSAGE" value="VOLVIO LA FE" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

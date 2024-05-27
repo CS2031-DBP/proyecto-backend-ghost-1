@@ -1,7 +1,6 @@
 package com.example.proyecto_dbp.User.application;
 
 import com.example.proyecto_dbp.User.domain.User;
-import com.example.proyecto_dbp.User.dto.UserDTO;
 import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
@@ -22,7 +21,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@Transactional
 public class UserControllerTest {
 
     @Autowired
@@ -37,18 +35,24 @@ public class UserControllerTest {
     private User user;
 
     @BeforeEach
+    @Transactional
     public void setUp() {
+        userRepository.deleteAll(); // Limpiar la tabla antes de cada prueba
         user = new User();
         user.setName("John Doe");
         user.setEmail("john.doe@example.com");
+        user.setPassword("password123");
+        user.setRole("USER");
         userRepository.save(user);
     }
 
     @Test
     public void testCreateUser() throws Exception {
-        UserDTO newUser = new UserDTO();
+        User newUser = new User();
         newUser.setName("Jane Doe");
         newUser.setEmail("jane.doe@example.com");
+        newUser.setPassword("password123");
+        newUser.setRole("USER");
 
         var res = mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -68,7 +72,11 @@ public class UserControllerTest {
 
     @Test
     public void testDeleteUser() throws Exception {
-        UserDTO newUser = new UserDTO(null, "jane.doe@example.com", "Jane Doe", "password123", "USER");
+        User newUser = new User();
+        newUser.setName("Jane Doe");
+        newUser.setEmail("jane.doe@example.com");
+        newUser.setPassword("password123");
+        newUser.setRole("USER");
 
         var res = mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -107,9 +115,11 @@ public class UserControllerTest {
 
     @Test
     public void testUpdateUser() throws Exception {
-        UserDTO updatedUser = new UserDTO();
+        User updatedUser = new User();
         updatedUser.setName("Jane Doe");
         updatedUser.setEmail("jane.doe@example.com");
+        updatedUser.setPassword("newpassword123");
+        updatedUser.setRole("USER");
 
         mockMvc.perform(put("/users/{id}", user.getId())
                         .contentType(MediaType.APPLICATION_JSON)
