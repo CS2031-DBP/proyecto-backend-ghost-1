@@ -74,24 +74,27 @@ public class CalendarIntegrationControllerTest {
 
         mockMvc.perform(post("/calendar-integrations")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"title\":\"New Integration\"}"))
+                        .content("{\"googleCalendarEventId\":\"New Integration\"}"))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.title").value("New Integration"));
+                .andExpect(jsonPath("$.googleCalendarEventId").value("New Integration"));
     }
+
 
     @Test
     public void testUpdateCalendarIntegration() throws Exception {
         CalendarIntegration integration = new CalendarIntegration();
         integration.setActivityId(1L);
         integration.setGoogleCalendarEventId("Updated Integration");
+
         when(calendarIntegrationService.updateCalendarIntegration(eq(1L), any(CalendarIntegration.class))).thenReturn(integration);
 
         mockMvc.perform(put("/calendar-integrations/1")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"title\":\"Updated Integration\"}"))
+                        .content("{\"googleCalendarEventId\":\"Updated Integration\"}"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value("Updated Integration"));
+                .andExpect(jsonPath("$.googleCalendarEventId").value("Updated Integration"));
     }
+
 
     @Test
     public void testUpdateCalendarIntegration_NotFound() throws Exception {
