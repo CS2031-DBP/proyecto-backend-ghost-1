@@ -13,9 +13,6 @@ public class EventService {
     @Autowired
     private EventRepository eventRepository;
 
-    @Autowired
-    private CourseRepository courseRepository;
-
     public List<Event> getAllEvents() {return eventRepository.findAll();}
 
     public Event getEventById(Long id) {

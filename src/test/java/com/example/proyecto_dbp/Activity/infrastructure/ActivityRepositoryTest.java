@@ -1,91 +1,143 @@
 package com.example.proyecto_dbp.Activity.infrastructure;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.example.proyecto_dbp.Activity.application.ActivityController;
 import com.example.proyecto_dbp.Activity.domain.Activity;
-import com.example.proyecto_dbp.Course.domain.Course;
-import com.example.proyecto_dbp.User.domain.User;
+import com.example.proyecto_dbp.Activity.domain.ActivityService;
+import com.example.proyecto_dbp.GlobalExceptionHandler;
+import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Timestamp;
+import java.util.Collections;
+import java.util.List;
 
-@DataJpaTest
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@SpringBootTest
+@AutoConfigureMockMvc
+@Transactional
 public class ActivityRepositoryTest {
 
-    @Autowired
-    private TestEntityManager entityManager;
+    private MockMvc mockMvc;
 
-    @Autowired
-    private ActivityRepository activityRepository;
+    @Mock
+    private ActivityService activityService;
 
-    private Course course;
+    @InjectMocks
+    private ActivityController activityController;
+
+    private Activity activity;
 
     @BeforeEach
-    void setUp() {
-        User user = new User();
-        user.setEmail("user@example.com");
-        user.setPassword("password");
-        user.setName("Test User");
-        user.setRoles("USER");
-        user = entityManager.persist(user);
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        this.mockMvc = MockMvcBuilders.standaloneSetup(activityController)
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
 
-        course = new Course();
-        course.setDescripcion("Descripción del curso");
-        course.setNombreCurso("Curso de Prueba");
-        course.setProfesor("Profesor X");
-        course.setUser(user);
-        course = entityManager.persist(course);
+        activity = new Activity();
+        activity.setId(1L);
+        activity.setTitulo("Test Activity");
+        activity.setDescripcion("Test Description");
+
+        when(activityService.getActivityById(anyLong())).thenReturn(activity);
+        when(activityService.createActivity(any(Activity.class))).thenReturn(activity);
+        when(activityService.updateActivity(anyLong(), any(Activity.class))).thenReturn(activity);
     }
 
     @Test
-    public void testCreateActivity() {
-        Activity activity = createActivity("Test Create Activity", false);
-        Activity savedActivity = activityRepository.save(activity);
-        assertNotNull(savedActivity);
-        assertEquals("Test Create Activity", savedActivity.getTitulo());
+    public void testGetAllActivities() throws Exception {
+        List<Activity> activities = Collections.singletonList(activity);
+        when(activityService.getAllActivities()).thenReturn(activities);
+
+        mockMvc.perform(get("/activities")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(activity.getId()))
+                .andExpect(jsonPath("$[0].titulo").value(activity.getTitulo()))
+                .andExpect(jsonPath("$[0].descripcion").value(activity.getDescripcion()));
     }
 
     @Test
-    public void testFindById() {
-        Activity activity = createActivity("Test Find By Id", true);
-        Activity savedActivity = entityManager.persistFlushFind(activity);
-        Activity foundActivity = activityRepository.findById(savedActivity.getId()).orElse(null);
-        assertNotNull(foundActivity);
-        assertEquals("Test Find By Id", foundActivity.getTitulo());
+    public void testGetActivityById() throws Exception {
+        mockMvc.perform(get("/activities/{id}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(activity.getId()))
+                .andExpect(jsonPath("$.titulo").value(activity.getTitulo()))
+                .andExpect(jsonPath("$.descripcion").value(activity.getDescripcion()));
     }
 
     @Test
-    public void testFindAllActivities() {
-        entityManager.persist(createActivity("Activity One", true));
-        entityManager.persist(createActivity("Activity Two", false));
-
-        Iterable<Activity> activities = activityRepository.findAll();
-        assertNotNull(activities);
-        assertTrue(activities.iterator().hasNext());
+    public void testCreateActivity() throws Exception {
+        mockMvc.perform(post("/activities")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"titulo\":\"New Activity\",\"descripcion\":\"New Description\",\"allDay\":false,\"location\":\"New Location\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.id").value(activity.getId()))
+                .andExpect(jsonPath("$.titulo").value(activity.getTitulo()))
+                .andExpect(jsonPath("$.descripcion").value(activity.getDescripcion()));
     }
 
     @Test
-    public void testDeleteActivity() {
-        Activity activity = createActivity("Test Delete Activity", true);
-        Activity savedActivity = entityManager.persistFlushFind(activity);
-        assertNotNull(savedActivity);
-
-        activityRepository.delete(savedActivity);
-        Activity deletedActivity = activityRepository.findById(savedActivity.getId()).orElse(null);
-        assertNull(deletedActivity);
+    public void testUpdateActivity() throws Exception {
+        mockMvc.perform(put("/activities/{id}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"titulo\":\"Updated Activity\",\"descripcion\":\"Updated Description\",\"allDay\":true,\"location\":\"Updated Location\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(activity.getId()))
+                .andExpect(jsonPath("$.titulo").value(activity.getTitulo()))
+                .andExpect(jsonPath("$.descripcion").value(activity.getDescripcion()));
     }
 
-    private Activity createActivity(String title, boolean allDay) {
-        Activity activity = new Activity();
-        activity.setCourse(course);
-        activity.setDescripcion("Descripción de la actividad " + title);
-        activity.setEstado("Activo");
-        activity.setFechaInicio(new Timestamp(System.currentTimeMillis()));
-        activity.setFechaFin(new Timestamp(System.currentTimeMillis() + 86400000)); // más un día
-        activity.setTitulo(title);
-        return activity;
+    @Test
+    public void testDeleteActivity() throws Exception {
+        mockMvc.perform(delete("/activities/{id}", 1L))
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void testGetActivityByIdNotFound() throws Exception {
+        when(activityService.getActivityById(anyLong())).thenThrow(new ResourceNotFoundException("Activity not found with id 999"));
+
+        mockMvc.perform(get("/activities/{id}", 999L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Activity not found with id 999"));
+    }
+
+    @Test
+    public void testDeleteActivityNotFound() throws Exception {
+        doThrow(new ResourceNotFoundException("Activity not found with id 999")).when(activityService).deleteActivity(anyLong());
+
+        mockMvc.perform(delete("/activities/{id}", 999L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Activity not found with id 999"));
+    }
+
+    @Test
+    public void testUpdateActivityNotFound() throws Exception {
+        when(activityService.updateActivity(anyLong(), any(Activity.class))).thenThrow(new ResourceNotFoundException("Activity not found with id 999"));
+
+        mockMvc.perform(put("/activities/{id}", 999L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"titulo\":\"Updated Activity\",\"descripcion\":\"Updated Description\",\"allDay\":true,\"location\":\"Updated Location\"}"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Activity not found with id 999"));
     }
 }
