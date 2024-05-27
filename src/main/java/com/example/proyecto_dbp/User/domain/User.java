@@ -32,7 +32,7 @@ public class User implements UserDetails {
     private String name;
 
     @Column
-    private String role;
+    private String roles;
 
     @OneToMany(mappedBy = "user")
     private List<Course> courses;
@@ -40,9 +40,17 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<VoiceCommand> voiceCommands;
 
+    public boolean isAdmin() {
+        return this.roles.contains("ADMIN");
+    }
+
+    public boolean isResourceOwner() {
+        return this.roles.contains("RESOURCE_OWNER");
+    }
+
     @Override
     @JsonIgnore
-    public Collection<? extends GrantedAuthority> getAuthorities() {return List.of(new SimpleGrantedAuthority(role));}
+    public Collection<? extends GrantedAuthority> getAuthorities() {return List.of(new SimpleGrantedAuthority(roles));}
 
     @Override
     @JsonIgnore

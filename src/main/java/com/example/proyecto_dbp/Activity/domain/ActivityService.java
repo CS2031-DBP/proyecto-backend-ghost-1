@@ -1,22 +1,17 @@
 package com.example.proyecto_dbp.Activity.domain;
 
 import com.example.proyecto_dbp.Activity.infrastructure.ActivityRepository;
-import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class ActivityService {
 
     @Autowired
     private ActivityRepository activityRepository;
-
-    @Autowired
-    private CourseRepository courseRepository;
 
     public List<Activity> getAllActivities() {return activityRepository.findAll();}
 
@@ -47,9 +42,7 @@ public class ActivityService {
     }
 
     public void deleteActivity(Long id) {
-        if (!activityRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Activity not found with id " + id);
-        }
+        if (!activityRepository.existsById(id)) throw new ResourceNotFoundException("Activity not found with id " + id);
         activityRepository.deleteById(id);
     }
 }

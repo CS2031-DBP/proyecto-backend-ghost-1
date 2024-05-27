@@ -38,11 +38,12 @@ public class UserService {
     }
 
     public User getUserById(Long id) {
-        if (!authorizationUtils.isAdminOrResourceOwner(id)) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
+        if (!authorizationUtils.isAdminOrResourceOwner(user)) {
             throw new UnauthorizeOperationException("User has no permission to view this user");
         }
-        return userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
+        return user;
     }
 
     public User getUserByEmail(String email) {
@@ -58,24 +59,25 @@ public class UserService {
     }
 
     public User updateUser(Long id, User updatedUser) {
-        if (!authorizationUtils.isAdminOrResourceOwner(id)) {
+        User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
+        if (!authorizationUtils.isAdminOrResourceOwner(user)) {
             throw new UnauthorizeOperationException("User has no permission to modify this user");
         }
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
         user.setEmail(updatedUser.getEmail());
         user.setName(updatedUser.getName());
         user.setPassword(updatedUser.getPassword());
-        user.setRole(updatedUser.getRole());
+        user.setRoles(updatedUser.getRoles());
         return userRepository.save(user);
     }
 
     public void deleteUser(Long id) {
-        if (!authorizationUtils.isAdminOrResourceOwner(id)) {
-            throw new UnauthorizeOperationException("User has no permission to delete this user");
-        }
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
+
+        if (!authorizationUtils.isAdminOrResourceOwner(user)) {
+            throw new UnauthorizeOperationException("User has no permission to delete this user");
+        }
         userRepository.deleteById(id);
     }
+
 }
