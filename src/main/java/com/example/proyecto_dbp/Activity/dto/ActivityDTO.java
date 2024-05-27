@@ -8,8 +8,7 @@ import lombok.experimental.SuperBuilder;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 public class ActivityDTO {
 
     @NotNull

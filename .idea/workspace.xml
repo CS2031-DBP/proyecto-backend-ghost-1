@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="User Repo + revisar Security">
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="ponganle condon que se viene">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/domain/ActivityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/domain/ActivityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/utils/AuthorizationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/utils/AuthorizationUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/domain/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/domain/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/dto/ActivityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/dto/ActivityDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/application/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/application/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Activity/infrastructure/ActivityRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Activity/infrastructure/ActivityRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Task/infrastructure/TaskRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Task/infrastructure/TaskRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/User/application/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/User/application/UserControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +38,12 @@
     &quot;assignee&quot;: &quot;j4guil4r&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/CS2031-DBP/proyecto-backend-ghost-1.git&quot;,
-    &quot;accountId&quot;: &quot;6e397333-685c-487f-a6db-685f1643947c&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/CS2031-DBP/proyecto-backend-ghost-1.git",
+    "accountId": "767387b1-40f0-4784-bfdf-87fe6bcddab4"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/3.2.5/spring-data-commons-3.2.5.jar!/org/springframework/data/repository/CrudRepository.class" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" root0="SKIP_INSPECTION" />
@@ -70,6 +75,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.ActivityControllerTest.executor": "Run",
+    "JUnit.ActivityRepositoryTest.executor": "Run",
     "JUnit.CalendarIntegrationControllerTest.executor": "Run",
     "JUnit.CourseControllerTest.executor": "Run",
     "JUnit.CourseControllerTest.testCreateCourse.executor": "Run",
@@ -78,6 +84,7 @@
     "JUnit.TaskControllerTest.executor": "Run",
     "JUnit.TaskRepositoryTest.executor": "Run",
     "JUnit.TaskRepositoryTest.testGetAllTasks.executor": "Run",
+    "JUnit.TaskRepositoryTest.testGetTaskByIdNotFound.executor": "Run",
     "JUnit.UserControllerSecurityTest.executor": "Run",
     "JUnit.UserControllerSecurityTest.testAdminAccessToCreateUser.executor": "Run",
     "JUnit.UserControllerTest.executor": "Run",
@@ -102,7 +109,7 @@
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "openjdk-22",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/jorge l/Desktop/dbp/proyecto-backend-ghost-1",
+    "last_opened_file_path": "C:/Users/jorge l/Desktop/dbp/Updated_Modified_Proyecto1DBP-AAAJ-VERSION2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -134,7 +141,38 @@
       <recent name="com.example.proyecto_dbp.VoiceCommand" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerSecurityTest">
+  <component name="RunManager" selected="JUnit.TaskRepositoryTest">
+    <configuration name="TaskRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto_dbp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.proyecto_dbp.Task.infrastructure.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Task.infrastructure" />
+      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Task.infrastructure.TaskRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskRepositoryTest.testGetTaskByIdNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto_dbp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.proyecto_dbp.Task.infrastructure.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Task.infrastructure" />
+      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Task.infrastructure.TaskRepositoryTest" />
+      <option name="METHOD_NAME" value="testGetTaskByIdNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserControllerSecurityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <extension name="coverage">
@@ -150,22 +188,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserControllerSecurityTest.testAdminAccessToCreateUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto_dbp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.proyecto_dbp.User.application.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.User.application" />
-      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.User.application.UserControllerSecurityTest" />
-      <option name="METHOD_NAME" value="testAdminAccessToCreateUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <extension name="coverage">
@@ -177,22 +199,6 @@
       <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.User.application" />
       <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.User.application.UserControllerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserControllerTest.testGetAllUsers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto_dbp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.proyecto_dbp.User.application.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.User.application" />
-      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.User.application.UserControllerTest" />
-      <option name="METHOD_NAME" value="testGetAllUsers" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -221,11 +227,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserControllerSecurityTest" />
-        <item itemvalue="JUnit.UserControllerSecurityTest.testAdminAccessToCreateUser" />
+        <item itemvalue="JUnit.TaskRepositoryTest" />
+        <item itemvalue="JUnit.TaskRepositoryTest.testGetTaskByIdNotFound" />
         <item itemvalue="JUnit.UserRepositoryTest" />
         <item itemvalue="JUnit.UserControllerTest" />
-        <item itemvalue="JUnit.UserControllerTest.testGetAllUsers" />
+        <item itemvalue="JUnit.UserControllerSecurityTest" />
       </list>
     </recent_temporary>
   </component>
@@ -282,7 +288,7 @@
       <workItem from="1716782421561" duration="3743000" />
       <workItem from="1716819658536" duration="1114000" />
       <workItem from="1716831262263" duration="2892000" />
-      <workItem from="1716835334354" duration="1476000" />
+      <workItem from="1716835334354" duration="7482000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -468,7 +474,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716833717652</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="security loop arreglado? (por verificar)">
+      <option name="closed" value="true" />
+      <created>1716836929377</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1716836929377</updated>
+    </task>
+    <task id="LOCAL-00025" summary="security loop arreglado? (por verificar) cambio en setter y getter de role">
+      <option name="closed" value="true" />
+      <created>1716837098320</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1716837098320</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +529,9 @@
     <MESSAGE value="VOLVIO LA FE" />
     <MESSAGE value="UserControllerTest terminado" />
     <MESSAGE value="User Repo + revisar Security" />
-    <option name="LAST_COMMIT_MESSAGE" value="User Repo + revisar Security" />
+    <MESSAGE value="security loop arreglado? (por verificar)" />
+    <MESSAGE value="security loop arreglado? (por verificar) cambio en setter y getter de role" />
+    <option name="LAST_COMMIT_MESSAGE" value="security loop arreglado? (por verificar) cambio en setter y getter de role" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

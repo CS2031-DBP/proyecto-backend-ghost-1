@@ -1,22 +1,16 @@
 package com.example.proyecto_dbp.Task.domain;
 
 import com.example.proyecto_dbp.Task.infrastructure.TaskRepository;
-import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
-
-    @Autowired
-    private CourseRepository courseRepository;
 
     public List<Task> getAllTasks() {return taskRepository.findAll();}
 

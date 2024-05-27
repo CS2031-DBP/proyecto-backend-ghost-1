@@ -34,9 +34,4 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }
 
-    // Other exception handlers can be added here
-
-
-    //MECI
-
 }

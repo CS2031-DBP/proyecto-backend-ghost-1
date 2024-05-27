@@ -10,9 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -45,6 +43,7 @@ public class UserControllerTest {
         user.setId(1L);
         user.setEmail("test@example.com");
         user.setName("Test User");
+        user.setRoles("USER");
 
         List<User> users = Collections.singletonList(user);
 
@@ -63,6 +62,7 @@ public class UserControllerTest {
         user.setId(1L);
         user.setEmail("test@example.com");
         user.setName("Test User");
+        user.setRoles("USER");
 
         given(userService.getUserById(anyLong())).willReturn(user);
 
@@ -79,12 +79,13 @@ public class UserControllerTest {
         user.setId(1L);
         user.setEmail("newuser@example.com");
         user.setName("New User");
+        user.setRoles("USER");
 
         given(userService.createUser(any(User.class))).willReturn(user);
 
         mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"email\":\"newuser@example.com\", \"name\":\"New User\", \"password\":\"password123\"}"))
+                        .content("{\"email\":\"newuser@example.com\", \"name\":\"New User\", \"password\":\"password123\", \"roles\":\"USER\"}"))  // Asegúrate de incluir roles en el JSON
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").value(user.getId()))
                 .andExpect(jsonPath("$.email").value(user.getEmail()))
@@ -97,12 +98,13 @@ public class UserControllerTest {
         user.setId(1L);
         user.setEmail("updateduser@example.com");
         user.setName("Updated User");
+        user.setRoles("USER");
 
         given(userService.updateUser(anyLong(), any(User.class))).willReturn(user);
 
         mockMvc.perform(put("/users/{id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"email\":\"updateduser@example.com\", \"name\":\"Updated User\", \"password\":\"password123\"}"))
+                        .content("{\"email\":\"updateduser@example.com\", \"name\":\"Updated User\", \"password\":\"password123\", \"roles\":\"USER\"}"))  // Asegúrate de incluir roles en el JSON
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(user.getId()))
                 .andExpect(jsonPath("$.email").value(user.getEmail()))

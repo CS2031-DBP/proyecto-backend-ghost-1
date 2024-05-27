@@ -2,19 +2,14 @@ package com.example.proyecto_dbp.Activity.domain;
 
 import com.example.proyecto_dbp.Course.domain.Course;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
-@Data
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 @Table(name = "activities")
-@Getter
-@Setter
+@Getter @Setter
 public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
