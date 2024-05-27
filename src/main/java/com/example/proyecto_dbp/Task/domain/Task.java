@@ -6,7 +6,6 @@ import lombok.*;
 
 @Entity
 @Table(name = "tasks")
-@Data
 @Getter
 @Setter
 @EqualsAndHashCode(callSuper = true)

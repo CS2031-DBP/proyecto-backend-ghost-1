@@ -13,10 +13,6 @@ import java.util.List;
 @Getter
 public class Event extends Activity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Eventid;
-
     @Column(nullable = false)
     private String location;
 

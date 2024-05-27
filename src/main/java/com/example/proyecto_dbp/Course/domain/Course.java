@@ -16,9 +16,10 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class Course {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Courseid;
+    private Long id;
 
     @Column(nullable = false)
     private String nombreCurso;
