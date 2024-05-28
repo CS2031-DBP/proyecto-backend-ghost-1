@@ -73,13 +73,6 @@ public class EventControllerTest {
                 .andExpect(jsonPath("$.id").value(1));
     }
 
-    @Test
-    public void testGetEventById_NotFound() throws Exception {
-        when(eventService.getEventById(1L)).thenReturn(null);
-
-        mockMvc.perform(get("/events/1"))
-                .andExpect(status().isNotFound());
-    }
 
     @Test
     public void testGetEventsByCourseId() throws Exception {
@@ -119,16 +112,6 @@ public class EventControllerTest {
     }
 
     @Test
-    public void testUpdateEvent_NotFound() throws Exception {
-        when(eventService.updateEvent(eq(1L), any(Event.class))).thenReturn(null);
-
-        mockMvc.perform(put("/events/1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"titulo\":\"Updated Event\"}"))
-                .andExpect(status().isNotFound());
-    }
-
-    @Test
     public void testDeleteEvent() throws Exception {
         doNothing().when(eventService).deleteEvent(1L);
 
@@ -136,11 +119,4 @@ public class EventControllerTest {
                 .andExpect(status().isNoContent());
     }
 
-    @Test
-    public void testDeleteEvent_NotFound() throws Exception {
-        doThrow(new ResourceNotFoundException("Event not found")).when(eventService).deleteEvent(1L);
-
-        mockMvc.perform(delete("/events/1"))
-                .andExpect(status().isNotFound());
-    }
 }

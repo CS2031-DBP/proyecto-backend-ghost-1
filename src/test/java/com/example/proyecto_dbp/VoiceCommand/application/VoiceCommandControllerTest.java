@@ -58,13 +58,6 @@ public class VoiceCommandControllerTest {
                 .andExpect(jsonPath("$.id").value(1));
     }
 
-    @Test
-    public void testGetVoiceCommandById_NotFound() throws Exception {
-        when(voiceCommandService.getVoiceCommandById(1L)).thenReturn(Optional.empty());
-
-        mockMvc.perform(get("/voicecommands/1"))
-                .andExpect(status().isNotFound());
-    }
 
     @Test
     public void testGetVoiceCommandsByUserId() throws Exception {

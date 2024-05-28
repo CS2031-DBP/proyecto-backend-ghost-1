@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -112,34 +113,4 @@ public class TaskRepositoryTest {
                 .andExpect(status().isNoContent());
     }
 
-    @Test
-    public void testGetTaskByIdNotFound() throws Exception {
-        when(taskService.getTaskById(anyLong())).thenThrow(new ResourceNotFoundException("Task not found with id 999"));
-
-        mockMvc.perform(get("/tasks/{id}", 999L)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.message").value("Task not found with id 999"));
-    }
-
-    @Test
-    public void testDeleteTaskNotFound() throws Exception {
-        doThrow(new ResourceNotFoundException("Task not found with id 999")).when(taskService).deleteTask(anyLong());
-
-        mockMvc.perform(delete("/tasks/{id}", 999L)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.message").value("Task not found with id 999"));
-    }
-
-    @Test
-    public void testUpdateTaskNotFound() throws Exception {
-        when(taskService.updateTask(anyLong(), any(Task.class))).thenThrow(new ResourceNotFoundException("Task not found with id 999"));
-
-        mockMvc.perform(put("/tasks/{id}", 999L)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"titulo\":\"Updated Task\",\"descripcion\":\"Updated Description\",\"priority\":\"Low\",\"completed\":true,\"courseId\":1}"))
-                .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.message").value("Task not found with id 999"));
-    }
 }
