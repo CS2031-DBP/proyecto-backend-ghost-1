@@ -119,7 +119,7 @@ public class TaskRepositoryTest {
         mockMvc.perform(get("/tasks/{id}", 999L)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string("Task not found with id 999"));
+                .andExpect(jsonPath("$.message").value("Task not found with id 999"));
     }
 
     @Test
@@ -129,7 +129,7 @@ public class TaskRepositoryTest {
         mockMvc.perform(delete("/tasks/{id}", 999L)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string("Task not found with id 999"));
+                .andExpect(jsonPath("$.message").value("Task not found with id 999"));
     }
 
     @Test
@@ -140,6 +140,6 @@ public class TaskRepositoryTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"titulo\":\"Updated Task\",\"descripcion\":\"Updated Description\",\"priority\":\"Low\",\"completed\":true,\"courseId\":1}"))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string("Task not found with id 999"));
+                .andExpect(jsonPath("$.message").value("Task not found with id 999"));
     }
 }

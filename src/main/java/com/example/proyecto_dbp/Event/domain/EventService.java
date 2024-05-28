@@ -13,7 +13,9 @@ public class EventService {
     @Autowired
     private EventRepository eventRepository;
 
-    public List<Event> getAllEvents() {return eventRepository.findAll();}
+    public List<Event> getAllEvents() {
+        return eventRepository.findAll();
+    }
 
     public Event getEventById(Long id) {
         return eventRepository.findById(id)
@@ -27,7 +29,9 @@ public class EventService {
     }
 
 
-    public Event createEvent(Event event) {return eventRepository.save(event);}
+    public Event createEvent(Event event) {
+        return eventRepository.save(event);
+    }
 
     public Event updateEvent(Long id, Event updatedEvent) {
         Event event = eventRepository.findById(id)
@@ -38,12 +42,6 @@ public class EventService {
         event.setFechaInicio(updatedEvent.getFechaInicio());
         event.setFechaFin(updatedEvent.getFechaFin());
         event.setEstado(updatedEvent.getEstado());
-        event.setLocation(updatedEvent.getLocation());
-        event.setAllDay(updatedEvent.getAllDay());
-        event.setOrganizer(updatedEvent.getOrganizer());
-        event.setAttendees(updatedEvent.getAttendees());
-        event.setReminder(updatedEvent.getReminder());
-
         return eventRepository.save(event);
     }
 

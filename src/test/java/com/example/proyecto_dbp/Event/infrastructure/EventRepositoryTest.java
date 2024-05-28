@@ -86,7 +86,7 @@ public class EventRepositoryTest {
     public void testCreateEvent() throws Exception {
         mockMvc.perform(post("/events")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"titulo\":\"New Event\",\"descripcion\":\"New Description\",\"priority\":\"High\",\"completed\":false}"))
+                        .content("{\"titulo\":\"New Event\",\"descripcion\":\"New Description\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").value(event.getId()))
                 .andExpect(jsonPath("$.titulo").value(event.getTitulo()))
@@ -97,7 +97,7 @@ public class EventRepositoryTest {
     public void testUpdateEvent() throws Exception {
         mockMvc.perform(put("/events/{id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"titulo\":\"Updated Event\",\"descripcion\":\"Updated Description\",\"priority\":\"Low\",\"completed\":true}"))
+                        .content("{\"titulo\":\"Updated Event\",\"descripcion\":\"Updated Description\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(event.getId()))
                 .andExpect(jsonPath("$.titulo").value(event.getTitulo()))
@@ -136,7 +136,7 @@ public class EventRepositoryTest {
 
         mockMvc.perform(put("/events/{id}", 999L)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"titulo\":\"Updated Event\",\"descripcion\":\"Updated Description\",\"priority\":\"Low\",\"completed\":true}"))
+                        .content("{\"titulo\":\"Updated Event\",\"descripcion\":\"Updated Description\"}"))
                 .andExpect(status().isNotFound())
                 .andExpect(content().string("Event not found with id 999"));
     }

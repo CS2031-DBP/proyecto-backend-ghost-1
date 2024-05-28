@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="no pude rsolver activtyrepository test, sigue dando 3 test erroneos">
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="repository test implementation&#10;en ds sale el avance de cada uno">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/application/CalendarIntegrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/application/CalendarIntegrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegrationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegrationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/application/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/application/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/domain/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/domain/EventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Activity/infrastructure/ActivityRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Activity/infrastructure/ActivityRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Course/infrastructure/CourseRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Course/infrastructure/CourseRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/CalendarIntegration/infrastructure/CalendarIntegrationRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/CalendarIntegration/infrastructure/CalendarIntegrationRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Course/application/CourseControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Course/application/CourseControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Event/infrastructure/EventRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Event/infrastructure/EventRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Task/infrastructure/TaskRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Task/infrastructure/TaskRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/infrastructure/VoiceCommandRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/infrastructure/VoiceCommandRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +43,12 @@
     &quot;assignee&quot;: &quot;j4guil4r&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/CS2031-DBP/proyecto-backend-ghost-1.git",
-    "accountId": "767387b1-40f0-4784-bfdf-87fe6bcddab4"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/CS2031-DBP/proyecto-backend-ghost-1.git&quot;,
+    &quot;accountId&quot;: &quot;767387b1-40f0-4784-bfdf-87fe6bcddab4&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/3.2.5/spring-data-commons-3.2.5.jar!/org/springframework/data/repository/CrudRepository.class" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" root0="SKIP_INSPECTION" />
@@ -73,6 +82,8 @@
     "JUnit.ActivityControllerTest.executor": "Run",
     "JUnit.ActivityRepositoryTest.executor": "Run",
     "JUnit.CalendarIntegrationControllerTest.executor": "Run",
+    "JUnit.CalendarIntegrationRepositoryTest.executor": "Run",
+    "JUnit.CourseControllerTest (1).executor": "Run",
     "JUnit.CourseControllerTest.executor": "Run",
     "JUnit.CourseControllerTest.testCreateCourse.executor": "Run",
     "JUnit.CourseControllerTest.testGetAllCourses.executor": "Run",
@@ -140,22 +151,7 @@
       <recent name="com.example.proyecto_dbp.VoiceCommand" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CalendarIntegrationRepositoryTest">
-    <configuration name="ActivityRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto_dbp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.proyecto_dbp.Activity.infrastructure.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Activity.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Activity.infrastructure.ActivityRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.VoiceCommandRepositoryTest">
     <configuration name="CalendarIntegrationRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <extension name="coverage">
@@ -171,16 +167,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CourseRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CourseControllerTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.proyecto_dbp.Course.infrastructure.*" />
+          <option name="PATTERN" value="com.example.proyecto_dbp.Course.application.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Course.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Course.infrastructure.CourseRepositoryTest" />
+      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Course.application" />
+      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Course.application.CourseControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -201,18 +197,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EventRepositoryTest.testDeleteEventNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TaskRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto_dbp" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.proyecto_dbp.Event.infrastructure.*" />
+          <option name="PATTERN" value="com.example.proyecto_dbp.Task.infrastructure.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Event.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Event.infrastructure.EventRepositoryTest" />
-      <option name="METHOD_NAME" value="testDeleteEventNotFound" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.Task.infrastructure" />
+      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.Task.infrastructure.TaskRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VoiceCommandRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto_dbp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.proyecto_dbp.VoiceCommand.infrastructure.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.proyecto_dbp.VoiceCommand.infrastructure" />
+      <option name="MAIN_CLASS_NAME" value="com.example.proyecto_dbp.VoiceCommand.infrastructure.VoiceCommandRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -226,11 +236,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VoiceCommandRepositoryTest" />
+        <item itemvalue="JUnit.TaskRepositoryTest" />
         <item itemvalue="JUnit.CalendarIntegrationRepositoryTest" />
-        <item itemvalue="JUnit.CourseRepositoryTest" />
-        <item itemvalue="JUnit.EventRepositoryTest.testDeleteEventNotFound" />
         <item itemvalue="JUnit.EventRepositoryTest" />
-        <item itemvalue="JUnit.ActivityRepositoryTest" />
+        <item itemvalue="JUnit.CourseControllerTest (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -287,7 +297,8 @@
       <workItem from="1716782421561" duration="3743000" />
       <workItem from="1716819658536" duration="1114000" />
       <workItem from="1716831262263" duration="2892000" />
-      <workItem from="1716835334354" duration="10648000" />
+      <workItem from="1716835334354" duration="11177000" />
+      <workItem from="1716854528620" duration="4193000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -497,7 +508,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716845167679</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="repository test implementation&#10;en ds sale el avance de cada uno">
+      <option name="closed" value="true" />
+      <created>1716848463690</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1716848463690</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +558,8 @@
     <MESSAGE value="security loop arreglado? (por verificar)" />
     <MESSAGE value="security loop arreglado? (por verificar) cambio en setter y getter de role" />
     <MESSAGE value="no pude rsolver activtyrepository test, sigue dando 3 test erroneos" />
-    <option name="LAST_COMMIT_MESSAGE" value="no pude rsolver activtyrepository test, sigue dando 3 test erroneos" />
+    <MESSAGE value="repository test implementation&#10;en ds sale el avance de cada uno" />
+    <option name="LAST_COMMIT_MESSAGE" value="repository test implementation&#10;en ds sale el avance de cada uno" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

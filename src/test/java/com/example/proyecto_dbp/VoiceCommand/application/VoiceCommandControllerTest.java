@@ -94,7 +94,7 @@ public class VoiceCommandControllerTest {
         VoiceCommand voiceCommand = new VoiceCommand();
         voiceCommand.setId(1L);
         voiceCommand.setCommand("Updated Command");
-        when(voiceCommandService.updateVoiceCommand(eq(1L), any(VoiceCommand.class))).thenReturn(voiceCommand);
+        when(voiceCommandService.updateVoiceCommand(eq(1L), any(VoiceCommand.class))).thenReturn(Optional.of(voiceCommand));
 
         mockMvc.perform(put("/voicecommands/1")
                         .contentType(MediaType.APPLICATION_JSON)

@@ -29,26 +29,20 @@ public class VoiceCommandService {
     }
 
     public VoiceCommand createVoiceCommand(VoiceCommand voiceCommand) {
-        voiceCommand.setTimestamp(LocalDateTime.now());
         return voiceCommandRepository.save(voiceCommand);
     }
 
-    public VoiceCommand updateVoiceCommand(Long id, VoiceCommand updatedVoiceCommand) {
-        VoiceCommand voiceCommand = voiceCommandRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Voice command not found with id " + id));
-
-        voiceCommand.setCommand(updatedVoiceCommand.getCommand());
-        voiceCommand.setDescriptionAction(updatedVoiceCommand.getDescriptionAction());
-        voiceCommand.setUser(updatedVoiceCommand.getUser());
-        voiceCommand.setActivity(updatedVoiceCommand.getActivity());
-
-        return voiceCommandRepository.save(voiceCommand);
+    public Optional<VoiceCommand> updateVoiceCommand(Long id, VoiceCommand voiceCommand) {
+        return voiceCommandRepository.findById(id)
+                .map(existingCommand -> {
+                    existingCommand.setCommand(voiceCommand.getCommand());
+                    return voiceCommandRepository.save(existingCommand);
+                });
     }
 
     public void deleteVoiceCommand(Long id) {
-        if (!voiceCommandRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Voice command not found with id " + id);
-        }
-        voiceCommandRepository.deleteById(id);
+        VoiceCommand voiceCommand = voiceCommandRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("VoiceCommand not found with id " + id));
+        voiceCommandRepository.delete(voiceCommand);
     }
 }

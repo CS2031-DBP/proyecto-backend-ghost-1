@@ -31,16 +31,14 @@ public class EventController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Event>> getAllEvents() {
-        List<Event> events = eventService.getAllEvents();
-        return ResponseEntity.ok(events);
+    public List<Event> getAllEvents() {
+        return eventService.getAllEvents();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Event> getEventById(@PathVariable Long id) {
         Event event = eventService.getEventById(id);
-        if (event != null) return ResponseEntity.ok(event);
-        else return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(event);
     }
 
     @GetMapping("/course/{courseId}")
@@ -50,24 +48,20 @@ public class EventController {
     }
 
     @PostMapping
-    public ResponseEntity<Event> createEvent(@RequestBody @Valid Event event) {
+    public ResponseEntity<Event> createEvent(@RequestBody Event event) {
         Event createdEvent = eventService.createEvent(event);
         return new ResponseEntity<>(createdEvent, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Event> updateEvent(@PathVariable Long id, @RequestBody @Valid Event event) {
+    public ResponseEntity<Event> updateEvent(@PathVariable Long id, @RequestBody Event event) {
         Event updatedEvent = eventService.updateEvent(id, event);
-        if (updatedEvent != null) return ResponseEntity.ok(updatedEvent);
-        else return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(updatedEvent);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEvent(@PathVariable Long id) {
-        try {
-            eventService.deleteEvent(id);
-            return ResponseEntity.noContent().build();
-        }
-        catch (ResourceNotFoundException e) {return ResponseEntity.notFound().build();}
+        eventService.deleteEvent(id);
+        return ResponseEntity.noContent().build();
     }
 }

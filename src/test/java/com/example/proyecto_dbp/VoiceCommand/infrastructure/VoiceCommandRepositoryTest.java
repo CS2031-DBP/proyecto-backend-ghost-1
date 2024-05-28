@@ -1,98 +1,139 @@
 package com.example.proyecto_dbp.VoiceCommand.infrastructure;
 
-import com.example.proyecto_dbp.Activity.infrastructure.ActivityRepository;
-import com.example.proyecto_dbp.User.infrastructure.UserRepository;
+import com.example.proyecto_dbp.GlobalExceptionHandler;
+import com.example.proyecto_dbp.VoiceCommand.application.VoiceCommandController;
 import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommand;
 import com.example.proyecto_dbp.VoiceCommand.domain.VoiceCommandService;
-import com.example.proyecto_dbp.User.domain.User;
-import com.example.proyecto_dbp.Activity.domain.Activity;
+import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import java.time.LocalDateTime;
-import java.util.Optional;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Optional;
+import java.util.Collections;
+import java.util.List;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
-@DataJpaTest
+@AutoConfigureMockMvc
+@Transactional
 public class VoiceCommandRepositoryTest {
 
-    @Autowired
+    private MockMvc mockMvc;
+
+    @Mock
     private VoiceCommandService voiceCommandService;
 
-    @Autowired
-    private UserRepository userRepository;
+    @InjectMocks
+    private VoiceCommandController voiceCommandController;
 
-    @Autowired
-    private ActivityRepository activityRepository;
-
-    private User testUser;
-    private Activity testActivity;
-    private VoiceCommand testVoiceCommand;
+    private VoiceCommand voiceCommand;
 
     @BeforeEach
-    void setUp() {
-        testUser = new User();
-        testUser.setEmail("testuser@example.com");
-        testUser.setPassword("password");
-        testUser.setName("Test User");
-        testUser.setRoles("USER");
-        userRepository.save(testUser);
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        this.mockMvc = MockMvcBuilders.standaloneSetup(voiceCommandController)
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
 
-        testActivity = new Activity();
-        testActivity.setTitulo("Test Activity");
-        activityRepository.save(testActivity);
+        voiceCommand = new VoiceCommand();
+        voiceCommand.setId(1L);
+        voiceCommand.setCommand("Test Command");
 
-        testVoiceCommand = new VoiceCommand();
-        testVoiceCommand.setCommand("Test Command");
-        testVoiceCommand.setDescriptionAction("Test Action");
-        testVoiceCommand.setTimestamp(LocalDateTime.now());
-        testVoiceCommand.setUser(testUser);
-        testVoiceCommand.setActivity(testActivity);
+        when(voiceCommandService.getVoiceCommandById(anyLong())).thenReturn(Optional.of(voiceCommand));
+        when(voiceCommandService.createVoiceCommand(any(VoiceCommand.class))).thenReturn(voiceCommand);
+        when(voiceCommandService.updateVoiceCommand(anyLong(), any(VoiceCommand.class))).thenReturn(Optional.of(voiceCommand));
     }
 
     @Test
-    void testSaveVoiceCommand() {
-        VoiceCommand savedVoiceCommand = voiceCommandService.createVoiceCommand(testVoiceCommand);
+    public void testGetAllVoiceCommands() throws Exception {
+        List<VoiceCommand> voiceCommands = Collections.singletonList(voiceCommand);
+        when(voiceCommandService.getAllVoiceCommands()).thenReturn(voiceCommands);
 
-        assertNotNull(savedVoiceCommand.getId());
-        Optional<VoiceCommand> foundVoiceCommand = voiceCommandService.getVoiceCommandById(savedVoiceCommand.getId());
-        assertTrue(foundVoiceCommand.isPresent());
-        assertEquals(testVoiceCommand.getCommand(), foundVoiceCommand.get().getCommand());
+        mockMvc.perform(get("/voiceCommands")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(voiceCommand.getId()))
+                .andExpect(jsonPath("$[0].command").value(voiceCommand.getCommand()));
     }
 
     @Test
-    void testGetVoiceCommandById() {
-        VoiceCommand savedVoiceCommand = voiceCommandService.createVoiceCommand(testVoiceCommand);
-        Optional<VoiceCommand> foundVoiceCommand = voiceCommandService.getVoiceCommandById(savedVoiceCommand.getId());
-
-        assertTrue(foundVoiceCommand.isPresent());
-        assertEquals(savedVoiceCommand.getCommand(), foundVoiceCommand.get().getCommand());
+    public void testGetVoiceCommandById() throws Exception {
+        mockMvc.perform(get("/voiceCommands/{id}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(voiceCommand.getId()))
+                .andExpect(jsonPath("$.command").value(voiceCommand.getCommand()));
     }
 
     @Test
-    void testUpdateVoiceCommand() {
-        VoiceCommand savedVoiceCommand = voiceCommandService.createVoiceCommand(testVoiceCommand);
-        savedVoiceCommand.setCommand("Updated Command");
-        VoiceCommand updatedVoiceCommand = voiceCommandService.updateVoiceCommand(savedVoiceCommand.getId(), savedVoiceCommand);
-
-        assertNotNull(updatedVoiceCommand);
-        assertEquals("Updated Command", updatedVoiceCommand.getCommand());
-
-        Optional<VoiceCommand> foundVoiceCommand = voiceCommandService.getVoiceCommandById(updatedVoiceCommand.getId());
-        assertTrue(foundVoiceCommand.isPresent());
-        assertEquals("Updated Command", foundVoiceCommand.get().getCommand());
+    public void testCreateVoiceCommand() throws Exception {
+        mockMvc.perform(post("/voiceCommands")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"command\":\"New Command\",\"response\":\"New Response\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.id").value(voiceCommand.getId()))
+                .andExpect(jsonPath("$.command").value(voiceCommand.getCommand()));
     }
 
     @Test
-    void testDeleteVoiceCommand() {
-        VoiceCommand savedVoiceCommand = voiceCommandService.createVoiceCommand(testVoiceCommand);
-        voiceCommandService.deleteVoiceCommand(savedVoiceCommand.getId());
+    public void testUpdateVoiceCommand() throws Exception {
+        mockMvc.perform(put("/voiceCommands/{id}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"command\":\"Updated Command\",\"response\":\"Updated Response\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(voiceCommand.getId()))
+                .andExpect(jsonPath("$.command").value(voiceCommand.getCommand()));
+    }
 
-        Optional<VoiceCommand> deletedVoiceCommand = voiceCommandService.getVoiceCommandById(savedVoiceCommand.getId());
-        assertFalse(deletedVoiceCommand.isPresent());
+    @Test
+    public void testDeleteVoiceCommand() throws Exception {
+        mockMvc.perform(delete("/voiceCommands/{id}", 1L))
+                .andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void testGetVoiceCommandByIdNotFound() throws Exception {
+        when(voiceCommandService.getVoiceCommandById(anyLong())).thenReturn(Optional.empty());
+
+        mockMvc.perform(get("/voiceCommands/{id}", 999L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("VoiceCommand not found with id 999"));
+    }
+
+    @Test
+    public void testDeleteVoiceCommandNotFound() throws Exception {
+        doThrow(new ResourceNotFoundException("VoiceCommand not found with id 999")).when(voiceCommandService).deleteVoiceCommand(anyLong());
+
+        mockMvc.perform(delete("/voiceCommands/{id}", 999L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("VoiceCommand not found with id 999"));
+    }
+
+    @Test
+    public void testUpdateVoiceCommandNotFound() throws Exception {
+        when(voiceCommandService.updateVoiceCommand(anyLong(), any(VoiceCommand.class))).thenReturn(Optional.empty());
+
+        mockMvc.perform(put("/voiceCommands/{id}", 999L)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"command\":\"Updated Command\",\"response\":\"Updated Response\"}"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("VoiceCommand not found with id 999"));
     }
 }

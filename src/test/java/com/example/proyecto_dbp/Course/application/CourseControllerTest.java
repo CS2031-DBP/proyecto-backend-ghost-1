@@ -1,30 +1,34 @@
 package com.example.proyecto_dbp.Course.application;
 
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
-
 import com.example.proyecto_dbp.Course.domain.Course;
 import com.example.proyecto_dbp.Course.domain.CourseService;
-import com.example.proyecto_dbp.User.domain.User;
+import com.example.proyecto_dbp.GlobalExceptionHandler;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Transactional
 public class CourseControllerTest {
 
     private MockMvc mockMvc;
@@ -35,107 +39,105 @@ public class CourseControllerTest {
     @InjectMocks
     private CourseController courseController;
 
+    private Course course;
+
     @BeforeEach
-    public void setup() {
-        mockMvc = standaloneSetup(courseController).build();
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        this.mockMvc = MockMvcBuilders.standaloneSetup(courseController)
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
+
+        course = new Course();
+        course.setId(1L);
+        course.setNombreCurso("Test Course");
+        course.setDescripcion("Test Description");
+        course.setProfesor("Test Professor");
+
+        when(courseService.getCourseById(anyLong())).thenReturn(course);
+        when(courseService.createCourse(any(Course.class))).thenReturn(course);
+        when(courseService.updateCourse(anyLong(), any(Course.class))).thenReturn(course);
     }
 
     @Test
     public void testGetAllCourses() throws Exception {
-        List<Course> courses = Arrays.asList(new Course(), new Course());
+        List<Course> courses = Collections.singletonList(course);
         when(courseService.getAllCourses()).thenReturn(courses);
 
-        mockMvc.perform(get("/courses"))
+        mockMvc.perform(get("/courses")
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.size()").value(courses.size()));
+                .andExpect(jsonPath("$[0].id").value(course.getId()))
+                .andExpect(jsonPath("$[0].nombreCurso").value(course.getNombreCurso()))
+                .andExpect(jsonPath("$[0].descripcion").value(course.getDescripcion()));
     }
 
     @Test
     public void testGetCourseById() throws Exception {
-        Course course = new Course();
-        when(courseService.getCourseById(1L)).thenReturn(course);
-
-        mockMvc.perform(get("/courses/1"))
+        mockMvc.perform(get("/courses/{id}", 1L)
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(course.getId()));
+                .andExpect(jsonPath("$.id").value(course.getId()))
+                .andExpect(jsonPath("$.nombreCurso").value(course.getNombreCurso()))
+                .andExpect(jsonPath("$.descripcion").value(course.getDescripcion()));
     }
 
     @Test
-    public void testGetCourseById_NotFound() throws Exception {
-        when(courseService.getCourseById(1L)).thenReturn(null);
+    public void testGetCourseByIdNotFound() throws Exception {
+        when(courseService.getCourseById(anyLong())).thenThrow(new ResourceNotFoundException("Course not found"));
 
-        mockMvc.perform(get("/courses/1"))
-                .andExpect(status().isNotFound());
+        mockMvc.perform(get("/courses/{id}", 999L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Course not found"));
     }
 
     @Test
     public void testCreateCourse() throws Exception {
-        Course course = new Course();
-        course.setNombreCurso("New Course");
-        course.setDescripcion("Description of the new course");
-        course.setProfesor("Professor Name");
-
-        User user = new User();
-        user.setId(1L);
-        course.setUser(user);
-
-        when(courseService.createCourse(any(Course.class))).thenReturn(course);
-
-        String courseJson = "{\"nombreCurso\":\"New Course\", \"descripcion\":\"Description of the new course\", \"profesor\":\"Professor Name\", \"user\":{\"id\":1}}";
-
-        MvcResult result = mockMvc.perform(post("/courses")
+        mockMvc.perform(post("/courses")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(courseJson))
-                .andReturn();
-
-        MockHttpServletResponse response = result.getResponse();
-        String jsonResponse = response.getContentAsString();
-
-        System.out.println("Response JSON: " + jsonResponse);
-
-        assert response.getStatus() == 201 : "Expected status 201 but was " + response.getStatus();
-        assert jsonResponse.contains("New Course") : "Response does not contain 'New Course'";
-        assert jsonResponse.contains("Description of the new course") : "Response does not contain 'Description of the new course'";
-        assert jsonResponse.contains("Professor Name") : "Response does not contain 'Professor Name'";
-        assert jsonResponse.contains("\"id\":1") : "Response does not contain expected user id data";
+                        .content("{\"nombreCurso\":\"New Course\",\"descripcion\":\"New Description\",\"profesor\":\"New Professor\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.id").value(course.getId()))
+                .andExpect(jsonPath("$.nombreCurso").value(course.getNombreCurso()))
+                .andExpect(jsonPath("$.descripcion").value(course.getDescripcion()));
     }
 
     @Test
     public void testUpdateCourse() throws Exception {
-        Course existingCourse = new Course();
-        existingCourse.setId(1L);
-        when(courseService.updateCourse(eq(1L), any(Course.class))).thenReturn(existingCourse);
-
-        mockMvc.perform(put("/courses/1")
+        mockMvc.perform(put("/courses/{id}", 1L)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"name\":\"Updated Name\"}"))
+                        .content("{\"nombreCurso\":\"Updated Course\",\"descripcion\":\"Updated Description\",\"profesor\":\"Updated Professor\"}"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1));
+                .andExpect(jsonPath("$.id").value(course.getId()))
+                .andExpect(jsonPath("$.nombreCurso").value(course.getNombreCurso()))
+                .andExpect(jsonPath("$.descripcion").value(course.getDescripcion()));
     }
 
     @Test
-    public void testUpdateCourse_NotFound() throws Exception {
-        when(courseService.updateCourse(eq(1L), any(Course.class))).thenReturn(null);
+    public void testUpdateCourseNotFound() throws Exception {
+        when(courseService.updateCourse(anyLong(), any(Course.class))).thenThrow(new ResourceNotFoundException("Course not found"));
 
-        mockMvc.perform(put("/courses/1")
+        mockMvc.perform(put("/courses/{id}", 999L)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"name\":\"Updated Name\"}"))
-                .andExpect(status().isNotFound());
+                        .content("{\"nombreCurso\":\"Updated Course\",\"descripcion\":\"Updated Description\",\"profesor\":\"Updated Professor\"}"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Course not found"));
     }
 
     @Test
     public void testDeleteCourse() throws Exception {
-        doNothing().when(courseService).deleteCourse(1L);
-
-        mockMvc.perform(delete("/courses/1"))
+        mockMvc.perform(delete("/courses/{id}", 1L))
                 .andExpect(status().isNoContent());
     }
 
     @Test
-    public void testDeleteCourse_NotFound() throws Exception {
-        doThrow(new ResourceNotFoundException("Course not found")).when(courseService).deleteCourse(1L);
+    public void testDeleteCourseNotFound() throws Exception {
+        doThrow(new ResourceNotFoundException("Course not found")).when(courseService).deleteCourse(anyLong());
 
-        mockMvc.perform(delete("/courses/1"))
-                .andExpect(status().isNotFound());
+        mockMvc.perform(delete("/courses/{id}", 999L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Course not found"));
     }
 }
