@@ -31,9 +31,8 @@ public class UserService {
     }
 
     public List<User> getAllUsers() {
-        if (!authorizationUtils.hasRole("ADMIN")) {
-            throw new UnauthorizeOperationException("User has no permission to view all users");
-        }
+        String username = authorizationUtils.getCurrentUserEmail();
+        if(username == null) throw new UnauthorizeOperationException("Anonymous User not allowed to access this resource");
         return userRepository.findAll();
     }
 
@@ -52,6 +51,8 @@ public class UserService {
     }
 
     public User createUser(User user) {
+        String username = authorizationUtils.getCurrentUserEmail();
+        if(username == null) throw new UnauthorizeOperationException("Anonymous User not allowed to access this resource");
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new UserAlreadyExistException("User already exists with email " + user.getEmail());
         }
