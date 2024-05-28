@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="repository test implementation&#10;en ds sale el avance de cada uno">
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="falta VoiceCommandRepositoryTest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/domain/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/domain/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/dto/EventDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/dto/EventDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/infrastructure/VoiceCommandRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/VoiceCommand/infrastructure/VoiceCommandRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/CalendarIntegration/application/CalendarIntegrationControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Event/application/EventControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Event/application/EventControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Task/infrastructure/TaskRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/Task/infrastructure/TaskRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/infrastructure/VoiceCommandRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/proyecto_dbp/VoiceCommand/infrastructure/VoiceCommandRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -508,7 +509,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716848463690</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="falta VoiceCommandRepositoryTest">
+      <option name="closed" value="true" />
+      <created>1716868772711</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1716868772711</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,7 +560,8 @@
     <MESSAGE value="security loop arreglado? (por verificar) cambio en setter y getter de role" />
     <MESSAGE value="no pude rsolver activtyrepository test, sigue dando 3 test erroneos" />
     <MESSAGE value="repository test implementation&#10;en ds sale el avance de cada uno" />
-    <option name="LAST_COMMIT_MESSAGE" value="repository test implementation&#10;en ds sale el avance de cada uno" />
+    <MESSAGE value="falta VoiceCommandRepositoryTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="falta VoiceCommandRepositoryTest" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

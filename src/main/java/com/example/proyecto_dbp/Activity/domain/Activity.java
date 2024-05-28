@@ -4,6 +4,7 @@ import com.example.proyecto_dbp.Course.domain.Course;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @NoArgsConstructor @AllArgsConstructor
@@ -29,6 +30,21 @@ public class Activity {
 
     @Column(nullable = false)
     private String estado;
+
+    @Column(nullable = false)
+    private boolean allDay;
+
+    @Column(nullable = false)
+    private String location;
+
+    @Column(nullable = false)
+    private String organizer;
+
+    @Column(nullable = false)
+    private boolean reminder;
+
+    @Column(nullable = false)
+    private Boolean completed = false;
 
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)

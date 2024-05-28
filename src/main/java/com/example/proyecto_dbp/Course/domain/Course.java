@@ -3,18 +3,15 @@ package com.example.proyecto_dbp.Course.domain;
 import com.example.proyecto_dbp.Event.domain.Event;
 import com.example.proyecto_dbp.User.domain.User;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "courses")
-@Setter
-@Getter
+@Setter @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Course {
 
     @Id

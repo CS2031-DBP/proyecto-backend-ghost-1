@@ -8,11 +8,8 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Setter @Getter
+@NoArgsConstructor @AllArgsConstructor
 @Table(name = "voice_commands")
 public class VoiceCommand {
     @Id

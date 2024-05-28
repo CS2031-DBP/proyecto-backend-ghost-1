@@ -14,8 +14,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-@Setter
-@Getter
+@Setter @Getter
+@NoArgsConstructor @AllArgsConstructor
 public class User implements UserDetails {
 
     @Id
@@ -39,6 +39,13 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user")
     private List<VoiceCommand> voiceCommands;
+
+    public User(String email, String name, String password, String roles) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.roles = roles;
+    }
 
     public boolean isAdmin() {
         return this.roles.contains("ADMIN");

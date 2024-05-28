@@ -28,6 +28,10 @@ public class VoiceCommandService {
         return voiceCommandRepository.findByUserId(userId);
     }
 
+    public VoiceCommand findByCommand(String command) {
+        return voiceCommandRepository.findByCommand(command);
+    }
+
     public VoiceCommand createVoiceCommand(VoiceCommand voiceCommand) {
         return voiceCommandRepository.save(voiceCommand);
     }
