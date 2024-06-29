@@ -44,6 +44,7 @@ public class AuthService {
         return response;
     }
 
+
     public JwtAuthResponse register(RegisterReq registerReq) {
         if (userRepository.existsByEmail(registerReq.getEmail())) {
             throw new UserAlreadyExistException("User with email " + registerReq.getEmail() + " already exists");
