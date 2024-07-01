@@ -5,6 +5,7 @@ import com.example.proyecto_dbp.auth.dto.JwtAuthResponse;
 import com.example.proyecto_dbp.auth.dto.LoginReq;
 import com.example.proyecto_dbp.auth.dto.RegisterReq;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,9 +15,12 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    public AuthController(AuthService authService) {this.authService = authService;}
+
     @PostMapping("/register")
-    public JwtAuthResponse registerUser(@RequestBody RegisterReq registerReq) {
-        return authService.register(registerReq);
+    public ResponseEntity<?> register(@RequestBody RegisterReq registerReq) {
+        authService.register(registerReq);
+        return ResponseEntity.ok("User registered successfully");
     }
 
     @PostMapping("/login")
