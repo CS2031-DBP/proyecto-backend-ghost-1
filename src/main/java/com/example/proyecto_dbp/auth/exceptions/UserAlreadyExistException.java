@@ -5,4 +5,3 @@ public class UserAlreadyExistException extends RuntimeException{
         super(message);
     }
 }
-
