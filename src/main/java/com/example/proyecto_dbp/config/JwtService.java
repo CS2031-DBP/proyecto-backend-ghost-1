@@ -19,15 +19,14 @@ public class JwtService {
         return JWT.decode(token).getSubject();
     }
 
-    public String generateToken(Authentication authentication) {
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+    public String generateToken(UserDetails data) {
         Date now = new Date();
         Date expiration = new Date(now.getTime() + 1000 * 60 * 60 * 10);
 
         Algorithm algorithm = Algorithm.HMAC256(secret);
 
         return JWT.create()
-                .withSubject(userDetails.getUsername())
+                .withSubject(data.getUsername())
                 .withIssuedAt(now)
                 .withExpiresAt(expiration)
                 .sign(algorithm);

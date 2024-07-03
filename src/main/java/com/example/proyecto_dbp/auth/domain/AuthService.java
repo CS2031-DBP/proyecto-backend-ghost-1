@@ -14,6 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +49,6 @@ public class AuthService {
             user.setEmail(registerReq.getEmail());
             user.setPassword(passwordEncoder.encode(registerReq.getPassword()));
             user.setName(registerReq.getName());
-            user.setRoles(Set.of(Role.STUDENT));
 
             userRepository.save(user);
 
@@ -59,14 +59,17 @@ public class AuthService {
     }
 
     public JwtAuthResponse login(LoginReq req) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword())
-        );
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        Optional<User> user;
+        user = userRepository.findByEmail(req.getEmail());
 
-        User user = (User) authentication.getPrincipal();
+        if (user.isEmpty()) throw new UsernameNotFoundException("Email is not registered");
+
+        if (!passwordEncoder.matches(req.getPassword(), user.get().getPassword()))
+            throw new IllegalArgumentException("Password is incorrect");
+
         JwtAuthResponse response = new JwtAuthResponse();
-        response.setToken(jwtService.generateToken(authentication));
+
+        response.setToken(jwtService.generateToken(user.get()));
         return response;
     }
 }
