@@ -17,6 +17,11 @@ public class AuthController {
 
     public AuthController(AuthService authService) {this.authService = authService;}
 
+    @GetMapping("/hello")
+    public String hello() {
+        return "La nube funciona";
+    }
+
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterReq registerReq) {
         authService.register(registerReq);
