@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
@@ -31,8 +33,9 @@ public class User implements UserDetails {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column
-    private String roles;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
     @OneToMany(mappedBy = "user")
     private List<Course> courses;
@@ -40,24 +43,22 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<VoiceCommand> voiceCommands;
 
-    public User(String email, String name, String password, String roles) {
+    public User(String email, String name, String password, Set<Role> roles) {
         this.email = email;
         this.name = name;
         this.password = password;
         this.roles = roles;
     }
 
-    public boolean isAdmin() {
-        return this.roles.contains("ADMIN");
-    }
-
-    public boolean isResourceOwner() {
-        return this.roles.contains("RESOURCE_OWNER");
-    }
+    public boolean isAdmin() {return this.roles.contains(Role.ADMIN);}
 
     @Override
     @JsonIgnore
-    public Collection<? extends GrantedAuthority> getAuthorities() {return List.of(new SimpleGrantedAuthority(roles));}
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles.stream()
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
+                .collect(Collectors.toList());
+    }
 
     @Override
     @JsonIgnore

@@ -1,5 +1,6 @@
 package com.example.proyecto_dbp.auth.domain;
 
+import com.example.proyecto_dbp.User.domain.Role;
 import com.example.proyecto_dbp.User.domain.User;
 import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.auth.dto.JwtAuthResponse;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 import static com.example.proyecto_dbp.User.domain.Role.STUDENT;
 
@@ -41,11 +43,12 @@ public class AuthService {
             if (userRepository.existsByEmail(registerReq.getEmail())) {
                 throw new UserAlreadyExistException("User already exists with email " + registerReq.getEmail());
             }
+
             User user = new User();
             user.setEmail(registerReq.getEmail());
             user.setPassword(passwordEncoder.encode(registerReq.getPassword()));
             user.setName(registerReq.getName());
-            user.setRoles(String.valueOf(STUDENT));
+            user.setRoles(Set.of(Role.STUDENT));
 
             userRepository.save(user);
 
