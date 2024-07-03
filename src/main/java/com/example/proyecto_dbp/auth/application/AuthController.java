@@ -4,6 +4,7 @@ import com.example.proyecto_dbp.auth.domain.AuthService;
 import com.example.proyecto_dbp.auth.dto.JwtAuthResponse;
 import com.example.proyecto_dbp.auth.dto.LoginReq;
 import com.example.proyecto_dbp.auth.dto.RegisterReq;
+import com.example.proyecto_dbp.exceptions.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +16,13 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    public AuthController(AuthService authService) {this.authService = authService;}
-
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterReq registerReq) {
-        authService.register(registerReq);
-        return ResponseEntity.ok("User registered successfully");
+    public ResponseEntity<?> registerUser(@RequestBody RegisterReq registerReq) {
+        try {
+            return ResponseEntity.ok(authService.registerUser(registerReq));
+        } catch (UserAlreadyExistException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping("/login")

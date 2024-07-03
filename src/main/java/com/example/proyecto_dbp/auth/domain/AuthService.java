@@ -8,6 +8,7 @@ import com.example.proyecto_dbp.auth.dto.RegisterReq;
 import com.example.proyecto_dbp.config.JwtService;
 import com.example.proyecto_dbp.exceptions.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
+import static com.example.proyecto_dbp.User.domain.Role.STUDENT;
 
 @Service
 public class AuthService {
@@ -33,22 +36,23 @@ public class AuthService {
         this.authenticationManager = authenticationManager;
     }
 
-    public JwtAuthResponse register(RegisterReq req) {
-        Optional<User> user = userRepository.findByEmail(req.getEmail());
-        if (user.isPresent()) throw new UserAlreadyExistException("Email is already registered");
+    public String registerUser(RegisterReq registerReq) {
+        try {
+            if (userRepository.existsByEmail(registerReq.getEmail())) {
+                throw new UserAlreadyExistException("User already exists with email " + registerReq.getEmail());
+            }
+            User user = new User();
+            user.setEmail(registerReq.getEmail());
+            user.setPassword(passwordEncoder.encode(registerReq.getPassword()));
+            user.setName(registerReq.getName());
+            user.setRoles(String.valueOf(STUDENT));
 
-        User newUser = new User();
-        newUser.setPassword(passwordEncoder.encode(req.getPassword()));
-        newUser.setEmail(req.getEmail());
-        newUser.setName(req.getName());
-        userRepository.save(newUser);
+            userRepository.save(user);
 
-        Authentication authentication = new UsernamePasswordAuthenticationToken(newUser.getEmail(), req.getPassword());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        JwtAuthResponse response = new JwtAuthResponse();
-        response.setToken(jwtService.generateToken(authentication));
-        return response;
+            return "User registered successfully";
+        } catch (DataIntegrityViolationException e) {
+            throw new UserAlreadyExistException("User already exists with email " + registerReq.getEmail());
+        }
     }
 
     public JwtAuthResponse login(LoginReq req) {

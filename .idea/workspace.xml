@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="hehe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/infrastructure/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/infrastructure/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/application/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/application/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/domain/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/domain/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/dto/RegisterReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/dto/RegisterReq.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +45,10 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Event/application/EventController.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/User/application/UserController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -65,70 +70,70 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.ActivityControllerTest.executor": "Run",
-    "JUnit.ActivityRepositoryTest.executor": "Run",
-    "JUnit.CalendarIntegrationControllerTest.executor": "Run",
-    "JUnit.CalendarIntegrationRepositoryTest.executor": "Run",
-    "JUnit.CourseControllerTest (1).executor": "Run",
-    "JUnit.CourseControllerTest.executor": "Run",
-    "JUnit.CourseControllerTest.testCreateCourse.executor": "Run",
-    "JUnit.CourseControllerTest.testGetAllCourses.executor": "Run",
-    "JUnit.CourseRepositoryTest.executor": "Run",
-    "JUnit.EventControllerTest.executor": "Run",
-    "JUnit.EventRepositoryTest.executor": "Run",
-    "JUnit.EventRepositoryTest.testDeleteEventNotFound.executor": "Run",
-    "JUnit.TaskControllerTest.executor": "Run",
-    "JUnit.TaskRepositoryTest.executor": "Run",
-    "JUnit.TaskRepositoryTest.testGetAllTasks.executor": "Run",
-    "JUnit.TaskRepositoryTest.testGetTaskByIdNotFound.executor": "Run",
-    "JUnit.UserControllerSecurityTest.executor": "Run",
-    "JUnit.UserControllerSecurityTest.testAdminAccessToCreateUser.executor": "Run",
-    "JUnit.UserControllerTest.executor": "Run",
-    "JUnit.UserControllerTest.testGetAllUsers.executor": "Run",
-    "JUnit.UserRepositoryTest.executor": "Run",
-    "JUnit.UserRepositoryTest.testDeleteUser.executor": "Run",
-    "JUnit.UserRepositoryTest.testUpdateUser.executor": "Run",
-    "JUnit.VoiceCommandControllerTest.executor": "Run",
-    "JUnit.VoiceCommandRepositoryTest.executor": "Run",
-    "JUnit.VoiceCommandRepositoryTest.testGetVoiceCommandById.executor": "Run",
-    "JUnit.VoiceCommandServiceTest.executor": "Run",
-    "Maven.proyecto_dbp [package].executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ProyectoDbpApplication.executor": "Run",
-    "Spring Boot.ProyectoDbpApplicationTests.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "openjdk-22",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/jorge l/Desktop/dbp/hkt-recupera",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.ActivityControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ActivityRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CalendarIntegrationControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CalendarIntegrationRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CourseControllerTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CourseControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CourseControllerTest.testCreateCourse.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CourseControllerTest.testGetAllCourses.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CourseRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EventRepositoryTest.testDeleteEventNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TaskControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TaskRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TaskRepositoryTest.testGetAllTasks.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TaskRepositoryTest.testGetTaskByIdNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerSecurityTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerSecurityTest.testAdminAccessToCreateUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerTest.testGetAllUsers.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserRepositoryTest.testDeleteUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserRepositoryTest.testUpdateUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VoiceCommandControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VoiceCommandRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VoiceCommandRepositoryTest.testGetVoiceCommandById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.VoiceCommandServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.proyecto_dbp [package].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ProyectoDbpApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ProyectoDbpApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-22&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jorge l/Desktop/dbp/hkt-recupera&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\j_lea\OneDrive\Escritorio\dbp - uber - test\proyecto-backend-ghost-1\src\test" />
@@ -210,12 +215,12 @@
     </configuration>
     <configuration name="ProyectoDbpApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <envs>
-        <env name="PG_HOST" value="localhost" />
-        <env name="PG_PORT" value="5555" />
-        <env name="POSTGRES_DB" value="postgres" />
-        <env name="PGUSER" value="postgres" />
-        <env name="PGPASSWORD" value="mypassword" />
         <env name="JWT_SECRET" value="secret_key" />
+        <env name="PG_HOST" value="database-2.c3utry1psxmk.us-east-1.rds.amazonaws.com" />
+        <env name="PG_PORT" value="5432" />
+        <env name="PGPASSWORD" value="mypassword" />
+        <env name="PGUSER" value="postgres" />
+        <env name="POSTGRES_DB" value="postgres" />
       </envs>
       <module name="proyecto_dbp" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.proyecto_dbp.ProyectoDbpApplication" />
@@ -315,7 +320,11 @@
       <workItem from="1719404801744" duration="5188000" />
       <workItem from="1719635718237" duration="2187000" />
       <workItem from="1719790555683" duration="729000" />
-      <workItem from="1719838870593" duration="5107000" />
+      <workItem from="1719838870593" duration="6204000" />
+      <workItem from="1719868373787" duration="7812000" />
+      <workItem from="1719954558276" duration="2000" />
+      <workItem from="1719975090908" duration="20000" />
+      <workItem from="1720009389376" duration="173000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -581,7 +590,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719842008670</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="hehe">
+      <option name="closed" value="true" />
+      <created>1719853120235</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1719853120235</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
