@@ -52,7 +52,7 @@ public class UserService {
 
     public User createUser(User user) {
         String username = authorizationUtils.getCurrentUserEmail();
-        if(username == null) throw new UnauthorizeOperationException("Anonymous User not allowed to access this resource");
+        if(username==null) throw new UnauthorizeOperationException("Anonymous User not allowed to access this resource");
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new UserAlreadyExistException("User already exists with email " + user.getEmail());
         }
