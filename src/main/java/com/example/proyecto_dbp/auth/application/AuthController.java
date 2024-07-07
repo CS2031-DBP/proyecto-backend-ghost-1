@@ -19,9 +19,6 @@ public class AuthController {
     @GetMapping("/hello")
     public String hello() {return "Hello";}
 
-    @GetMapping("/bye")
-    public String bye() {return "Bye";}
-
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterReq registerReq) {
         try {
