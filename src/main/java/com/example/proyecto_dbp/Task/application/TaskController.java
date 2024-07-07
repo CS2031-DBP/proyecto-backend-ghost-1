@@ -2,9 +2,10 @@ package com.example.proyecto_dbp.Task.application;
 
 import com.example.proyecto_dbp.Task.domain.Task;
 import com.example.proyecto_dbp.Task.domain.TaskService;
-import com.example.proyecto_dbp.Task.dto.TaskDTO;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,11 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping
-    public List<Task> getAllTasks() {
-        return taskService.getAllTasks();
+    public ResponseEntity<Page<Task>> getAllTasks(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Page<Task> tasks = taskService.getAllTasks(PageRequest.of(page, size));
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

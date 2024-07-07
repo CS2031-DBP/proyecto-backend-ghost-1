@@ -3,6 +3,8 @@ package com.example.proyecto_dbp.Task.domain;
 import com.example.proyecto_dbp.Task.infrastructure.TaskRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -12,7 +14,9 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-    public List<Task> getAllTasks() {return taskRepository.findAll();}
+    public Page<Task> getAllTasks(PageRequest pageRequest) {
+        return taskRepository.findAll(pageRequest);
+    }
 
     public Task getTaskById(Long id) {
         return taskRepository.findById(id)
