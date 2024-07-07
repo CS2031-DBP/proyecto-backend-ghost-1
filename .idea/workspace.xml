@@ -6,6 +6,64 @@
   <component name="ChangeListManager">
     <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="cors added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/ProyectoDbpApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/ProyectoDbpApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/application/ActivityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/application/ActivityController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/domain/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/domain/Activity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/domain/ActivityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/domain/ActivityService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/dto/ActivityDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/dto/ActivityDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/infrastructure/ActivityRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/infrastructure/ActivityRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/CalendarIntegration/application/CalendarIntegrationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/CalendarIntegration/application/CalendarIntegrationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegrationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/CalendarIntegration/domain/CalendarIntegrationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/CalendarIntegration/dto/CalendarIntegrationDTO$CalendarIntegrationDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/CalendarIntegration/dto/CalendarIntegrationDTO$CalendarIntegrationDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/CalendarIntegration/dto/CalendarIntegrationDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/CalendarIntegration/dto/CalendarIntegrationDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/application/CourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/application/CourseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/domain/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/domain/Course.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/domain/CourseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/domain/CourseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/dto/CourseDTO$CourseDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/dto/CourseDTO$CourseDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/dto/CourseDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/dto/CourseDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/infrastructure/CourseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/infrastructure/CourseRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/application/EventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/application/EventController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/domain/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/domain/Event.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/domain/EventService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/domain/EventService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/dto/EventDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/dto/EventDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/events/EmailEventListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/events/EmailEventListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/events/EmailService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/events/EmailService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/events/EventCreatedEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/events/EventCreatedEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/events/HelloEmailEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/events/HelloEmailEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/infrastructure/EventRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/infrastructure/EventRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/ProyectoDbpApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/ProyectoDbpApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/application/TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/application/TaskController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/domain/Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/domain/Task.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/domain/TaskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/domain/TaskService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/dto/TaskDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/dto/TaskDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/infrastructure/TaskRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/infrastructure/TaskRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/application/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/application/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/domain/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/domain/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/domain/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/domain/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/domain/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/dto/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/infrastructure/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/User/infrastructure/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/VoiceCommand/application/VoiceCommandController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommandService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/VoiceCommand/domain/VoiceCommandService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/VoiceCommand/dto/VoiceCommandDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/VoiceCommand/dto/VoiceCommandDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/VoiceCommand/infrastructure/VoiceCommandRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/VoiceCommand/infrastructure/VoiceCommandRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/application/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/application/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/domain/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/domain/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/dto/JwtAuthResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/dto/JwtAuthResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/dto/LoginReq.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/dto/LoginReq.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/dto/RegisterReq.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/dto/RegisterReq.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/exceptions/UserAlreadyExistException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/exceptions/UserAlreadyExistException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/utils/AuthorizationUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/utils/AuthorizationUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/config/JwtAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/config/JwtAuthenticationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/config/JwtService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/config/JwtService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/exceptions/ResourceNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/exceptions/ResourceNotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/exceptions/UnauthorizeOperationException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/exceptions/UnauthorizeOperationException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/exceptions/UserAlreadyExistException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/exceptions/UserAlreadyExistException.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,70 +124,70 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.ActivityControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ActivityRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CalendarIntegrationControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CalendarIntegrationRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseControllerTest (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseControllerTest.testCreateCourse.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseControllerTest.testGetAllCourses.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CourseRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.EventRepositoryTest.testDeleteEventNotFound.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskRepositoryTest.testGetAllTasks.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TaskRepositoryTest.testGetTaskByIdNotFound.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserControllerSecurityTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserControllerSecurityTest.testAdminAccessToCreateUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserControllerTest.testGetAllUsers.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.testDeleteUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.testUpdateUser.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VoiceCommandControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VoiceCommandRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VoiceCommandRepositoryTest.testGetVoiceCommandById.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.VoiceCommandServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.proyecto_dbp [package].executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ProyectoDbpApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ProyectoDbpApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-22&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mateonoel/Desktop/proyecto-backend-ghost-1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.ActivityControllerTest.executor": "Run",
+    "JUnit.ActivityRepositoryTest.executor": "Run",
+    "JUnit.CalendarIntegrationControllerTest.executor": "Run",
+    "JUnit.CalendarIntegrationRepositoryTest.executor": "Run",
+    "JUnit.CourseControllerTest (1).executor": "Run",
+    "JUnit.CourseControllerTest.executor": "Run",
+    "JUnit.CourseControllerTest.testCreateCourse.executor": "Run",
+    "JUnit.CourseControllerTest.testGetAllCourses.executor": "Run",
+    "JUnit.CourseRepositoryTest.executor": "Run",
+    "JUnit.EventControllerTest.executor": "Run",
+    "JUnit.EventRepositoryTest.executor": "Run",
+    "JUnit.EventRepositoryTest.testDeleteEventNotFound.executor": "Run",
+    "JUnit.TaskControllerTest.executor": "Run",
+    "JUnit.TaskRepositoryTest.executor": "Run",
+    "JUnit.TaskRepositoryTest.testGetAllTasks.executor": "Run",
+    "JUnit.TaskRepositoryTest.testGetTaskByIdNotFound.executor": "Run",
+    "JUnit.UserControllerSecurityTest.executor": "Run",
+    "JUnit.UserControllerSecurityTest.testAdminAccessToCreateUser.executor": "Run",
+    "JUnit.UserControllerTest.executor": "Run",
+    "JUnit.UserControllerTest.testGetAllUsers.executor": "Run",
+    "JUnit.UserRepositoryTest.executor": "Run",
+    "JUnit.UserRepositoryTest.testDeleteUser.executor": "Run",
+    "JUnit.UserRepositoryTest.testUpdateUser.executor": "Run",
+    "JUnit.VoiceCommandControllerTest.executor": "Run",
+    "JUnit.VoiceCommandRepositoryTest.executor": "Run",
+    "JUnit.VoiceCommandRepositoryTest.testGetVoiceCommandById.executor": "Run",
+    "JUnit.VoiceCommandServiceTest.executor": "Run",
+    "Maven.proyecto_dbp [package].executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ProyectoDbpApplication.executor": "Run",
+    "Spring Boot.ProyectoDbpApplicationTests.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "openjdk-22",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/j_lea/OneDrive/Escritorio/dbp/pc1-repaso",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\j_lea\OneDrive\Escritorio\dbp - uber - test\proyecto-backend-ghost-1\src\test" />
@@ -323,6 +381,7 @@
       <workItem from="1720009389376" duration="2758000" />
       <workItem from="1720016296442" duration="953000" />
       <workItem from="1720352455109" duration="498000" />
+      <workItem from="1720353103929" duration="6777000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -628,7 +687,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720352764608</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="cors added">
+      <option name="closed" value="true" />
+      <created>1720353346937</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1720353346937</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
