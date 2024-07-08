@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="gg">
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="gg xd">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/application/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/application/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/dto/ActivityDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/dto/ActivityDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/application/TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/application/TaskController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,23 +326,7 @@
       <workItem from="1720016296442" duration="953000" />
       <workItem from="1720352455109" duration="498000" />
       <workItem from="1720353103929" duration="8236000" />
-      <workItem from="1720394893882" duration="14504000" />
-    </task>
-    <task id="LOCAL-00011" summary="GlobalExceptionHandler arreglado&#10;se borro todos los setters y getters&#10;falta implementacion de dto para service">
-      <option name="closed" value="true" />
-      <created>1716422983161</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1716422983161</updated>
-    </task>
-    <task id="LOCAL-00012" summary="todo esta con dto sin setter y getter y sin error">
-      <option name="closed" value="true" />
-      <created>1716501691254</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1716501691254</updated>
+      <workItem from="1720394893882" duration="15189000" />
     </task>
     <task id="LOCAL-00013" summary="events y asincronia !?">
       <option name="closed" value="true" />
@@ -723,7 +704,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720410802912</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="gg">
+      <option name="closed" value="true" />
+      <created>1720411211956</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1720411211956</updated>
+    </task>
+    <task id="LOCAL-00061" summary="gg xd">
+      <option name="closed" value="true" />
+      <created>1720411354909</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1720411354909</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -742,7 +739,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="security loop arreglado? (por verificar)" />
     <MESSAGE value="security loop arreglado? (por verificar) cambio en setter y getter de role" />
     <MESSAGE value="no pude rsolver activtyrepository test, sigue dando 3 test erroneos" />
     <MESSAGE value="repository test implementation&#10;en ds sale el avance de cada uno" />
@@ -767,7 +763,8 @@
     <MESSAGE value="ayuda papa dio" />
     <MESSAGE value="se jalo de nuevo" />
     <MESSAGE value="gg" />
-    <option name="LAST_COMMIT_MESSAGE" value="gg" />
+    <MESSAGE value="gg xd" />
+    <option name="LAST_COMMIT_MESSAGE" value="gg xd" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

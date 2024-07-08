@@ -91,6 +91,7 @@ public class TaskService {
             course = courseRepository.save(course);
         }
 
+        task.setCourse(course);
         return taskRepository.save(task);
     }
 
