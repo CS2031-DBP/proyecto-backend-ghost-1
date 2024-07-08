@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="pruebaaaaa">
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="se jala dbp x2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/application/ActivityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/application/ActivityController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/domain/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/domain/Activity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/dto/ActivityDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Activity/dto/ActivityDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/domain/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/domain/Event.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/dto/EventDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Event/dto/EventDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/application/TaskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/application/TaskController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/domain/TaskService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/domain/TaskService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/dto/TaskDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/dto/TaskDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/application/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/auth/application/AuthController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,23 +324,7 @@
       <workItem from="1720016296442" duration="953000" />
       <workItem from="1720352455109" duration="498000" />
       <workItem from="1720353103929" duration="8236000" />
-      <workItem from="1720394893882" duration="10528000" />
-    </task>
-    <task id="LOCAL-00003" summary="xd">
-      <option name="closed" value="true" />
-      <created>1715636291093</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1715636291093</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Modified w errors">
-      <option name="closed" value="true" />
-      <created>1715636838248</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1715636838248</updated>
+      <workItem from="1720394893882" duration="11147000" />
     </task>
     <task id="LOCAL-00005" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -727,7 +702,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720406732533</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="se jala dbp">
+      <option name="closed" value="true" />
+      <created>1720407260732</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1720407260732</updated>
+    </task>
+    <task id="LOCAL-00053" summary="se jala dbp x2">
+      <option name="closed" value="true" />
+      <created>1720407483329</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1720407483330</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -746,8 +737,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="falta testear y verificar todo &#10;verificar envio de emails" />
-    <MESSAGE value="completo" />
     <MESSAGE value="UserService y CourseService chekar" />
     <MESSAGE value="VOLVIO LA FE" />
     <MESSAGE value="UserControllerTest terminado" />
@@ -771,7 +760,9 @@
     <MESSAGE value="xd" />
     <MESSAGE value="prueba" />
     <MESSAGE value="pruebaaaaa" />
-    <option name="LAST_COMMIT_MESSAGE" value="pruebaaaaa" />
+    <MESSAGE value="se jala dbp" />
+    <MESSAGE value="se jala dbp x2" />
+    <option name="LAST_COMMIT_MESSAGE" value="se jala dbp x2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
