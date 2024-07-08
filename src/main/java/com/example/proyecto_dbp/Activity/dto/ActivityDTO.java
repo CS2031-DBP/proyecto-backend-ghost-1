@@ -1,6 +1,5 @@
 package com.example.proyecto_dbp.Activity.dto;
 
-import com.example.proyecto_dbp.Course.domain.Course;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -28,7 +27,7 @@ public class ActivityDTO {
     private String estado;
 
     @NotNull
-    private Course courseId;
+    private Long CourseId;
 
     @NotNull
     private String descripcion;
