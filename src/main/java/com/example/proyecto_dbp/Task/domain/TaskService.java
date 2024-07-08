@@ -1,6 +1,7 @@
 package com.example.proyecto_dbp.Task.domain;
 
 import com.example.proyecto_dbp.Course.domain.Course;
+import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.Task.infrastructure.TaskRepository;
 import com.example.proyecto_dbp.Task.dto.TaskDTO;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
@@ -16,6 +17,9 @@ public class TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
 
     public Page<Task> getAllTasks(Pageable pageable) {
         return taskRepository.findAll(pageable);
@@ -42,10 +46,15 @@ public class TaskService {
         task.setPriority(taskDTO.getPriority());
         task.setCompleted(taskDTO.getCompleted());
 
-        Course course = new Course();
-        course.setId(taskDTO.getCourseId());
-        task.setCourse(course);
+        Course course = courseRepository.findById(taskDTO.getCourseId()).orElse(null);
+        if (course == null) {
+            course = new Course();
+            course.setId(taskDTO.getCourseId());
+            course.setNombreCurso(taskDTO.getCourseName());
+            course = courseRepository.save(course);
+        }
 
+        task.setCourse(course);
         return taskRepository.save(task);
     }
 
@@ -61,9 +70,13 @@ public class TaskService {
         task.setPriority(taskDTO.getPriority());
         task.setCompleted(taskDTO.getCompleted());
 
-        Course course = new Course();
-        course.setId(taskDTO.getCourseId());
-        task.setCourse(course);
+        Course course = courseRepository.findById(taskDTO.getCourseId()).orElse(null);
+        if (course == null) {
+            course = new Course();
+            course.setId(taskDTO.getCourseId());
+            course.setNombreCurso(taskDTO.getCourseName());
+            course = courseRepository.save(course); // Guardar el nuevo curso
+        }
 
         return taskRepository.save(task);
     }

@@ -30,5 +30,8 @@ public class ActivityDTO {
     private Long CourseId;
 
     @NotNull
+    private String courseName;
+
+    @NotNull
     private String descripcion;
 }
