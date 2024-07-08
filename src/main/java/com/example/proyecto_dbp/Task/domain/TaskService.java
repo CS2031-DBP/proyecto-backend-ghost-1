@@ -1,5 +1,6 @@
 package com.example.proyecto_dbp.Task.domain;
 
+import com.example.proyecto_dbp.Task.dto.TaskDTO;
 import com.example.proyecto_dbp.Task.infrastructure.TaskRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,17 @@ public class TaskService {
         return tasks;
     }
 
-
-    public Task createTask(Task task) {return taskRepository.save(task);}
+    public Task createTask(TaskDTO taskDTO) {
+        Task task = new Task();
+        task.setTitulo(taskDTO.getTitulo());
+        task.setDescripcion(taskDTO.getDescripcion());
+        task.setFechaInicio(taskDTO.getFechaInicio());
+        task.setFechaFin(taskDTO.getFechaFin());
+        task.setEstado(taskDTO.getEstado());
+        task.setPriority(taskDTO.getPriority());
+        task.setCompleted(taskDTO.getCompleted());
+        return taskRepository.save(task);
+    }
 
     public Task updateTask(Long id, Task updatedTask) {
         Task task = taskRepository.findById(id)

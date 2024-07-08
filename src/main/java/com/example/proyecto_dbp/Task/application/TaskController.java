@@ -2,6 +2,7 @@ package com.example.proyecto_dbp.Task.application;
 
 import com.example.proyecto_dbp.Task.domain.Task;
 import com.example.proyecto_dbp.Task.domain.TaskService;
+import com.example.proyecto_dbp.Task.dto.TaskDTO;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,8 +44,8 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
-        Task createdTask = taskService.createTask(task);
+    public ResponseEntity<Task> createTask(@RequestBody TaskDTO taskDTO) {
+        Task createdTask = taskService.createTask(taskDTO);
         return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
     }
 

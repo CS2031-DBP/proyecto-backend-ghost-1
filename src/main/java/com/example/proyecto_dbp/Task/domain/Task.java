@@ -6,8 +6,7 @@ import lombok.*;
 
 @Entity
 @Table(name = "tasks")
-@Getter
-@Setter
+@Getter @Setter
 @EqualsAndHashCode(callSuper = true)
 public class Task extends Activity {
     @Column(nullable = false)

@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="adjustment on task abt pagination">
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="adjustment on activity for task">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/dto/ActivityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/dto/ActivityDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,7 +326,7 @@
       <workItem from="1720016296442" duration="953000" />
       <workItem from="1720352455109" duration="498000" />
       <workItem from="1720353103929" duration="8236000" />
-      <workItem from="1720394893882" duration="2951000" />
+      <workItem from="1720394893882" duration="4296000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -654,7 +656,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720396582367</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="adjustment on activity for task">
+      <option name="closed" value="true" />
+      <created>1720398710339</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1720398710339</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +683,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="verificar endpoints para coherencia del proyecto" />
     <MESSAGE value="verificar endpoints para coherencia del proyecto&#10;ningun error por ahora" />
     <MESSAGE value="GlobalExceptionHandler arreglado" />
     <MESSAGE value="GlobalExceptionHandler arreglado&#10;se borro todos los setters y getters&#10;falta implementacion de dto para service" />
@@ -698,7 +707,8 @@
     <MESSAGE value="cors added" />
     <MESSAGE value="cors added correctly" />
     <MESSAGE value="adjustment on task abt pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjustment on task abt pagination" />
+    <MESSAGE value="adjustment on activity for task" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjustment on activity for task" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

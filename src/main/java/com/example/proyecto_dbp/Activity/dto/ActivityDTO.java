@@ -3,12 +3,10 @@ package com.example.proyecto_dbp.Activity.dto;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import java.util.Date;
 
 @Data
-@NoArgsConstructor @AllArgsConstructor
 public class ActivityDTO {
 
     @NotNull
