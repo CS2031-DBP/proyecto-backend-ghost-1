@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="GG" />
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="prueba">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/application/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/auth/application/AuthController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -322,7 +324,7 @@
       <workItem from="1720016296442" duration="953000" />
       <workItem from="1720352455109" duration="498000" />
       <workItem from="1720353103929" duration="8236000" />
-      <workItem from="1720394893882" duration="8064000" />
+      <workItem from="1720394893882" duration="8552000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -700,7 +702,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720402899182</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="xd">
+      <option name="closed" value="true" />
+      <created>1720404523387</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1720404523387</updated>
+    </task>
+    <task id="LOCAL-00049" summary="prueba">
+      <option name="closed" value="true" />
+      <created>1720404750803</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1720404750803</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -719,7 +737,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="." />
     <MESSAGE value="events y asincronia !?" />
     <MESSAGE value="falta testear y verificar todo &#10;verificar envio de emails" />
     <MESSAGE value="completo" />
@@ -732,7 +749,6 @@
     <MESSAGE value="no pude rsolver activtyrepository test, sigue dando 3 test erroneos" />
     <MESSAGE value="repository test implementation&#10;en ds sale el avance de cada uno" />
     <MESSAGE value="falta VoiceCommandRepositoryTest" />
-    <MESSAGE value="xd" />
     <MESSAGE value="aer" />
     <MESSAGE value="hehe" />
     <MESSAGE value="fixed register !?" />
@@ -744,7 +760,9 @@
     <MESSAGE value="adjustment on task 2nd time" />
     <MESSAGE value="adjustment on task 3rd time" />
     <MESSAGE value="GG" />
-    <option name="LAST_COMMIT_MESSAGE" value="GG" />
+    <MESSAGE value="xd" />
+    <MESSAGE value="prueba" />
+    <option name="LAST_COMMIT_MESSAGE" value="prueba" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
