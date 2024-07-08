@@ -12,7 +12,4 @@ public class Task extends Activity {
     @Column(nullable = false)
     private String priority;
 
-    @Column(nullable = false)
-    private Boolean completed;
-
 }

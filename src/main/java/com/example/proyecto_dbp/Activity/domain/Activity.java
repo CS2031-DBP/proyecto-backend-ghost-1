@@ -30,9 +30,6 @@ public class Activity {
     @Column(nullable = false)
     private String estado;
 
-    @Column(nullable = false)
-    private Boolean completed = false;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;

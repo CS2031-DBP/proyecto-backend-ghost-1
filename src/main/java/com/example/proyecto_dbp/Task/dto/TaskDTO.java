@@ -12,8 +12,4 @@ public class TaskDTO extends ActivityDTO {
     @NotNull
     @Size(min = 1, max = 255)
     private String priority;
-
-    private Boolean completed;
-
-
 }
