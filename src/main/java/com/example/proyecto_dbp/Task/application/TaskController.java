@@ -7,7 +7,6 @@ import com.example.proyecto_dbp.Task.domain.TaskService;
 import com.example.proyecto_dbp.Task.dto.TaskDTO;
 import com.example.proyecto_dbp.Task.infrastructure.TaskRepository;
 import com.example.proyecto_dbp.User.domain.User;
-import com.example.proyecto_dbp.User.domain.UserService;
 import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +76,6 @@ public class TaskController {
         task.setFechaFin(taskDTO.getFechaFin());
         task.setEstado(taskDTO.getEstado());
         task.setPriority(taskDTO.getPriority());
-        task.setCompleted(taskDTO.getCompleted());
         task.setCourse(course);
 
         courseRepository.save(course);

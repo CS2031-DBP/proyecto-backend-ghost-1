@@ -49,7 +49,6 @@ public class TaskService {
         task.setFechaFin(taskDTO.getFechaFin());
         task.setEstado(taskDTO.getEstado());
         task.setPriority(taskDTO.getPriority());
-        task.setCompleted(taskDTO.getCompleted());
 
         Course course = courseRepository.findById(taskDTO.getCourseId()).orElse(null);
         if (course == null) {
@@ -57,12 +56,11 @@ public class TaskService {
             course.setNombreCurso(taskDTO.getCourseName());
             course.setDescripcion(taskDTO.getDescripcion());
 
-            // Buscar el usuario por ID y asignarlo al curso
             User user = userRepository.findById(taskDTO.getUserId())
                     .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + taskDTO.getUserId()));
             course.setUser(user);
 
-            course = courseRepository.save(course); // Guardar el nuevo curso
+            course = courseRepository.save(course);
         }
 
         task.setCourse(course);
@@ -79,7 +77,6 @@ public class TaskService {
         task.setFechaFin(taskDTO.getFechaFin());
         task.setEstado(taskDTO.getEstado());
         task.setPriority(taskDTO.getPriority());
-        task.setCompleted(taskDTO.getCompleted());
 
         Course course = courseRepository.findById(taskDTO.getCourseId()).orElse(null);
         if (course == null) {
