@@ -15,6 +15,6 @@ public class Task extends Activity {
     @Column(nullable = false)
     private Boolean completed;
 
-
+    @Column(nullable = false)
     private Long courseId;
 }
