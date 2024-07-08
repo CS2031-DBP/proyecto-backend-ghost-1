@@ -28,7 +28,6 @@ public class CourseService {
 
         course.setNombreCurso(updatedCourse.getNombreCurso());
         course.setDescripcion(updatedCourse.getDescripcion());
-        course.setProfesor(updatedCourse.getProfesor());
         return courseRepository.save(course);
     }
 
