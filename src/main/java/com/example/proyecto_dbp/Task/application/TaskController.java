@@ -1,8 +1,14 @@
 package com.example.proyecto_dbp.Task.application;
 
+import com.example.proyecto_dbp.Course.domain.Course;
+import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.Task.domain.Task;
 import com.example.proyecto_dbp.Task.domain.TaskService;
 import com.example.proyecto_dbp.Task.dto.TaskDTO;
+import com.example.proyecto_dbp.Task.infrastructure.TaskRepository;
+import com.example.proyecto_dbp.User.domain.User;
+import com.example.proyecto_dbp.User.domain.UserService;
+import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +26,15 @@ public class TaskController {
 
     @Autowired
     private TaskService taskService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private TaskRepository taskRepository;
 
     @GetMapping
     public ResponseEntity<Page<Task>> getAllTasks(
@@ -45,21 +60,33 @@ public class TaskController {
         return taskService.getTasksByCourseId(courseId);
     }
 
-    @PostMapping
+    @PostMapping("/tasks")
     public ResponseEntity<Task> createTask(@RequestBody TaskDTO taskDTO) {
-        Task createdTask = taskService.createTask(taskDTO);
-        return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
+        User user = userRepository.findById(taskDTO.getUserId())
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + taskDTO.getUserId()));
+
+        Course course = new Course();
+        course.setNombreCurso(taskDTO.getCourseName());
+        course.setDescripcion(taskDTO.getDescripcion());
+        course.setUser(user);
+
+        Task task = new Task();
+        task.setTitulo(taskDTO.getTitulo());
+        task.setDescripcion(taskDTO.getDescripcion());
+        task.setFechaInicio(taskDTO.getFechaInicio());
+        task.setFechaFin(taskDTO.getFechaFin());
+        task.setEstado(taskDTO.getEstado());
+        task.setPriority(taskDTO.getPriority());
+        task.setCompleted(taskDTO.getCompleted());
+        task.setCourse(course);
+
+        courseRepository.save(course);
+        taskRepository.save(task);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(task);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
-        try {
-            Task updatedTask = taskService.updateTask(id, taskDTO);
-            return ResponseEntity.ok(updatedTask);
-        } catch (ResourceNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {

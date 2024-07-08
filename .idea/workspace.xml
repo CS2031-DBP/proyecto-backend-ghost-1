@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="ayuda papa dio">
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="se jalo de nuevo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/dto/ActivityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/dto/ActivityDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Course/domain/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/domain/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/domain/Course.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/domain/CourseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Course/domain/CourseService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,31 +326,7 @@
       <workItem from="1720016296442" duration="953000" />
       <workItem from="1720352455109" duration="498000" />
       <workItem from="1720353103929" duration="8236000" />
-      <workItem from="1720394893882" duration="12428000" />
-    </task>
-    <task id="LOCAL-00007" summary="Entidades definitivas.">
-      <option name="closed" value="true" />
-      <created>1716338270998</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1716338270998</updated>
-    </task>
-    <task id="LOCAL-00008" summary="events y task falta atributos en model y getters / setters para service">
-      <option name="closed" value="true" />
-      <created>1716388397090</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1716388397090</updated>
-    </task>
-    <task id="LOCAL-00009" summary="verificar endpoints para coherencia del proyecto&#10;ningun error por ahora">
-      <option name="closed" value="true" />
-      <created>1716402082229</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1716402082229</updated>
+      <workItem from="1720394893882" duration="13903000" />
     </task>
     <task id="LOCAL-00010" summary="GlobalExceptionHandler arreglado">
       <option name="closed" value="true" />
@@ -721,7 +696,31 @@
       <option name="project" value="LOCAL" />
       <updated>1720408590622</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="ayuda papa dio">
+      <option name="closed" value="true" />
+      <created>1720409166762</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1720409166762</updated>
+    </task>
+    <task id="LOCAL-00057" summary="ayuda papa dio">
+      <option name="closed" value="true" />
+      <created>1720409203007</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1720409203007</updated>
+    </task>
+    <task id="LOCAL-00058" summary="se jalo de nuevo">
+      <option name="closed" value="true" />
+      <created>1720409319548</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1720409319548</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -740,7 +739,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="UserControllerTest terminado" />
     <MESSAGE value="User Repo + revisar Security" />
     <MESSAGE value="security loop arreglado? (por verificar)" />
     <MESSAGE value="security loop arreglado? (por verificar) cambio en setter y getter de role" />
@@ -765,7 +763,8 @@
     <MESSAGE value="se jala dbp x2" />
     <MESSAGE value="cooking?" />
     <MESSAGE value="ayuda papa dio" />
-    <option name="LAST_COMMIT_MESSAGE" value="ayuda papa dio" />
+    <MESSAGE value="se jalo de nuevo" />
+    <option name="LAST_COMMIT_MESSAGE" value="se jalo de nuevo" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

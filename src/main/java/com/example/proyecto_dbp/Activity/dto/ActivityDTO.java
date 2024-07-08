@@ -38,6 +38,4 @@ public class ActivityDTO {
     @NotNull
     private Long UserId;
 
-    @NotNull
-    private String courseProfessor;
 }
