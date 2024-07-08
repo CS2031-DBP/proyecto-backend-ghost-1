@@ -42,6 +42,10 @@ public class TaskService {
     }
 
     public Task createTask(TaskDTO taskDTO) {
+        if (taskDTO.getUserId() == null) {
+            throw new IllegalArgumentException("User ID must not be null");
+        }
+
         Task task = new Task();
         task.setTitulo(taskDTO.getTitulo());
         task.setDescripcion(taskDTO.getDescripcion());
@@ -66,6 +70,7 @@ public class TaskService {
         task.setCourse(course);
         return taskRepository.save(task);
     }
+
 
     public Task updateTask(Long id, TaskDTO taskDTO) {
         Task task = taskRepository.findById(id)
