@@ -16,11 +16,6 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @GetMapping("d/hello")
-    public ResponseEntity<String> hello() {
-        return ResponseEntity.ok("Hello World");
-    }
-
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterReq registerReq) {
         try {
