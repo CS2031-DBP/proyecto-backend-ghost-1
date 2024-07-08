@@ -1,13 +1,45 @@
 package com.example.proyecto_dbp.Event.domain;
 
-import com.example.proyecto_dbp.Activity.domain.Activity;
 import com.example.proyecto_dbp.Course.domain.Course;
 import jakarta.persistence.*;
+import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class Event extends Activity {
+@Table(name = "events")
+@Getter
+@Setter
+public class Event {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String titulo;
+
+    @Column(nullable = false)
+    private String descripcion;
+
+    @Column(nullable = false)
+    private Date fechaInicio;
+
+    @Column(nullable = false)
+    private Date fechaFin;
+
+    @Column(nullable = false)
+    private String estado;
+
+    @Column(nullable = false)
+    private Boolean completed = false;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
 
     @Column(nullable = false)
     private String location;
@@ -23,8 +55,4 @@ public class Event extends Activity {
 
     @Column(nullable = false)
     private String reminder;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id")
-    private Course course;
 }
