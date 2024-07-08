@@ -4,6 +4,8 @@ import com.example.proyecto_dbp.Course.domain.Course;
 import com.example.proyecto_dbp.Course.infrastructure.CourseRepository;
 import com.example.proyecto_dbp.Task.infrastructure.TaskRepository;
 import com.example.proyecto_dbp.Task.dto.TaskDTO;
+import com.example.proyecto_dbp.User.domain.User;
+import com.example.proyecto_dbp.User.infrastructure.UserRepository;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +22,9 @@ public class TaskService {
 
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public Page<Task> getAllTasks(Pageable pageable) {
         return taskRepository.findAll(pageable);
@@ -49,9 +54,15 @@ public class TaskService {
         Course course = courseRepository.findById(taskDTO.getCourseId()).orElse(null);
         if (course == null) {
             course = new Course();
-            course.setId(taskDTO.getCourseId());
             course.setNombreCurso(taskDTO.getCourseName());
-            course = courseRepository.save(course);
+            course.setDescripcion(taskDTO.getDescripcion());
+
+            // Buscar el usuario por ID y asignarlo al curso
+            User user = userRepository.findById(taskDTO.getUserId())
+                    .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + taskDTO.getUserId()));
+            course.setUser(user);
+
+            course = courseRepository.save(course); // Guardar el nuevo curso
         }
 
         task.setCourse(course);
@@ -73,9 +84,14 @@ public class TaskService {
         Course course = courseRepository.findById(taskDTO.getCourseId()).orElse(null);
         if (course == null) {
             course = new Course();
-            course.setId(taskDTO.getCourseId());
             course.setNombreCurso(taskDTO.getCourseName());
-            course = courseRepository.save(course); // Guardar el nuevo curso
+            course.setDescripcion(taskDTO.getDescripcion());
+
+            User user = userRepository.findById(taskDTO.getUserId())
+                    .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + taskDTO.getUserId()));
+            course.setUser(user);
+
+            course = courseRepository.save(course);
         }
 
         return taskRepository.save(task);

@@ -24,13 +24,12 @@ public class Course {
     @Column(nullable = false)
     private String descripcion;
 
-    @Column(nullable = false)
-    private String profesor;
-
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @OneToMany(mappedBy = "course")
     private List<Event> events;
+
+
 }
