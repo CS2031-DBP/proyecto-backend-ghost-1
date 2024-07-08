@@ -38,7 +38,7 @@ public class TaskService {
         task.setFechaInicio(taskDTO.getFechaInicio());
         task.setFechaFin(taskDTO.getFechaFin());
         task.setEstado(taskDTO.getEstado());
-        task.setCourseId(taskDTO.getCourseId());
+        task.setCourse(taskDTO.getCourseId());
         task.setPriority(taskDTO.getPriority());
         task.setCompleted(taskDTO.getCompleted());
         return taskRepository.save(task);
@@ -53,7 +53,7 @@ public class TaskService {
         task.setFechaInicio(taskDTO.getFechaInicio());
         task.setFechaFin(taskDTO.getFechaFin());
         task.setEstado(taskDTO.getEstado());
-        task.setCourseId(taskDTO.getCourseId());
+        task.setCourse(taskDTO.getCourseId());
         task.setPriority(taskDTO.getPriority());
         task.setCompleted(taskDTO.getCompleted());
         return taskRepository.save(task);

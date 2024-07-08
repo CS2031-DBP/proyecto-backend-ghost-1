@@ -1,6 +1,7 @@
 package com.example.proyecto_dbp.Task.domain;
 
 import com.example.proyecto_dbp.Activity.domain.Activity;
+import com.example.proyecto_dbp.Course.domain.Course;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,6 +16,4 @@ public class Task extends Activity {
     @Column(nullable = false)
     private Boolean completed;
 
-    @Column(nullable = false)
-    private Long courseId;
 }

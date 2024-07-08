@@ -33,7 +33,7 @@ public class Activity {
     @Column(nullable = false)
     private Boolean completed = false;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 }

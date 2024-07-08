@@ -1,6 +1,7 @@
 package com.example.proyecto_dbp.Task.dto;
 
 import com.example.proyecto_dbp.Activity.dto.ActivityDTO;
+import com.example.proyecto_dbp.Course.domain.Course;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -16,6 +17,4 @@ public class TaskDTO extends ActivityDTO {
     @NotNull
     private Boolean completed;
 
-    @NotNull
-    private Long courseId;
 }
