@@ -2,8 +2,6 @@ package com.example.proyecto_dbp.Activity.application;
 
 import com.example.proyecto_dbp.Activity.domain.Activity;
 import com.example.proyecto_dbp.Activity.domain.ActivityService;
-import com.example.proyecto_dbp.Activity.dto.ActivityDTO;
-import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
