@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="nnnnn">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/domain/Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/proyecto_dbp/Task/domain/Task.class" afterDir="false" />
-    </list>
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="vamos krl" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -326,15 +322,7 @@
       <workItem from="1720016296442" duration="953000" />
       <workItem from="1720352455109" duration="498000" />
       <workItem from="1720353103929" duration="8236000" />
-      <workItem from="1720394893882" duration="17092000" />
-    </task>
-    <task id="LOCAL-00015" summary="falta testear y verificar todo &#10;verificar envio de emails">
-      <option name="closed" value="true" />
-      <created>1716654265797</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1716654265797</updated>
+      <workItem from="1720394893882" duration="17482000" />
     </task>
     <task id="LOCAL-00016" summary="falta testear y verificar todo &#10;verificar envio de emails">
       <option name="closed" value="true" />
@@ -720,7 +708,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720412831800</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="vamos krl">
+      <option name="closed" value="true" />
+      <created>1720413788768</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1720413788768</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -739,7 +735,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="no pude rsolver activtyrepository test, sigue dando 3 test erroneos" />
     <MESSAGE value="repository test implementation&#10;en ds sale el avance de cada uno" />
     <MESSAGE value="falta VoiceCommandRepositoryTest" />
     <MESSAGE value="aer" />
@@ -764,7 +759,8 @@
     <MESSAGE value="gg" />
     <MESSAGE value="gg xd" />
     <MESSAGE value="nnnnn" />
-    <option name="LAST_COMMIT_MESSAGE" value="nnnnn" />
+    <MESSAGE value="vamos krl" />
+    <option name="LAST_COMMIT_MESSAGE" value="vamos krl" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

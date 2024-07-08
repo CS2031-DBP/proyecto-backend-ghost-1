@@ -63,6 +63,7 @@ public class AuthService {
         JwtAuthResponse response = new JwtAuthResponse();
 
         response.setToken(jwtService.generateToken(user.get()));
+        response.setUserId(user.get().getId());
         return response;
     }
 }
