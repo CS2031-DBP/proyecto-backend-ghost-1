@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="adjustment on task 2nd time" />
+    <list default="true" id="1eabcb10-da91-4705-bb1a-5c27e7193d0f" name="Changes" comment="adjustment on task 3rd time">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/dto/ActivityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Activity/dto/ActivityDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/domain/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/dto/TaskDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/infrastructure/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/proyecto_dbp/Task/infrastructure/TaskRepository.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -322,7 +329,7 @@
       <workItem from="1720016296442" duration="953000" />
       <workItem from="1720352455109" duration="498000" />
       <workItem from="1720353103929" duration="8236000" />
-      <workItem from="1720394893882" duration="5846000" />
+      <workItem from="1720394893882" duration="6816000" />
     </task>
     <task id="LOCAL-00001" summary="Modified w errors">
       <option name="closed" value="true" />
@@ -676,7 +683,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720401012084</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="adjustment on task 3rd time">
+      <option name="closed" value="true" />
+      <created>1720401344454</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1720401344454</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,7 +710,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="GlobalExceptionHandler arreglado&#10;se borro todos los setters y getters&#10;falta implementacion de dto para service" />
     <MESSAGE value="todo esta con dto sin setter y getter y sin error" />
     <MESSAGE value="." />
     <MESSAGE value="events y asincronia !?" />
@@ -720,7 +734,8 @@
     <MESSAGE value="adjustment on activity for task" />
     <MESSAGE value="adjustment on task" />
     <MESSAGE value="adjustment on task 2nd time" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjustment on task 2nd time" />
+    <MESSAGE value="adjustment on task 3rd time" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjustment on task 3rd time" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

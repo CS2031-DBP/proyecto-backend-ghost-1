@@ -1,12 +1,13 @@
 package com.example.proyecto_dbp.Task.domain;
 
-import com.example.proyecto_dbp.Task.dto.TaskDTO;
 import com.example.proyecto_dbp.Task.infrastructure.TaskRepository;
+import com.example.proyecto_dbp.Task.dto.TaskDTO;
 import com.example.proyecto_dbp.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -15,8 +16,8 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-    public Page<Task> getAllTasks(PageRequest pageRequest) {
-        return taskRepository.findAll(pageRequest);
+    public Page<Task> getAllTasks(Pageable pageable) {
+        return taskRepository.findAll(pageable);
     }
 
     public Task getTaskById(Long id) {
@@ -37,6 +38,7 @@ public class TaskService {
         task.setFechaInicio(taskDTO.getFechaInicio());
         task.setFechaFin(taskDTO.getFechaFin());
         task.setEstado(taskDTO.getEstado());
+        task.setCourseId(taskDTO.getCourseId());
         task.setPriority(taskDTO.getPriority());
         task.setCompleted(taskDTO.getCompleted());
         return taskRepository.save(task);
@@ -51,6 +53,7 @@ public class TaskService {
         task.setFechaInicio(taskDTO.getFechaInicio());
         task.setFechaFin(taskDTO.getFechaFin());
         task.setEstado(taskDTO.getEstado());
+        task.setCourseId(taskDTO.getCourseId());
         task.setPriority(taskDTO.getPriority());
         task.setCompleted(taskDTO.getCompleted());
         return taskRepository.save(task);

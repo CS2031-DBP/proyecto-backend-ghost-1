@@ -15,4 +15,7 @@ public class TaskDTO extends ActivityDTO {
 
     @NotNull
     private Boolean completed;
+
+    @NotNull
+    private Long courseId;
 }
