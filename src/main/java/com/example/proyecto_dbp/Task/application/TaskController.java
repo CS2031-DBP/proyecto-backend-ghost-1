@@ -50,9 +50,9 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
         try {
-            Task updatedTask = taskService.updateTask(id, task);
+            Task updatedTask = taskService.updateTask(id, taskDTO);
             return ResponseEntity.ok(updatedTask);
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

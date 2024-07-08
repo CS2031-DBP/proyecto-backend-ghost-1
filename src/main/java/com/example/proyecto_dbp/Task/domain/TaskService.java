@@ -42,17 +42,17 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public Task updateTask(Long id, Task updatedTask) {
+    public Task updateTask(Long id, TaskDTO taskDTO) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Task not found with id " + id));
 
-        task.setTitulo(updatedTask.getTitulo());
-        task.setDescripcion(updatedTask.getDescripcion());
-        task.setFechaInicio(updatedTask.getFechaInicio());
-        task.setFechaFin(updatedTask.getFechaFin());
-        task.setEstado(updatedTask.getEstado());
-        task.setPriority(updatedTask.getPriority());
-        task.setCompleted(updatedTask.getCompleted());
+        task.setTitulo(taskDTO.getTitulo());
+        task.setDescripcion(taskDTO.getDescripcion());
+        task.setFechaInicio(taskDTO.getFechaInicio());
+        task.setFechaFin(taskDTO.getFechaFin());
+        task.setEstado(taskDTO.getEstado());
+        task.setPriority(taskDTO.getPriority());
+        task.setCompleted(taskDTO.getCompleted());
         return taskRepository.save(task);
     }
 

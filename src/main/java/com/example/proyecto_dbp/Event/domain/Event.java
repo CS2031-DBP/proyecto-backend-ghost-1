@@ -3,14 +3,10 @@ package com.example.proyecto_dbp.Event.domain;
 import com.example.proyecto_dbp.Activity.domain.Activity;
 import com.example.proyecto_dbp.Course.domain.Course;
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.util.List;
 
-@NoArgsConstructor
 @Entity
-@Setter
-@Getter
 public class Event extends Activity {
 
     @Column(nullable = false)
